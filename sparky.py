@@ -1,7 +1,7 @@
 hello world
 
 1. the unique point on a graph via its input set is used to create a regression model from scratch
-2. model points can all be represented on a single axis' (transforming lines into single unique points can be done algorithmically at chosen INTERVALS) ex: video model second model
+2. model points can all be represented on a single axis (transforming lines into single unique points can be done algorithmically at chosen INTERVALS) ex: video model second model
 
 REGRESSION MODEL 
 question: a model to tell if a basketball is in a picture
