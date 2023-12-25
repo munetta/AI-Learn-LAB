@@ -21,7 +21,8 @@ goal: show a pop up model on a page before the user clicks.
 parameters: page categories
 target: the category the user clicks (label)
 algorithm: categroy (n) * category time (s)   
--create seperate models per click (when click, append to an inner model -- using times above 0s)                                                                                                                                                                                                                                               
+-create seperate models per click (when click, append to a different inner model -- using times above 0s)
+-use that specific model to deduce                                                                                                                                                                                                                                                
                                                                                                                                                                                                                                                 
                                                                                                                                                                                                                                                 
 
