@@ -16,6 +16,6 @@ tansforming line: yes  ...transofrm 18 point incoming lines into one point, defi
 parameters: pixel_location, pixel_color
 algorithm: pixel_location * pixel_color + ...n
 
-every 18 points, transform the line into a single point, plot... for incoming do the same
+every 18 points, transform the line into a single point, plot... for incoming do the same and just compare. real problem is dividing up all the interval times. some 18 frames some 40 frames depending on what you are looking for
 
-make sure to label the points with large zoom conferences 
+make sure to label the points with large zoom conferences in the beginning, check for accuracy over a short meeting.
