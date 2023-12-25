@@ -19,3 +19,5 @@ algorithm: pixel_location * pixel_color + ...n
 every 18 points, transform the line into a single point, plot... for incoming do the same, then compare (with the up down counting pattern). real problem is dividing up all the interval times. some 18 frames some 40 frames depending on what you are looking for
 
 make sure to label the points with large zoom conferences in the beginning, check for accuracy over a short meeting.
+
+for labeling, making everything black and white helps better define objects
