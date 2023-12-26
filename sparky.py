@@ -2,7 +2,12 @@ hello world
 
 Alex E
 
-1. the unique point on a graph via its input set (features) is used to create a regression model from scratch. Points (in some cases) eventually becoming lines (measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary). Regression mean formulas are used for comparing incoming target lines. Iteritive addidive comparing is used for comparing incoming target points. Regression mean formulas also represent the straight line through a set of points (which is why i like conveting lines to a single point on a single axis, so that that algorithm does not get run). 
+The unique point on a graph via its input set (features) is used to create a regression model from scratch. 
+Points eventually becoming lines (in some cases, measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary) and for faster comparing when an incoming target comes in (efficency).
+Regression mean formulas can be used for comparing stored unique lines, with incoming target lines (unefficent but possibly much more accurate labeling). 
+Iteritive addidive comparing is used for comparing incoming target points (more efficient but if not done correctly, less accurate labeling). 
+
+Variance patterns                                                                           
 
 why convert a line to a single point on a server for labeling.
 -avoid the regression formula running on servers - however, still need to run 'a' formula just without division...
@@ -72,4 +77,6 @@ parameters: page categories
 target: the category the user clicks (label)
 algorithm: categroy (n) * category time (s)   
 -create seperate models per click (when click, append to a different inner model -- using times above 0s)
--use that specific model to deduce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+-use that specific model to deduce     
+                                                                                                                                                                              
+                                                                                                                                                                              
