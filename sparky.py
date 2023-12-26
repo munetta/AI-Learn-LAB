@@ -82,7 +82,8 @@ target: the category the user clicks (label)
 algorithm: categroy (n) * category time (s)                                                                                                                                                                             
 -create seperate models per click (when click, append to a different inner model -- using times above 0s)
 -use that specific model to deduce     
-page.js                                                                                                                                                                                                                                                                                                                                                            
+page.js           
+instead of click maybe a search function                                                                                                                                                                              
                                                                                                                                                                               
 THEORY
 How to define an input set uniquely via a line 
