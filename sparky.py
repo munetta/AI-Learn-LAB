@@ -33,7 +33,7 @@ let graph_point_amount = 0;
 for(i in pixels)
     graph_point_amount += pixels[i].color * pixels[i].location
 
--place graph_point_amount on x axis, graph_point_amount represented on y axis as unique
+-place graph_point_amount along the y axis on a chosen x axis
     
 example line function:
 
@@ -79,8 +79,24 @@ PAGE TIME MODEL
 goal: show a pop up model on a page before the user clicks.                                                                                                                                                                                                                                                
 parameters: page categories
 target: the category the user clicks (label)
-algorithm: categroy (n) * category time (s)   
+algorithm: categroy (n) * category time (s)                                                                                                                                                                             
 -create seperate models per click (when click, append to a different inner model -- using times above 0s)
 -use that specific model to deduce     
 page.js                                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                              
+THEORY
+How to define an input set uniquely via a line 
+each feature has a categorical constant that is incremental to help plot a unique point, making up the unique line overtime. ()    
+The line is saved, and when an incoming line comes in, a regression min distance formula is used to compare, getting the line that most matches, which would be labled                                                                                                                                                                              
+
+Question                                                                                                                                                                              
+Can you convert the line made by the model back to the point. 
+yes, by multiplying the x/y adding over, and plotting                                                                                                                          
+
+why 
+more friendly comparison algorithm..                                                                                                                                                                              must compare conversion to point and mean formula, vs regression variance mean formula                                                                                                                                                                             
+
+downside
+two step process instead of one step
+                                                                                                                                                                              
                                                                                                                                                                               
