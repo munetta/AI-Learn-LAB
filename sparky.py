@@ -11,7 +11,7 @@ why convert a line to a single point on a server for labeling.
 -avoid the regression formula running on servers - however, still need to run 'a' formula just without division...
 -might still be slower though
 
-MAIN POINT IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT - however if lines are neccessary, you can convert them into points to compare in a more friendly manner
+MAIN POINT IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT - however if lines are neccessary, you can convert them into points to compare in a more friendly manner. Also the differential algorithm between lines might be more computationally more expensive than say converting a line to a unique point then comparing. does that make f-sense 
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
@@ -75,9 +75,4 @@ parameters: page categories
 target: the category the user clicks (label)
 algorithm: categroy (n) * category time (s)   
 -create seperate models per click (when click, append to a different inner model -- using times above 0s)
--use that specific model to deduce                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                                
-
-                                                                                                                                                                                                                                                
-                                                                                                                                                                                                                                             
+-use that specific model to deduce                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
