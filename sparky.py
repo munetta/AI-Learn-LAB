@@ -23,6 +23,7 @@ line neccessary: no
 transforming line: no
 parameters: pixel_location, pixel_color
 algorithm: pixel_location * pixel_color + ...n
+picture.js
 
 Example point function:
 
@@ -72,6 +73,7 @@ line duration transformed: 18 x points... one point representing a millisecond a
 transforming line: yes  ...transoform 18 point incoming lines into uniquely defined points, and compare with the other lines already transformed and plotted unique points (the beginning to end of the lines, each individual node, can be used algorithmically to transform the line into a single unique point)
 parameters: pixel_location, pixel_color
 algorithm: pixel_location * pixel_color + ...n
+video.js                                                                                                                                                                              
                                                                                                                                                                                                                                                 
 PAGE TIME MODEL 
 goal: show a pop up model on a page before the user clicks.                                                                                                                                                                                                                                                
@@ -80,5 +82,5 @@ target: the category the user clicks (label)
 algorithm: categroy (n) * category time (s)   
 -create seperate models per click (when click, append to a different inner model -- using times above 0s)
 -use that specific model to deduce     
-                                                                                                                                                                                                                                                                                                                                                            
+page.js                                                                                                                                                                                                                                                                                                                                                            
                                                                                                                                                                               
