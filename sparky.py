@@ -8,6 +8,8 @@ hello world
 why convert a line to a single point on a server for labeling.
 -avoid the regression formula running on servers - however, still need to run 'a' formula just without division...
 -might still be slower though
+
+MIN POINT IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT - however if lines are neccessary, you can convert them into points
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
