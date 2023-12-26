@@ -1,7 +1,9 @@
 hello world
 
-1. the unique point on a graph via its input set (parameters/constants and features/variables however do not confuse what is necessary and not, uniqueness is the goal) is used to create a regression model from scratch. Points eventually becoming lines (if using input intervals), however, lines being able to convert back into single unique points for labeling (if necessary). Regression mean formulas on lines. Iteritive addidive comparing on single axis points.
-2. model points can all be represented on a single axis (transforming lines into single unique points can be done algorithmically at chosen INTERVALS/between x values) ex: video model second model <-- transforming a line into a single point makes it easier to compare incoming targets <-- if not transforming a line, comparisons of incoming lines can be done via a regular regression mean formula.
+1. the unique point on a graph via its input set (parameters/constants and features/variables however do not confuse what is necessary and not, uniqueness is the goal) is used to create a regression model from scratch. Points eventually becoming lines (measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary). Regression mean formulas are used on lines. Iteritive addidive comparing is used on single axis points.
+2. model points can all be represented on a single axis (transforming lines into single unique points can be done algorithmically from start to finish of line) ex: video model second model <-- transforming a line into a single point makes it easier to compare incoming targets <-- if not transforming a line, comparisons of incoming lines can be done via a regular regression mean formula.
+
+-parameter should be a constant local differential (to help define input set uniquely) <-- in this case pixel location is okay
 
 why convert a line to a single point on a server for labeling.
 -avoid the regression formula running on servers 
