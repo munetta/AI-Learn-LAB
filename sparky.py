@@ -2,20 +2,22 @@ Alex E
 Notes
 
 Topic 
-The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. (plotting single point)
-vs
-A categorical constant between features plotted seperately along the x has shown uniqueness <-- conversion process to a single point for a more friendly real time comparison (plotting line <-- then converting line to point OR vs keeping line the same)
+The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. 
 
-why convert a line to a single point on a server for labeling.
--avoid the regression formula running on servers - however, still need to run 'a' formula to convert the line to the unique point
--might still be slower though
+Argument
+can plotting on a single axis denote uniqueness as well as plotting along a line
+can using a single axis on all models make comparing incoming targets easier
 
 conversion formula
-considering the line being accurate, multiply the x and y, and add to a global until line end reached, then plot that single number (yi*xi + ...n) --- ex: converting 18 frames, making up a line, to one point
+considering the line being accurate, multiply the x and y, and add to a global until line end reached, then plot that single number (yi*xi + ...n) 
+ex: converting 18 frames making up a line, into one point that defines the 18 frames uniquely
 
-MAIN IDEA IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT
--however if lines are neccessary, you can convert them into points to compare in a more friendly manner. 
--Also the differential algorithm between lines might be computationally more expensive than say converting a line to a unique point then comparing.
+MAIN IDEA IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT 
+-however if lines are neccessary, you can convert them into unique points to compare incoming targets in a more friendly manner. 
+-Also the differential algorithm between lines might be computationally more expensive than say converting a line into a unique point to compare against incoming targets.
+
+What is a goal of a model
+-to make an accurate decision in labeling something (possibly for a decision to be made)
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
@@ -99,7 +101,7 @@ yes, by multiplying the x/y adding over, and plotting
 
 why 
 more friendly comparison algorithm...     
-must compare conversion-to-point (two step) and regression-min-dist (one step) formulas                                                                                                                                                                           
+must compare conversion-to-point (two step) and regression-min-dist (one step) formulas 
 
 downside
 two step process instead of one step
