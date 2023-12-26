@@ -7,8 +7,6 @@ Points eventually becoming lines (if neccessary, measured in intervals), however
 Regression mean formulas can be used for comparing stored unique lines, with incoming target lines (unefficent but possibly much more accurate labeling). 
 Iteritive addidive comparing is used for comparing incoming target points (more efficient but if not done correctly, less accurate labeling). 
 
-Variance patterns                                                                           
-
 why convert a line to a single point on a server for labeling.
 -avoid the regression formula running on servers - however, still need to run 'a' formula just without division...
 -might still be slower though
