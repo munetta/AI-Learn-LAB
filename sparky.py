@@ -51,10 +51,12 @@ Improvement
 -when the incoming line is denoted, find a way to define it using objects, etc
 
 features
-pixel_1     ...t (the target is all the features added up)
+pixel_1     ...t (the target is all the features added up) option one: added on single axis --- option two: added on many axioms
 -------
 pixel_color*
-pixel_location
+pixel_location (local differential parameter)
+
+
 
 (they say a parameter is a constant in a formula)
 
