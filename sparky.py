@@ -11,7 +11,7 @@ why convert a line to a single point on a server for labeling.
 -might still be slower though
 
 conversion formula
-considering the line being accurate, multiply the x and y, and add to a global until line end reached, then plot that single number (yi*xi + ...n) --- ex: converting 18 frames to one frame
+considering the line being accurate, multiply the x and y, and add to a global until line end reached, then plot that single number (yi*xi + ...n) --- ex: converting 18 frames, making up a line, to one point
 
 MAIN IDEA IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT
 -however if lines are neccessary, you can convert them into points to compare in a more friendly manner. 
