@@ -98,7 +98,8 @@ Can you convert the line made by the model back to the point.
 yes, by multiplying the x/y adding over, and plotting                                                                                                                          
 
 why 
-more friendly comparison algorithm..                                                                                                                                                                              must compare conversion to point and mean formula, vs regression variance mean formula                                                                                                                                                                             
+more friendly comparison algorithm...     
+must compare conversion-to-point (two step) and regression-min-dist (one step) formulas                                                                                                                                                                           
 
 downside
 two step process instead of one step
