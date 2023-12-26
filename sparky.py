@@ -29,7 +29,7 @@ example line function
 
 
 
-why? Is uniqueness better defined in the point or in the line to begin thereof i suck
+why? Is uniqueness better defined in the point or in the line to begin thereof i suck. damnit david. damn dude. you ruined my day mane. damnit dude.
 
 
 
