@@ -11,7 +11,7 @@ why convert a line to a single point on a server for labeling.
 -avoid the regression formula running on servers - however, still need to run 'a' formula just without division...
 -might still be slower though
 
-MAIN POINT IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT - however if lines are neccessary, you can convert them into points to compare in a more friendly manner. Also the differential algorithm between lines might be more computationally more expensive than say converting a line to a unique point then comparing. does that make f-sense 
+MAIN POINT IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT - however if lines are neccessary, you can convert them into points to compare in a more friendly manner. Also the differential algorithm between lines might be more computationally more expensive than say converting a line to a unique point then comparing. does that make f-sense. whether your red or blue just smash who you think is the man over and over. what else is there to life but the enthralling story of yada yada yada yada yada
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
