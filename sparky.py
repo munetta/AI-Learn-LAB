@@ -1,12 +1,12 @@
 hello world
 
-1. the unique point on a graph via its input set (parameters/constants and features/variables however do not confuse what is necessary and not, uniqueness is the goal) is used to create a regression model from scratch. Points eventually becoming lines, however, lines being able to convert back into single unique points. 
-2. model points can all be represented on a single axis (transforming lines into single unique points can be done algorithmically at chosen INTERVALS/between x values) ex: video model second model <-- transforming a line into a single point makes it easier to compare incoming targets <-- if not transforming line, comparisons of incoming lines can be done via a regular regression mean formula
+1. the unique point on a graph via its input set (parameters/constants and features/variables however do not confuse what is necessary and not, uniqueness is the goal) is used to create a regression model from scratch. Points eventually becoming lines, however, lines being able to convert back into single unique points for labeling.
+2. model points can all be represented on a single axis (transforming lines into single unique points can be done algorithmically at chosen INTERVALS/between x values) ex: video model second model <-- transforming a line into a single point makes it easier to compare incoming targets <-- if not transforming line, comparisons of incoming lines can be done via a regular regression mean formula on the saved lines.
 
-why convert a line to a single point on a server
+why convert a line to a single point on a server for labeling.
 -to reduce look up time
--compare the regression formula on the line vs the transformation of the line and the lookup vertically along the y axis.
-
+-avoid the regression formula running on servers
+                                                                                                                                                                                                                                                                                                                         
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
 transforming line: no
