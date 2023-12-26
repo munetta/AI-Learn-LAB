@@ -88,7 +88,10 @@ page.js
 THEORY
 How to define an input set uniquely via a line 
 each feature has a categorical constant that is incremental to help plot a unique point, making up the unique line overtime. ()    
-The line is saved, and when an incoming line comes in, a regression min distance formula is used to compare, getting the line that most matches, which would be labled                                                                                                                                                                              
+The line is saved, and when an incoming line comes in, a regression min distance formula is used to compare, getting the line that most matches, which would be labled  
+                                                                                                                                                                              
+How to define an input set uniquely via a point 
+run the algorithm and instead of plotting seperately on the x axioms, plot on one.. (this would be the test for the line conversion process -- some relatable amount fuk mate)                                                                                                                                                                              
 
 Question                                                                                                                                                                              
 Can you convert the line made by the model back to the point. 
