@@ -1,6 +1,5 @@
-hello world
-
 Alex E
+Notes
 
 Topic 
 The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. (plotting single point)
