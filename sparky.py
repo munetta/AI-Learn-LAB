@@ -1,6 +1,6 @@
 hello world
 
-1. the unique point on a graph via its input set (parameters/constants and features/variables however do not confuse what is necessary and not, uniqueness is the goal) is used to create a regression model from scratch. Points eventually becoming lines, however, lines being able to convert back into single unique points for labeling. Regression mean formulas on lines, iteritive addidive comparing on single axis points.
+1. the unique point on a graph via its input set (parameters/constants and features/variables however do not confuse what is necessary and not, uniqueness is the goal) is used to create a regression model from scratch. Points eventually becoming lines (if using input intervals), however, lines being able to convert back into single unique points for labeling (if necessary). Regression mean formulas on lines. Iteritive addidive comparing on single axis points.
 2. model points can all be represented on a single axis (transforming lines into single unique points can be done algorithmically at chosen INTERVALS/between x values) ex: video model second model <-- transforming a line into a single point makes it easier to compare incoming targets <-- if not transforming a line, comparisons of incoming lines can be done via a regular regression mean formula.
 
 why convert a line to a single point on a server for labeling.
@@ -14,7 +14,7 @@ transforming line: no
 parameters: pixel_location, pixel_color
 algorithm: pixel_location * pixel_color + ...n
 
-Example point function
+Example point function:
 
 let pixels = [{color, location}...] ...location incremented on a count per iteration
 let graph_point_amount = 0;
@@ -22,16 +22,29 @@ let graph_point_amount = 0;
 for(i in pixels)
     graph_point_amount += pixels[i].color * pixels[i].location
 
--place graph_point_amount on single y axis at x-axis, programically
+-place graph_point_amount on x axis, graph_point_amount represented on y axis as unique
     
-example line function 
+example line function:
 
+let pixels = [{color, location}...] ...location incremented on a count per iteration
+let graph_point_amount = 0;
+ley x_value = 0;
 
+for(i in pixels)
+    graph_point_amount += pixels[i].color * pixels[i].location
+    x_value += 1; 
+    -place graph_point_amount on graph
+    graph_point_amount = 0
+    
+-use a regression formula on the line to get a value. 
+-run that regression formula on all other stored lines, get the min distance, check the label, apply closest etc
 
+DIFFERENCE
+-first way avoids running the regression formula but might not define uniqueness "as well" -- I believe it would though
+-second way defines uniqueness it seems more clearly but cant be certain on that
 
-why? Is uniqueness better defined in the point or in the line to begin thereof i suck. damnit david. damn dude. you ruined my day mane. damnit dude.
-
-
+Improvement
+-when the incomine line is denoted, find a way to define it using objects, etc
 
 REGRESSION VIDEO MODEL
 goal: a model to tell if a basketball goes through a hoop (must observe how many frames/xPoints/ms are necessary to identify correct video)
