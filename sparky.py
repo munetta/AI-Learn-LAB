@@ -1,6 +1,6 @@
 hello world
 
-1. the unique point on a graph via its input set (parameters/constants and features/variables however do not confuse what is necessary and not, uniqueness is the goal) is used to create a regression model from scratch. Points eventually becoming lines (measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary). Regression mean formulas are used on lines. Iteritive addidive comparing is used on single axis points.
+1. the unique point on a graph via its input set (features) is used to create a regression model from scratch. Points eventually becoming lines (measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary). Regression mean formulas are used on lines. Iteritive addidive comparing is used on single axis points.
 2. model points can all be represented on a single axis (transforming lines into single unique points can be done algorithmically from start to finish of line) ex: video model second model <-- transforming a line into a single point makes it easier to compare incoming targets <-- if not transforming a line, comparisons of incoming lines can be done via a regular regression mean formula.
 
 -parameter should be a 'constant local differential' (to help define input set uniquely) <-- in this case pixel location is okay
@@ -49,6 +49,14 @@ How to convert an incoming line to a single point -- knowing the line is unique,
 
 Improvement
 -when the incoming line is denoted, find a way to define it using objects, etc
+
+features
+pixel_1     ...t (the target is all the features added up)
+-------
+pixel_color*
+pixel_location
+
+(they say a parameter is a constant in a formula)
 
 REGRESSION VIDEO MODEL
 goal: a model to tell if a basketball goes through a hoop (must observe how many frames/xPoints/ms are necessary to identify correct video)
