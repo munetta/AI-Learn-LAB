@@ -3,10 +3,10 @@ hello world
 1. the unique point on a graph via its input set (parameters/constants and features/variables however do not confuse what is necessary and not, uniqueness is the goal) is used to create a regression model from scratch. Points eventually becoming lines (measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary). Regression mean formulas are used on lines. Iteritive addidive comparing is used on single axis points.
 2. model points can all be represented on a single axis (transforming lines into single unique points can be done algorithmically from start to finish of line) ex: video model second model <-- transforming a line into a single point makes it easier to compare incoming targets <-- if not transforming a line, comparisons of incoming lines can be done via a regular regression mean formula.
 
--parameter should be a constant local differential (to help define input set uniquely) <-- in this case pixel location is okay
+-parameter should be a 'constant local differential' (to help define input set uniquely) <-- in this case pixel location is okay
 
 why convert a line to a single point on a server for labeling.
--avoid the regression formula running on servers 
+-avoid the regression formula running on servers - however, still need to run 'a' formula just without division...
 -might still be slower though (damnit david)
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
@@ -45,10 +45,10 @@ DIFFERENCE
 -first way avoids running the regression formula but might not define uniqueness "as well" -- I believe it would though
 -second way defines uniqueness it seems more clearly but cant be certain on that
 
-How to convert an incoming line to a single point -- knowing the line is unique, multiply the y and the x together and add down the entire line, then store
+How to convert an incoming line to a single point -- knowing the line is unique, multiply the y and the x together and add down the entire line, then store -- not necesary but makes comparing easier
 
 Improvement
--when the incomine line is denoted, find a way to define it using objects, etc
+-when the incoming line is denoted, find a way to define it using objects, etc
 
 REGRESSION VIDEO MODEL
 goal: a model to tell if a basketball goes through a hoop (must observe how many frames/xPoints/ms are necessary to identify correct video)
