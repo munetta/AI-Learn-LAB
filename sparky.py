@@ -3,7 +3,7 @@ hello world
 Alex E
 
 The unique point on a graph via its input set (features) is used to create a regression model from scratch. 
-Points eventually becoming lines (if neccessary, measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary) and for faster comparing when an incoming target comes in (efficency). <-- this might be wrong
+Points eventually becoming lines (if neccessary, measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary) and for faster comparing when an incoming target comes in (efficency). <-- this might be wrong -- have to compare the regression mean variance algorithms with the conversion algorithm then adding entire number set and dividing by set amount
 Regression mean formulas can be used for comparing stored unique lines, with incoming target lines (unefficent but possibly much more accurate labeling). 
 Iteritive addidive comparing is used for comparing incoming target points (more efficient but if not done correctly, less accurate labeling). 
 
