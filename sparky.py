@@ -43,6 +43,8 @@ DIFFERENCE
 -first way avoids running the regression formula but might not define uniqueness "as well" -- I believe it would though
 -second way defines uniqueness it seems more clearly but cant be certain on that
 
+How to convert an incoming line to a single point -- knowing the line is unique, multiply the y and the x together and add down the entire line, then store
+
 Improvement
 -when the incomine line is denoted, find a way to define it using objects, etc
 
