@@ -2,8 +2,7 @@ hello world
 
 Alex E
 
-1. the unique point on a graph via its input set (features) is used to create a regression model from scratch. Points (in some cases) eventually becoming lines (measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary). Regression mean formulas are used for comparing incoming target lines. Iteritive addidive comparing is used for comparing incoming target points. Regression mean formulas on lines, also can represent variance (which is why i like converting  lines to single unique points --- easier comparing --- lighter computation possibly)  
-2. model points can all be represented on a single axis (transforming lines into single unique points can be done algorithmically from start to finish of line) ex: video model second model <-- transforming a line into a single point makes it easier to compare incoming targets <-- if not transforming a line, comparisons of incoming lines can be done via a regular regression mean formula.
+1. the unique point on a graph via its input set (features) is used to create a regression model from scratch. Points (in some cases) eventually becoming lines (measured in intervals), however, lines being able to convert back into single unique points for labeling (if necessary). Regression mean formulas are used for comparing incoming target lines. Iteritive addidive comparing is used for comparing incoming target points. Regression mean formulas also represent the straight line through a set of points (which is why i like conveting lines to a single point on a single axis, so that that algorithm does not get run). 
 
 why convert a line to a single point on a server for labeling.
 -avoid the regression formula running on servers - however, still need to run 'a' formula just without division...
