@@ -54,7 +54,7 @@ DIFFERENCE
 How to convert an incoming line to a single point -- knowing the line is unique, multiply the y and the x together and add down the entire line, then store -- not necesary but makes comparing easier
 
 Improvement
--when the incoming line is denoted, find a way to define it using objects, etc
+-when the incoming line is denoted, find a way to define it using objects, etc (faster lookup definition)
 
 features
 pixel_1     ...t (the target is all the features added up) option one: added on single axis --- option two: added on many axioms
