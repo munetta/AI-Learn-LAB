@@ -4,14 +4,14 @@ Notes
 Topic 
 The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. (plotting single point)
 vs
-A categorical constant between features plotted seperately along the x has shown uniqueness <-- conversion process to a single point for a more friendly input target algorithm (plotting line <-- then converting back to point)
+A categorical constant between features plotted seperately along the x has shown uniqueness <-- conversion process to a single point for a more friendly real time comparison (plotting line <-- then converting line to point OR vs keeping line the same)
 
 why convert a line to a single point on a server for labeling.
 -avoid the regression formula running on servers - however, still need to run 'a' formula to convert the line to the unique point
 -might still be slower though
 
 conversion formula
-considering the line being accurate, multiply the x and y, and add to a global until line end reached, then plot that single number (yi*xi + ...n) 
+considering the line being accurate, multiply the x and y, and add to a global until line end reached, then plot that single number (yi*xi + ...n) --- ex: converting 18 frames to one frame
 
 MAIN IDEA IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT
 -however if lines are neccessary, you can convert them into points to compare in a more friendly manner. 
