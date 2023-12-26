@@ -7,7 +7,7 @@ hello world
 
 why convert a line to a single point on a server for labeling.
 -avoid the regression formula running on servers - however, still need to run 'a' formula just without division...
--might still be slower though (damnit david)
+-might still be slower though
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
