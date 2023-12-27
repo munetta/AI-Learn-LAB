@@ -16,6 +16,7 @@ ex: converting 18 frames making up a line, into one point that defines the 18 fr
 MAIN IDEA IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT 
 -however if lines are neccessary, you can convert them into unique points to compare incoming targets in a more friendly manner. 
 -Also the differential algorithm between lines might be computationally more expensive than say converting a line into a unique point to compare against incoming targets.
+-The question is can i just plot the point, can i convert the line to a point, or is the difference between a line neccessary and not the point
 
 What is a goal of a model
 -to make an accurate decision in labeling something (possibly for a decision to be made)
