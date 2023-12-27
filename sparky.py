@@ -7,6 +7,7 @@ The unique point on a graph coming from an input set (features) is used to creat
 Argument
 can plotting on a single axis denote uniqueness as well as plotting along a line
 can using a single axis on all models make comparing incoming targets easier
+whats the difference between plotting a single point, plotting a line and converting to a point, and plotting a line
 
 conversion formula
 considering the line being accurate, multiply the x and y, and add to a global until line end reached, then plot that single number (yi*xi + ...n) 
