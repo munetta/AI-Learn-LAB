@@ -2,24 +2,20 @@ Alex E
 Notes
 
 Topic 
-The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. 
+The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. Points being denoted uniquely themselves or making up lines to denote uniquely.
 
 Argument
-can plotting on a single axis denote uniqueness as well as plotting along a line
-can using a single axis on all models make comparing incoming targets easier
-whats the difference between plotting a single point, plotting a line and converting to a point, and plotting a line
+determine the difference between plotting a single point, plotting a line and converting to a point, and plotting a line
+
+1. point - can pltting a single point define uniqueness (additive formula)
+2. line - can plotting with a single line and converting to a point show uniqueness (additive formula)
+3. line - can plotting a line show uniqueness (running the min distance formulas)
 
 conversion formula
 considering the line being accurate, multiply the x and y, and add to a global until line end reached, then plot that single number (yi*xi + ...n) 
 ex: converting 18 frames making up a line, into one point that defines the 18 frames uniquely
 
 MAIN IDEA IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT 
--however if lines are neccessary, you can convert them into unique points to compare incoming targets in a more friendly manner. 
--Also the differential algorithm between lines might be computationally more expensive than say converting a line into a unique point to compare against incoming targets.
--The question is can i just plot the point, can i convert the line to a point, or is the difference between a line neccessary and not the point
-
-What is a goal of a model
--to make an accurate decision in labeling something (possibly for a decision to be made)
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
