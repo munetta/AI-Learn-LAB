@@ -88,24 +88,5 @@ algorithm: categroy (n) * category time (s)
 -use that specific model to deduce     
 page.js           
 instead of click maybe a search function                                                                                                                                                                              
-                                                                                                                                                                              
-THEORY
-How to define an input set uniquely via a line 
-each feature has a categorical constant that is incremental to help plot a unique point, making up the unique line overtime. ()    
-The line is saved, and when an incoming line comes in, a regression min distance formula is used to compare, getting the line that most matches, which would be labled  
-                                                                                                                                                                              
-How to define an input set uniquely via a point 
-run the algorithm and instead of plotting seperately on the x axioms, plot on one.. (this would be the test for the line conversion process -- some relatable amount fuk mate)                                                                                                                                                                              
-
-Question                                                                                                                                                                              
-Can you convert the line made by the model back to the point. 
-yes, by multiplying the x/y adding over, and plotting                                                                                                                          
-
-why 
-more friendly comparison algorithm...     
-must compare conversion-to-point (two step) and regression-min-dist (one step) formulas 
-
-downside
-two step process instead of one step
-                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                            
                                                                                                                                                                               
