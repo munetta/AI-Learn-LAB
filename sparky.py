@@ -2,12 +2,12 @@ Alex E
 Notes
 
 Topic 
-The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. Points being denoted uniquely themselves or making up lines to denote uniquely.
+The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. Points being denoted uniquely themselves or making up lines, also denoted uniquely.
 
 Argument
 determine the difference between plotting a single point, plotting a line and converting to a point, and plotting a line
 
-1. point - can pltting a single point define uniqueness (additive formula)
+1. point - can plotting a single point define uniqueness (additive formula)
 2. line - can plotting with a single line and converting to a point show uniqueness (additive formula)
 3. line - can plotting a line show uniqueness (running the min distance formulas)
 
@@ -84,5 +84,11 @@ algorithm: categroy (n) * category time (s)
 -use that specific model to deduce     
 page.js           
 instead of click maybe a search function                                                                                                                                                                              
-                                                                                                                                                                                                                                                                                                            
+                                 
+ conclusion
+ -You actually need the line to denote uniqueness, because the incoming target comparison formula determines the difference in distance between each individual parameter plotted
+
+  ignore resume nevermind unless maybe i am right                                                                                                                                                                            
+ 
+                                                                                                                                                                                                                                                                                                      
                                                                                                                                                                               
