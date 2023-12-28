@@ -2,7 +2,7 @@ Alex E
 Notes
 
 Topic 
-a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature added accordingly per feature on a graphs axis, incremented (ex: pixel color, pixel density, pixel ... added, plotted, move next) 
+a line drawn on a graph coming from an input set where each features multiplicative set is added along an axis. (ex feature: pixel color * pixel density * pixel ... added, plotted, move next) 
 after plotting, converting into a point to denote the entire line (xi * yi ...)
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
@@ -43,25 +43,7 @@ parameters: pixel_location, pixel_color
 algorithm: pixel_location * pixel_color + ...n
 video.js                                                                                                                                                                              
                                                                                                                                                                                                                                                 
-PAGE TIME MODEL 
-goal: show a pop up model on a page before the user clicks.                                                                                                                                                                                                                                                
-parameters: page categories
-target: the category the user clicks (label)
-algorithm: categroy (n) * category time (s)                                                                                                                                                                             
--create seperate models per click (when click, append to a different inner model -- using times above 0s)
--use that specific model to deduce     
-page.js           
-instead of click maybe a search function                                                                                                                                                                              
-                                 
  conclusion
  a line drawn along the x can denote uniqueness... just add the attributic set per feature, plot and move next. The attributic set being all the things associated with the feature.
  once the line is drawn, convert it into a single point using (xi * yi ...n)
-                                                                                                                                                                              
- 
- 
-
- 
- 
- 
-                                                                                                                                                                                                                                                                                                      
-                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                          
