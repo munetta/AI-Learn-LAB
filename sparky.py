@@ -88,10 +88,9 @@ page.js
 instead of click maybe a search function                                                                                                                                                                              
                                  
  conclusion
- you can draw the line along the x categorized without that differential value... just add the attributic set per feature, plot and move next. 
-  
+ a line drawn along the x can denote uniqueness... just add the attributic set per feature, plot and move next. The attributic set being all the things associated with the location.  
+ once the line is drawn, convert it into a single point.  
                                                                                                                                                                               
-however, 
  
  
 
