@@ -2,7 +2,9 @@ Alex E
 Notes
 
 Topic 
-The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. Points being denoted uniquely themselves or making up lines, also denoted uniquely.
+The unique point on a graph coming from an input set. constant differential.
+vs
+a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature
 
 Argument
 determine the difference between plotting a single point, plotting a line and converting to a point, and plotting a line. is plotting the line necessary per incoming input set. Porbably not.
