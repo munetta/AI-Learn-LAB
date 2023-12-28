@@ -2,8 +2,8 @@ Alex E
 Notes
 
 Topic 
-a line drawn on a graph coming from an input set where each features multiplicative set is added along an axis. (ex feature: pixel color * pixel density * pixel, plotted, move next) 
-after plotting, converting into a point to denote the entire line (xi * yi ...)
+a line drawn on a graph coming from an input set where each features multiplicative set is added along an x axis, which is incrementing per pixel. (ex feature: pixel color * pixel density * pixel, plotted, move next) <-- thats one unique point per the line that gets a min distance applied to it
+after plotting, converting into a point to denote the entire line (xi * yi ...) <-- this is the proof
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
@@ -29,7 +29,7 @@ parameters: pixel_density, pixel_color
 algorithm: pixel_location * pixel_color + ...n
 video.js   
                                                                                                                                                                                                                                                 
- conclusion
- a line drawn along the x can denote uniqueness... just add the attributic set per feature, plot and move next. The attributic set being all the things associated with the feature.
- once the line is drawn, convert it into a single point using (xi * yi ...n)
+conclusion
+a line drawn along the x can denote uniqueness... just add the attributic set per feature, plot and move next. The attributic set being all the things associated with the feature.
+once the line is drawn, convert it into a single point using (xi * yi ...n)
                                                                                                                                                                                                                                                                                                                                           
