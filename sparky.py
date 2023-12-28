@@ -86,10 +86,9 @@ page.js
 instead of click maybe a search function                                                                                                                                                                              
                                  
  conclusion
- -plotting the line on an input request is not necessary - because the algorithm i wrote isnt neccessary cause i made a mistake and ill keep makin em real time
- -a unique numeric point is necessary to denote a single unique frame                                                                                                                                         
- -large location number differences determine greater uniqueness per incoming target
- -saving plotted points overtime determines frames (this is where you can compare lines --- for example the basketball going though the hoop)                                                                                                                                                                             
+ you can draw the line along the x categorized without that differential value... color value along one axis , next x, color on that axis --- this is one way 
+ the other way is the constant thats incremented per feature, is used to create a unique point
+ 
  
 
  
