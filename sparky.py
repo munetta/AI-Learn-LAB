@@ -4,7 +4,7 @@ Notes
 Topic 
 The unique point on a graph coming from an input set using a constant differential between features.
 vs
-a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature added accordingly per iput set (ex: pixel color, pixel density, pixel ...)
+a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature added accordingly per iput set (ex: pixel color, pixel density, pixel ... added, plotted, move next)
 
 Argument
 determine the difference between plotting a single point, plotting a line and converting to a point, and plotting a line. is plotting the line necessary per incoming input set. Porbably not.
