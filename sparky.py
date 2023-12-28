@@ -2,9 +2,9 @@ Alex E
 Notes
 
 Topic 
-The unique point on a graph coming from an input set. constant differential.
+The unique point on a graph coming from an input set using a constant differential between features.
 vs
-a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature
+a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature added accordingly per iput set (ex: pixel color, pixel density, pixel ...)
 
 Argument
 determine the difference between plotting a single point, plotting a line and converting to a point, and plotting a line. is plotting the line necessary per incoming input set. Porbably not.
@@ -88,8 +88,10 @@ page.js
 instead of click maybe a search function                                                                                                                                                                              
                                  
  conclusion
- you can draw the line along the x categorized without that differential value... color value along one axis , next x, color on that axis --- this is one way 
- the other way is the constant thats incremented per feature, is used to create a unique point
+ you can draw the line along the x categorized without that differential value... just add the attributic set per feature, plot and move next. 
+  
+                                                                                                                                                                              
+however, 
  
  
 
