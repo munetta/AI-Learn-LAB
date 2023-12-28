@@ -2,9 +2,8 @@ Alex E
 Notes
 
 Topic 
-The unique point on a graph coming from an input set using a constant differential number between features.
-vs
-a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature added accordingly per iput set (ex: pixel color, pixel density, pixel ... added, plotted, move next) 
+a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature added accordingly per feature on a graphs axis, incremented (ex: pixel color, pixel density, pixel ... added, plotted, move next) 
+after plotting, converting into a point to denote the entire line (xi * yi ...)
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
@@ -56,7 +55,7 @@ instead of click maybe a search function
                                  
  conclusion
  a line drawn along the x can denote uniqueness... just add the attributic set per feature, plot and move next. The attributic set being all the things associated with the feature.
- once the line is drawn, convert it into a single point.  
+ once the line is drawn, convert it into a single point using (xi * yi ...n)
                                                                                                                                                                               
  
  
