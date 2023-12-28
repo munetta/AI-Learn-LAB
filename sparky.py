@@ -4,7 +4,6 @@ Notes
 Topic 
 a line drawn on a graph coming from an input set where each feature is added along an x axis, which is incrementing per feature (pixel). (ex feature: pixel density (black white scale), plotted, move next)
 after plotting, converting into a point to denote the entire line (xi * yi ...) <-- this is the proof <--however  comparing points isnt as diverse of a process than comparing lines
-
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
