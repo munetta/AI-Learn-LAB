@@ -2,22 +2,9 @@ Alex E
 Notes
 
 Topic 
-The unique point on a graph coming from an input set using a constant differential between features.
+The unique point on a graph coming from an input set using a constant differential number between features.
 vs
-a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature added accordingly per iput set (ex: pixel color, pixel density, pixel ... added, plotted, move next)
-
-Argument
-determine the difference between plotting a single point, plotting a line and converting to a point, and plotting a line. is plotting the line necessary per incoming input set. Porbably not.
-
-1. point - can plotting a single point define uniqueness (additive formula)
-2. line - can plotting with a single line and converting to a point show uniqueness (additive formula)
-3. line - can plotting a line show uniqueness (running the min distance formulas)
-
-conversion formula
-considering the line being accurate, multiply the x and y, and add to a global until line end reached, then plot that single number (yi*xi + ...n) 
-ex: converting 18 frames making up a line, into one point that defines the 18 frames uniquely
-
-MAIN IDEA IS SOME MODELS MIGHT NEED LINES WHILE OTHERS DO NOT 
+a line drawn on a graph coming from an input set, drawn across, based off the set of attributic parameters associated with each feature added accordingly per iput set (ex: pixel color, pixel density, pixel ... added, plotted, move next) 
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
@@ -29,7 +16,7 @@ picture.js
 
 Example point function:
 
-let pixels = [{color, location}...] ...location incremented on a count per iteration
+let pixels = [{color, density, location}...] ...location incremented on a count per iteration
 let graph_point_amount = 0;
 
 for(i in pixels)
@@ -44,30 +31,10 @@ let graph_point_amount = 0;
 ley x_value = 0;
 
 for(i in pixels)
-    graph_point_amount += pixels[i].color * pixels[i].location
+    graph_point_amount += pixels[i].color + pixels[i].density
     x_value += 1; 
     -place graph_point_amount on graph
     graph_point_amount = 0
-    
--use a regression formula on the line to get a value. 
--run that regression formula on all other stored lines, get the min distance, check the label, apply closest etc
-
-DIFFERENCE
--first way avoids running the regression formula but might not define uniqueness "as well" -- I believe it would though
--second way defines uniqueness it seems more clearly but cant be certain on that
-
-How to convert an incoming line to a single point -- knowing the line is unique, multiply the y and the x together and add down the entire line, then store -- not necesary but makes comparing easier
-
-Improvement
--when the incoming line is denoted, find a way to define it using objects, etc (faster lookup definition)
-
-features
-pixel_1     ...t (the target is all the features added up) option one: added on single axis --- option two: added on many axioms
--------
-pixel_color*
-pixel_location (local differential parameter)
-
-(they say a parameter is a constant in a formula)
 
 REGRESSION VIDEO MODEL
 goal: a model to tell if a basketball goes through a hoop (must observe how many frames/xPoints/ms are necessary to identify correct video)
@@ -88,7 +55,7 @@ page.js
 instead of click maybe a search function                                                                                                                                                                              
                                  
  conclusion
- a line drawn along the x can denote uniqueness... just add the attributic set per feature, plot and move next. The attributic set being all the things associated with the location.  
+ a line drawn along the x can denote uniqueness... just add the attributic set per feature, plot and move next. The attributic set being all the things associated with the feature.
  once the line is drawn, convert it into a single point.  
                                                                                                                                                                               
  
