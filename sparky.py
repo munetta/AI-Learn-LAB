@@ -34,5 +34,5 @@ video.js
                                                                                                                                                                                                                                                 
 conclusion
 a line drawn along the x can denote uniqueness... just add the attributic set per feature, plot and move next. The attributic set being all the things associated with the feature.
-once the line is drawn, convert it into a single point using (xi * yi ...n)
+once the line is drawn, convert it into a single point using (xi * yi ...n) - this should be the unique point of the line, however, comparison methods on the line seem nicer
                                                                                                                                                                                                                                                                                                                                           
