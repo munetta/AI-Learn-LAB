@@ -3,7 +3,7 @@ Notes
 
 Topic 
 -Each feature represents a new point on the line. (ex feature: pixel density (black white scale), plotted, move next)
--After plotting, converting into a point to denote the entire line (xi * yi ...) <-- this is the proof <--however  comparing points isnt as diverse of a process than comparing lines (storing and comparing lines vs storing and comparing points))
+-After plotting, converting into a point to denote the entire line (xi * yi ...) <-- this is the proof <--however, comparing points isnt as diverse of a process than comparing lines (storing and comparing lines vs storing and comparing points))
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
@@ -13,17 +13,14 @@ picture.js
     
 example line function:
 
-let pixels = [{color, density}...] ...location not necessary, change in x denotes uniqueness
-let graph_point_amount = 0;
-ley x_value = 0;
-let difference_between_points = []; //object with direction, and amount. for measuring similar lines at different scales
-let matched_points = []; //matched points within the line
+pixels = [{color_density}...] ...location not necessary, change in x denotes change in pixel location
+graph_point_amount = 0;
+x_value = 0;
 
 for(i in pixels)
-    graph_point_amount += pixels[i].color (black white) * pixels[i].density
+    let graph_point_amount += pixels[i].density; //this is on a black and white scale (for smaller pictures less variance in color)
     x_value += 1; 
     graph[x_value] = graph_point_amount
-    graph_point_amount = 0
 
 REGRESSION VIDEO MODEL
 goal: a model to tell if a basketball goes through a hoop
