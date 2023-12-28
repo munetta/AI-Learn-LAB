@@ -26,12 +26,12 @@ for(i in pixels)
     
 example line function:
 
-let pixels = [{color, location}...] ...location incremented on a count per iteration
+let pixels = [{color, density}...] ...location not necessary, change in x denotes uniqueness
 let graph_point_amount = 0;
 ley x_value = 0;
 
 for(i in pixels)
-    graph_point_amount += pixels[i].color + pixels[i].density
+    graph_point_amount += pixels[i].color + pixels[i].density (denoting this feature should be done with a percentage per the affect of the added point)
     x_value += 1; 
     -place graph_point_amount on graph
     graph_point_amount = 0
