@@ -5,7 +5,7 @@ Topic
 The unique point on a graph coming from an input set (features) is used to create a regression model from scratch. The algorithm acting on the input set must add to a unique point. Points being denoted uniquely themselves or making up lines, also denoted uniquely.
 
 Argument
-determine the difference between plotting a single point, plotting a line and converting to a point, and plotting a line
+determine the difference between plotting a single point, plotting a line and converting to a point, and plotting a line. is plotting the line necessary per incoming input set. Porbably not.
 
 1. point - can plotting a single point define uniqueness (additive formula)
 2. line - can plotting with a single line and converting to a point show uniqueness (additive formula)
@@ -86,9 +86,12 @@ page.js
 instead of click maybe a search function                                                                                                                                                                              
                                  
  conclusion
- -You actually need the line to denote uniqueness, because the incoming target comparison formula determines the difference in distance between each individual parameter plotted
+ -plotting the line on an initial request is not necessary 
+ -a point is necessary to denote a single frame numerically
+ 
 
-  ignore resume nevermind unless maybe i am right                                                                                                                                                                            
+ 
+ 
  
                                                                                                                                                                                                                                                                                                       
                                                                                                                                                                               
