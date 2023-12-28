@@ -87,9 +87,9 @@ instead of click maybe a search function
                                  
  conclusion
  -plotting the line on an input request is not necessary - because the algorithm i wrote isnt neccessary cause i made a mistake and ill keep makin em real time
- -a point is necessary to denote a single frame numerically                                                                                                                                         
- -large differential numbers determine greater uniqueness per incoming target
- -saving plotted points overtime determines frames (this is where you can compare lines --- for example the basket going though the hoop)                                                                                                                                                                             
+ -a unique numeric point is necessary to denote a single unique frame                                                                                                                                         
+ -large location number differences determine greater uniqueness per incoming target
+ -saving plotted points overtime determines frames (this is where you can compare lines --- for example the basketball going though the hoop)                                                                                                                                                                             
  
 
  
