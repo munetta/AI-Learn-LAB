@@ -2,7 +2,7 @@ Alex E
 Notes
 
 Topic 
-a line drawn on a graph coming from an input set where each features multiplicative set is added along an axis. (ex feature: pixel color * pixel density * pixel ... added, plotted, move next) 
+a line drawn on a graph coming from an input set where each features multiplicative set is added along an axis. (ex feature: pixel color * pixel density * pixel, plotted, move next) 
 after plotting, converting into a point to denote the entire line (xi * yi ...)
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
