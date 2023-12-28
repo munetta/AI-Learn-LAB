@@ -3,7 +3,7 @@ Notes
 
 Topic 
 a line drawn on a graph coming from an input set where each features multiplicative set is added along an x axis, which is incrementing per pixel. (ex feature: pixel density (black white scale), plotted, move next)
-after plotting, converting into a point to denote the entire line (xi * yi ...) <-- this is the proof <-- wrong, because comparing lines isnt as easy
+after plotting, converting into a point to denote the entire line (xi * yi ...) <-- this is the proof <-- wrong, because comparing points isnt as easy
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
