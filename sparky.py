@@ -2,8 +2,8 @@ Alex E
 Notes
 
 Topic 
-a line drawn on a graph coming from an input set where each features multiplicative set is added along an x axis, which is incrementing per pixel. (ex feature: pixel color * pixel density * pixel, plotted, move next) <-- thats one unique point per the line that gets a min distance applied to it
-after plotting, converting into a point to denote the entire line (xi * yi ...) <-- this is the proof
+a line drawn on a graph coming from an input set where each features multiplicative set is added along an x axis, which is incrementing per pixel. (ex feature: pixel density (black white scale), plotted, move next) <-- thats one unique point per the line that gets a min distance applied to it
+after plotting, converting into a point to denote the entire line (xi * yi ...) <-- this is the proof <-- wrong, because comparing lines isnt as easy
                                                                                                                                                                                                                                                                                                                          
 REGRESSION PICTURE MODEL 
 goal: a model to tell if a basketball is in a picture
