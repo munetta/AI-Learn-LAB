@@ -33,4 +33,6 @@ video.js
                                                                                                                                                                                                                                                 
 conclusion
 a line drawn along the x can denote uniqueness... just add the attributic set per feature, plot and move next. The attributic set being all the parameters describing the feature.
-once the line is drawn, convert it into a single point using (xi * yi ...n) - this should be the unique point of the line, however, comparison methods on the line seem nicer                                                                                                                                                                                                                                                                                                                                       
+once the line is drawn, convert it into a single point using (xi * yi ...n) - this should be the unique point of the line, however, comparison methods on the line seem nicer
+
+if colors, splitting up into color density per color would be okay. but black and white, would be the best then just multiplying the x and y black pixels, per pixel, plotted. different approach but i think would be the most accurate technique in labeling. one line per picture. x*y then move x,  
