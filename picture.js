@@ -1,4 +1,4 @@
-  this is a picture model written in javascript. This is not the original iterate over and plot per pixel. That is not edge determinent, which would be more accurate. The 'edge' algorithm finds a black pixel, then recursively looks for attached black pixels. This helps denote shapes of objects which can be plotted nicely with lines. <-- opinion
+  this is a picture model written in javascript. This is not the original iterate over and plot per pixel. That is not edge determinent (more accurate). The 'edge' algorithm finds a black pixel, then recursively looks for attached black pixels. This helps denote shapes of objects which can be plotted nicely with lines. <-- opinion
 
   step 1. convert picture to black and white
   step 2. iterate over picture and when run into a black color, all the way black, multiply its x and y value and plot 
