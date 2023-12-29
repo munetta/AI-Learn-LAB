@@ -28,8 +28,16 @@
   for(let i = 0; i  picture.length; i++) {
     
   }
+
+  this is a model in javascript 
+  
     
   }
+
+  this model uses the other approach, which is plotting a line by every pixel denoted on a black and white scale
   
+
+  this is a model that denotes all colors, with a number... 
+    
 
 
