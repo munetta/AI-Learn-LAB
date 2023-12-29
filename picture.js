@@ -6,9 +6,6 @@
   step 4. save the line, and label it with an employee like myself. 
   leaving a space between white values on the axis means many lines will be measured to denote uniqueness. x+1
 
-  goal 
-  accurately denote a picture using a line drawn across a graph (label the line) (convert the line to a unique point and comare how easy it is to compare incoming targets)
-
   let graph = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -36,9 +33,9 @@
   }
 
   this model uses the other approach, which is plotting a line by every pixel denoted on a black and white scale
-  
+  ...
 
   this is a model that denotes all colors, with a number... 
-    
+  ...  
 
 
