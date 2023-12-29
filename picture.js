@@ -3,7 +3,7 @@
   step 1. convert picture to black and white
   step 2. iterate over picture and when run into a black color, all the way black, multiply its x and y value and plot 
   step 3. move the line cursor + 1 to denote the next point in the unique line. The iteration pattern denotes the unique line. Being it is always the same.. 
-  step 4. save the line, and label it with an employee like myself. Please. Thank you.
+  step 4. save the line, and label it with an employee like myself. 
 
   goal 
   accurately denote a picture using a line drawn across a graph (label the line) (convert the line to a unique point and comare how easy it is to compare incoming targets)
