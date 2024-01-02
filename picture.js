@@ -65,10 +65,13 @@
   let stored_slope_differences = []; 
 
   for(let i = 0; i < line_1_array.length; i++) { 
+      //whicever is larger takes priority first (additive formula) <-- need positive points
       stored_slope_differences.push(line_1_array[i] - line_2_array[i]); //after getting all differences per line, comparing those differences by subtracting, and storing
   }
 
-  //after storing, run a variety of algorithms (minimim amount desired for addition algorithm however matches could be used here too...)
+   //after storing, run a variety of algorithms (minimim amount desired for addition algorithm however matches could be used here too...)
+
+   let minimum = stored_slope_differences.add(); //WHATEVER THIS ADDED VALUE IS, ITS USED TO COMPARE WITH ALL THE OTHER LINES THAT NEED TO BE COMPARED
 
   let graph = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
