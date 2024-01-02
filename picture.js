@@ -1,7 +1,7 @@
   model 1
   -converts a picture into a unique line. 
 
-  new incoming target (line) comes in and comparing against other stored lines start...
+    new incoming target (line) comes in and comparing against other stored lines start...
 
     techniques 
     each technique together, helping label the incoming target 
@@ -31,8 +31,44 @@
   -difference between slopes - returned 2 arrays, each with total set of differences, iterate over both, and compare each index. do many comparisons on this
   -THATS IT D. THATS MY FINAL ANSWER... for now
 
+  ONE ALGORITHM --- DOUBLE LINE ALGORITHM N^2 slope algo
 
-   NEVERMIND. ONE ALGORITHM --- DOUBLE LINE ALGORITHM N^2 slope algo
+  //pushing all possible slope subtracted values to both arrays 
+
+  let line1 = 'unique line 1';
+  let line2 = 'unique line 2';
+
+  let line_1_array = [];
+  let line_2_array = [];
+
+  for(let i = 0; i < line1.length; i++) { 
+     let current_point = line1[i].y / line1[i].x; //rise over run
+    for(let j = i + 1, j < line1.length; j++) {
+     let new_point = line1[j].y/line1[j].x; 
+      line_1_array.push(current_point - new_point);
+    }
+  }
+
+  for(let i = 0; i < line2.length; i++) { 
+     let current_point = line2[i].x / line2[i].y;
+    for(let j = i + 1, j < line2.length; j++) {
+      let new_point = line2[j].y/line2 [j].x; 
+      line_2_array.push(current_point - new_point);
+    }
+  }
+  
+  //both arrays should be the same length by now
+  //iterate over both, and subtract one from the other
+  //this will compare every possible slope combination between both lines
+  //which i think would be a nice way to define an incoming target
+
+  let stored_slope_differences = []; 
+
+  for(let i = 0; i < line_1_array.length; i++) { 
+      stored_slope_differences.push(line_1_array[i] - line_2_array[i]); //after getting all differences per line, comparing those differences by subtracting, and storing
+  }
+
+  //after storing, run a variety of algorithms (minimim amount desired for addition algorithm however matches could be used here too...)
 
   let graph = [
     [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
