@@ -14,10 +14,11 @@
      -the lowest value used for statistical reasoning. *
   3. compare the slope between points <-- neccessary and will show the true closeness of two lines
      -(same process as two) <-- except feature slopes
-     -taking slopes per point, against all other points ahead  <-- creating an array of slopes (n^2) <- this is compared against other previous arrays iterively
+     -taking all combinations of slopes within a unique line. comparing the returned array against other lines sloped arrays. getting min. <-- creating an array of slopes (in n^2)
      -algorithm run on the outline of blackish pixels, each black pixel, denoted, as x*y, anything else, and the line continues without a plot. 
-  4. increasing and decreasing lines along the y axis, to compare to other lines <-- the above actually negates this
-     -this can be done before each deep comparison of lines
+  4. increasing and decreasing lines along the y axis, to compare to other lines
+     -3 negates this
+     -this can be done before each deep comparison of lines maybe
   5. rotating pixels within set to run model on. getting everything there.
      -3 negates this
 
