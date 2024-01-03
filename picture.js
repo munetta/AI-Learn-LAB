@@ -1,11 +1,9 @@
-  model 1
-  -converts a picture into a unique line. 
+    model 1
+   -converts a picture into a unique line. 
 
-    new incoming target (line) comes in and comparing against other stored lines start...
+    new incoming target (line) comes in and comparing against other stored lines starts...
 
     techniques 
-    each technique together, helping label the incoming target 
-
   1. line matching. (exact matching) <-- unnneccessary but nice and can be done
      -compare how many points in a row match up between lines. also compare, each point with all points per line, between lines.
      -counts and seperated inter-lines taken into consideration for statistical reasoning. *
@@ -33,6 +31,8 @@
 
   ONE ALGORITHM --- DOUBLE LINE ALGORITHM N^2 slope algo
 
+  algorithm run on the outline of blackish pixels, each black pixel, denoted, as x*y, anything else, and the line continues without a plot. 
+
   //pushing all possible slope subtracted values to both arrays 
 
   let line1 = 'unique line 1';
@@ -57,7 +57,7 @@
     }
   }
   
-  //both arrays should be the same length by now
+  //both arrays should be the same length by now (goal is to compare the inter slopes of each line, at each index) 
   //iterate over both, and subtract one from the other
   //this will compare every possible slope combination between both lines
   //which i think would be a nice way to define an incoming target
