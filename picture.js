@@ -1,4 +1,5 @@
     model 1
+   -my perspective of a picture model algorithm
    -converts a picture into a unique line. 
 
     new incoming target (line) comes in and comparing against other stored lines starts...
