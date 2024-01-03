@@ -9,18 +9,18 @@
      -counts and seperated inter-lines taken into consideration for statistical reasoning. *
      -the more points that match the better, the more smaller lines that match the better
      -hint: seperate lines, use those lines as individual models
-  2. use the min regression distance formula between lines, per each individual feature (per) <-- unnneccessary but nice
+  2. use the min regression distance formula between lines, per each individual feature <-- unnneccessary but nice
      -subtract feature points between lines, add and take the lowest value
      -the lowest value used for statistical reasoning. *
-  3. compare the slope between points <-- neccessary and will show the true closeness of two lines
+  3. compare every combinational slope between lines <-- neccessary and will show the true closeness of two lines
      -(same process as two) <-- except feature slopes
      -taking all combinations of slopes within a unique line. comparing the returned array against other lines sloped arrays. getting min. <-- creating an array of slopes (in n^2)
-     -algorithm run on the outline of blackish pixels, each black pixel, denoted, as x*y, anything else, and the line continues without a plot. 
+     -algorithm run on the outline of blackish pixels, each black pixel, denoted, as x*y, anything else, and the line continues without a plot. (most accurate for now)
   4. increasing and decreasing lines along the y axis, to compare to other lines
      -3 negates this
      -this can be done before each deep comparison of lines maybe
   5. rotating pixels within set to run model on. getting everything there.
-     -3 negates this
+     -3 negates this i think
 
   //pushing all possible slope subtracted values to both arrays 
 
