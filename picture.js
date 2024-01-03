@@ -31,6 +31,7 @@
   let line_1_array = [];
   let line_2_array = [];
 
+  //this is an incoming target combinational slope array
   for(let i = 0; i < line1.length; i++) { 
      let current_point = line1[i].y / line1[i].x; //rise over run
     for(let j = i + 1, j < line1.length; j++) {
@@ -39,7 +40,8 @@
     }
   }
 
-  for(let i = 0; i < line2.length; i++) { 
+  //line 2 is stored, think of all stored lines having an array of slopes to prepare for comparing
+  for(let i = 0; i < line2.length; i++) {
      let current_point = line2[i].x / line2[i].y;
     for(let j = i + 1, j < line2.length; j++) {
       let new_point = line2[j].y/line2 [j].x; 
