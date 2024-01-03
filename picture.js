@@ -1,37 +1,25 @@
     model 1
    -converts a picture into a unique line. 
+   -algorithm run on the outline of blackish pixels, each black pixel, denoted, as x*y, anything else, and the line continues without a plot. 
 
     new incoming target (line) comes in and comparing against other stored lines starts...
 
     techniques 
-  1. line matching. (exact matching) <-- unnneccessary but nice and can be done
-     -compare how many points in a row match up between lines. also compare, each point with all points per line, between lines.
+  1. line matching. (exact matching) <-- unnneccessary but nice
+     -compare how many points in a row match up between lines. 
      -counts and seperated inter-lines taken into consideration for statistical reasoning. *
      -the more points that match the better, the more smaller lines that match the better
      -hint: seperate lines, use those lines as individual models
-  2. use the min regression distance formula/s between lines, per each individual feature (per) <-- unnneccessary but nice and can be done
+  2. use the min regression distance formula between lines, per each individual feature (per) <-- unnneccessary but nice
      -subtract feature points between lines, add and take the lowest value
      -the lowest value used for statistical reasoning. *
   3. compare the slope between points <-- neccessary and will show the true closeness of two lines
      -(same process as two) <-- except feature slopes
-     -taking slopes per point, with all other points ahead  <-- comparing entire n^2 (slope subtraction) lines
-  4. increasing and decreasing lines along the y axis, to compare to other lines <-- the above actually negates this. i think ill sticj with the above
+     -taking slopes per point, against all other points ahead  <-- creating an array of slopes (n^2) <- this is compared against other previous arrays iterively
+  4. increasing and decreasing lines along the y axis, to compare to other lines <-- the above actually negates this
      -this can be done before each deep comparison of lines
-
-  rotating pixels within set to run model on. getting everything there.
-
-  --how to put together
-
-  -picture comes in 
-  -unique line created per pixel 
-  -one loop attaining
-  -total matched points (including lines)
-  -difference between slopes - returned 2 arrays, each with total set of differences, iterate over both, and compare each index. do many comparisons on this
-  -THATS IT D. THATS MY FINAL ANSWER... for now
-
-  ONE ALGORITHM --- DOUBLE LINE ALGORITHM N^2 slope algo
-
-  algorithm run on the outline of blackish pixels, each black pixel, denoted, as x*y, anything else, and the line continues without a plot. 
+  5. rotating pixels within set to run model on. getting everything there.
+     -3 negates this
 
   //pushing all possible slope subtracted values to both arrays 
 
