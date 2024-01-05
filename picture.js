@@ -2,8 +2,8 @@
    -my perspective of a picture model algorithm
    -converts a picture into a unique line. 
    -the unique line made up of varying numbers per feature pixel. 
-   -in this case, colors do not represent numbers, only the location where black is, is represented as a unique number plotted (white pixels skipped x+1). This helps outline the true shape of the image (shape). 
-   -should always form an upward arc
+   -in this case, colors do not represent numbers, only the location where black is, is represented as a unique number plotted (white pixels skipped with x+1). This helps define the true shape of the image. 
+   -should always form an upward arc if starting from the bottom left and iterating right and up. (adding + iteritive count)
 
     new incoming target (line) comes in and comparing against other stored lines starts...
 
