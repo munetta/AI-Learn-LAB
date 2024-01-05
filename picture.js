@@ -1,14 +1,12 @@
     model 1
    -my perspective of a picture model algorithm
-   -converts a picture into a unique line. 
-   -the unique line made up of varying numbers per feature pixel. 
-   -in this case, colors do not represent numbers, only the location where black is, is represented as a unique number plotted (white pixels skipped with x+1). This helps define the true shape of the image. 
-   -should always form an upward arc if starting from the bottom left and iterating right and up. (adding + iteritive count)
+   -converts a picture into a unique line (light gray to blackish pixels as the variant --- picture flat out, spaces skipped, algorithm run on seperated dotted line). 
+        
 
     new incoming target (line) comes in and comparing against other stored lines starts...
 
     techniques 
-  1. line matching. (exact matching) <-- unnneccessary but nice
+  1. line matching. (exact matching) <-- unnneccessary but nice (light gray to blackish pixels taken into consideration)
      -compare how many points in a row match up between lines. 
      -counts and seperated inter-lines taken into consideration for statistical reasoning. *
      -the more points that match the better, the more smaller lines that match the better
