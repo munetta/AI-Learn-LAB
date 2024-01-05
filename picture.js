@@ -2,7 +2,7 @@
    -my perspective of a picture model algorithm
    -converts a picture into a unique line. 
    -the unique line made up of varying numbers per feature pixel. 
-   -in this case, colors do not represent numbers, only the location where black is, is represented as a unique number. The outline of the image (shape). the iteritive multiple count of each pixel to adhere to its unique number
+   -in this case, colors do not represent numbers, only the location where black is, is represented as a unique number. The outline of the image (shape). the iteritive multiple count of each pixel to adhere to its unique number. skipping values which are not black to adhere to the overall distance slope algorithm.
    -should always form an upward arc
 
     new incoming target (line) comes in and comparing against other stored lines starts...
