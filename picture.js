@@ -1,6 +1,8 @@
     model 1
    -my perspective of a picture model algorithm
    -converts a picture into a unique line. 
+   -the unique line made up of varying numbers per feature. 
+   -in this case, colors do not represent numbers, only black is represented, as the outline of the image (shape) is defined via the x*y of each pixel
 
     new incoming target (line) comes in and comparing against other stored lines starts...
 
