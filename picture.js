@@ -3,9 +3,9 @@
     my perspective of a picture model algorithm
     _______   
    -name: pixel distance relativety algorithm
-   -purpose: gets the most accurate label of a picture stored via a unique line
-   -description: takes the slope between all points in a unique line representing a picture, and stores its values in a single array. Array length, used on lookup, to run a min distance algorithm. Minimum value used as the closest label.
-   -complexity: n^2 on incoming target --- n on min algorithm against one line
+   -purpose: gets the most accurate label of a picture
+   -description: takes the slope between all points in a unique line representing a picture, and stores its values in a single array. Array length, used on lookup, to run a min distance algorithm on 2 same size arrays. Minimum value used as the closest label.
+   -complexity: n^2 on incoming target --- n on getting the total difference between both the incoming target, and stored lines each (as two arrays)
 
     new incoming target (line) comes in and comparing against other stored lines starts...
 
@@ -23,6 +23,7 @@
      -algorithm run on the outline of grayish to black pixels (color variant).
      -on search, must select closest array line lengths which are already stored for comparing the incoming target line. (added difference between arrays <-- min selected <-- already noted right above)
      -comparison of incoming target min against stored mins used for statistical reasoning * (after algorithm)
+     -
   4. increasing and decreasing lines along the y axis, to compare to other lines
      -3 negates this
      -this can be done before each deep comparison of lines maybe
