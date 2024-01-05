@@ -16,7 +16,7 @@
      -the lowest value used for statistical reasoning. *
   3. compare every combinational slope between lines <-- neccessary and will show the true closeness of two lines
      -taking all combinations of slopes within a unique line. comparing the returned array against other lines sloped arrays. getting difference per index slope, adding to a min, which is compared against other mins stored. <-- creating an array of slopes is in n^2. incoming target is the line
-     -algorithm run on the outline of blackish pixels, each black pixel, denoted, as (unique iteritive multiple count), anything else, and the line continues without a plot. (most accurate for comparing two unique identifiable things)
+     -algorithm run on the outline of grayish to blackish pixels (color variant).
      -on search, must select closest array line lengths which are already stored for comparing the incoming target line. (added difference between arrays <-- min selected <-- already noted right above)
      -comparison of incoming target min against stored mins used for statistical reasoning * (after algorithm)
   4. increasing and decreasing lines along the y axis, to compare to other lines
