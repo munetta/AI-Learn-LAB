@@ -9,8 +9,6 @@
 
     new incoming target (line) comes in and comparing against other stored lines starts...
 
-    the unique line is the image that comes in. ()
-
     techniques 
   1. line matching. (exact matching) <-- unnneccessary but nice
      -compare how many points in a row match up between lines. 
