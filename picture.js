@@ -23,12 +23,10 @@
      -algorithm run on the outline of grayish to black pixels (color variant).
      -on search, must select closest array line lengths which are already stored for comparing the incoming target line. (added difference between arrays <-- min selected <-- already noted right above)
      -comparison of incoming target min against stored mins used for statistical reasoning * (after algorithm)
-     -
   4. increasing and decreasing lines along the y axis, to compare to other lines
      -3 negates this
-     -this can be done before each deep comparison of lines maybe
-  5. rotating pixels within set to run model on. getting everything there.
-     -3 negates this
+  5. rotating starting pixel to run comparison algorithm
+     -3 negates this (maybe)
   6.shape overlapping 
-    -nice but can not tell the difference between all things as easily, which is what I am doing with a unique line instead! Good luck guys. Signed off as Alexander Eatman. Line theroy and unique picture comparison algorithm.
+    -nice but can not tell the difference between all things as easily, which is what I am doing with a unique line instead! 
       
