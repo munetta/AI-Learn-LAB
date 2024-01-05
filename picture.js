@@ -17,6 +17,7 @@
      -(same process as two) <-- except feature slopes
      -taking all combinations of slopes within a unique line. comparing the returned array against other lines sloped arrays. getting min. <-- creating an array of slopes (in n^2)
      -algorithm run on the outline of blackish pixels, each black pixel, denoted, as x*y, anything else, and the line continues without a plot. (most accurate for now)
+     -must select closest array line lengths which are already stored for comparing the incoming target line. (added difference between arrays <-- min selected)
   4. increasing and decreasing lines along the y axis, to compare to other lines
      -3 negates this
      -this can be done before each deep comparison of lines maybe
@@ -33,7 +34,7 @@
 
   //this is an incoming target combinational slope array
   for(let i = 0; i < line1.length; i++) { 
-     let current_point = line1[i].y / line1[i].x; //rise over run
+     let current_point = line1[i].y / line1[i].x; //rise over run -- use the gcd rule
     for(let j = i + 1, j < line1.length; j++) {
      let new_point = line1[j].y/line1[j].x; 
       line_1_array.push(current_point - new_point);
