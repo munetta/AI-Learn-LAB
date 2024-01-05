@@ -2,7 +2,7 @@
    -my perspective of a picture model algorithm
    -converts a picture into a unique line. 
    -the unique line made up of varying numbers per feature. 
-   -in this case, colors do not represent numbers, only black is represented, as the outline of the image (shape) is defined via the x*y of each pixel
+   -in this case, colors do not represent numbers, only black is represented as a unique number, the outline of the image (shape). the iteritive multiple count of each pixel to adhere to its unique number
 
     new incoming target (line) comes in and comparing against other stored lines starts...
 
@@ -18,7 +18,7 @@
   3. compare every combinational slope between lines <-- neccessary and will show the true closeness of two lines
      -(same process as two) <-- except feature slopes
      -taking all combinations of slopes within a unique line. comparing the returned array against other lines sloped arrays. getting min. <-- creating an array of slopes (in n^2)
-     -algorithm run on the outline of blackish pixels, each black pixel, denoted, as x*y, anything else, and the line continues without a plot. (most accurate for now)
+     -algorithm run on the outline of blackish pixels, each black pixel, denoted, as (iteritive multiple count), anything else, and the line continues without a plot. (most accurate for now)
      -must select closest array line lengths which are already stored for comparing the incoming target line. (added difference between arrays <-- min selected)
   4. increasing and decreasing lines along the y axis, to compare to other lines
      -3 negates this
