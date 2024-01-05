@@ -20,7 +20,7 @@
      -taking all combinations of slopes within a unique line. comparing the returned array against other lines sloped arrays. getting difference per index slope, adding to a min, which is compared against others. <-- creating an array of slopes (in n^2), and comparing (getting difference --> min) to another set (in the database)
      -algorithm run on the outline of blackish pixels, each black pixel, denoted, as (unique iteritive multiple count), anything else, and the line continues without a plot. (most accurate for comparing two unique identifiable things)
      -on search, must select closest array line lengths which are already stored for comparing the incoming target line. (added difference between arrays <-- min selected <--already noted right above)
-     -comparison of min used for statistical reasoning *
+     -comparison of incoming target min against stored mins used for statistical reasoning * (after algorithm)
   4. increasing and decreasing lines along the y axis, to compare to other lines
      -3 negates this
      -this can be done before each deep comparison of lines maybe
