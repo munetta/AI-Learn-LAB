@@ -3,6 +3,7 @@
     my perspective of a picture model algorithm
     _______   
    -name: pixel distance relativety algorithm
+   -purpose: gets the most accurate label of a picture stored via a unique line
    -description: takes the slope between all points in a unique line representing a picture, and stores its values in a single array. Array length, used on lookup, to run a min distance algorithm. Minimum value used as the closest label.
    -complexity: n^2 on incoming target --- n on min algorithm against one line
 
