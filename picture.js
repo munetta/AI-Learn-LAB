@@ -6,12 +6,12 @@
     new incoming target (line) comes in and comparing against other stored lines starts...
 
     techniques 
-  1. line matching. (exact matching) <-- unnneccessary but nice (light gray to blackish pixels taken into consideration)
+  1. line matching. (exact matching) <-- unnneccessary but nice
      -compare how many points in a row match up between lines. 
      -counts and seperated inter-lines taken into consideration for statistical reasoning. *
      -the more points that match the better, the more smaller lines that match the better
      -hint: seperate lines, use those lines as individual models
-  2. use the min regression distance formula between lines, per each individual feature <-- unnneccessary but nice
+  2. use the min regression distance formula between lines, per each individual feature <-- unnneccessary but nice (comparing each line side by side and subtracting by the variant)
      -subtract feature points between lines, add and take the lowest value
      -the lowest value used for statistical reasoning. *
   3. compare every combinational slope between lines <-- neccessary and will show the true closeness of two lines
@@ -19,7 +19,6 @@
      -algorithm run on the outline of blackish pixels, each black pixel, denoted, as (unique iteritive multiple count), anything else, and the line continues without a plot. (most accurate for comparing two unique identifiable things)
      -on search, must select closest array line lengths which are already stored for comparing the incoming target line. (added difference between arrays <-- min selected <-- already noted right above)
      -comparison of incoming target min against stored mins used for statistical reasoning * (after algorithm)
-     -note: if only taking black pixels, no unique number neccessary. would just be comparing seperated black dotted lines, using the same algorithm. However, the unique number might be neccessary.
   4. increasing and decreasing lines along the y axis, to compare to other lines
      -3 negates this
      -this can be done before each deep comparison of lines maybe
