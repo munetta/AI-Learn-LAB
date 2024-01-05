@@ -4,8 +4,8 @@
     _______   
    -name: pixel distance relativety algorithm
    -purpose: gets the most accurate label of a picture
-   -description: takes the slope between all points in a unique line representing a picture, and stores its values in a single array. Array length, used on lookup, to run a min distance algorithm on 2 same size arrays. Minimum value used as the closest label.
-   -complexity: n^2 on incoming target --- n on getting the total difference between both the incoming target, and stored lines each (as two arrays)
+   -description: takes the slope between all points in a unique line representing a picture, and stores its values in a single array. Array length, used on lookup, to run a min distance algorithm on 2 same size arrays. Minimum value used to get the closest label for the picture.
+   -complexity: n^2 on incoming target --- n on getting the total difference between both arrays (unique lines)
 
     new incoming target (line) comes in and comparing against other stored lines starts...
 
@@ -27,6 +27,7 @@
      -3 negates this
   5. rotating starting pixel to run comparison algorithm
      -3 negates this (maybe)
+     -compare running algorithm starting on the outside edge of every pixel (if you do this, you might be able to get all rotations of image --- unless this algorithm allows you too --- would have to run)
   6.shape overlapping 
     -nice but can not tell the difference between all things as easily, which is what I am doing with a unique line instead! 
       
