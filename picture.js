@@ -27,7 +27,8 @@
      -3 negates this
   5. rotating starting pixel to run comparison algorithm
      -3 negates this (maybe)
-     -compare running algorithm starting on the outside edge of every pixel (if you do this, you might be able to get all rotations of image --- unless this algorithm allows you too --- would have to run)
+     -compare running algorithm starting on the outside edge of every pixel 
+     -why: so that if a target comes in drawn at a different angle, the algorithm i run will fetch its closest most labled angle
   6.shape overlapping 
     -nice but can not tell the difference between all things as easily, which is what I am doing with a unique line instead! 
       
