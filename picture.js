@@ -26,6 +26,8 @@
      -this can be done before each deep comparison of lines maybe
   5. rotating pixels within set to run model on. getting everything there.
      -3 negates this
+  6.shape overlapping 
+    -nice but can not tell the difference between all things as easily, which is what I am doing with a unique line instead! Good luck guys. Signed off as Alexander Eatman. Line theroy and unique picture comparison algorithm.
 
   //pushing all possible slope subtracted values to both arrays 
 
