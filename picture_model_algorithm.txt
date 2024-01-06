@@ -4,7 +4,7 @@
     _______   
    -name: pixel distance relativety algorithm
    -purpose: gets the most accurate label of a picture
-   -description: takes the slope between all points in a unique line representing a picture, and stores its values in a single array. Array length, used on lookup, to run a min distance algorithm on 2 same size arrays. Minimum value used to get the closest label for the picture.
+   -description: takes the slope between all points in a unique line representing a picture (keeping vs dropping white pixels), and stores its values in a single array. Array length, used on lookup, to run a min distance algorithm on 2 same size arrays. Minimum value used to get the closest label for the picture.
    -complexity: n^2 on incoming target --- n on getting the total difference between both arrays (unique lines)
 
     new incoming target (line) comes in and comparing against other stored lines starts...
