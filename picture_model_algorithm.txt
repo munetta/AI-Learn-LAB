@@ -33,4 +33,13 @@
     -nice but can not tell the difference between all things as easily, which is what I am doing with a unique line instead!
   7. only go with the difference between black pixels and skip the unique line for this specific problem (dont take white pixels into consideration at all)
      -more direct
+
+
+    
+    updated data structure (NO WHITE PIXELS TAKEN INTO CONSIDERATION)
+    -object 
+    -key: pixel location where grayish black x-y
+    -value: array (all slopes from pixels location to other pixels location)
+    -compare per pixel (same or closest) target vs stored (f the lines for now but still makes sense for most other things)
+   
       
