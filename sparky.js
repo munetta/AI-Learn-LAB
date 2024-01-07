@@ -25,12 +25,12 @@ for(let i = 0; i < image_length; i++) {
     }
 } 
 
-let standard_y = graph.length / 2; 
+let standard_y = Math.min(graph.length / 2); 
 
 function image_intake(file_name)  {
 
     /* 
-        fetch image and display oin graph
+        fetch image, run outline algorithm, convert to array if its not
     */
     
     let image = fetch_image('file')
