@@ -17,7 +17,7 @@
      -counts and seperated inter-lines taken into consideration for statistical reasoning. *
      -the more points that match the better, the more smaller lines that match the better
      -hint: seperate lines, use those lines as individual models
-  2. use the min regression distance formula between lines, per each individual feature <-- unnneccessary but nice (comparing each line side by side and subtracting by the variant)
+  2. use the min regression distance formula between lines, per each individual feature <-- unnneccessary but nice (comparing each line side by side and subtracting by each feature pixel) (shifting on the x axis maybe useful)
      -subtract feature points between lines, add and take the lowest value
      -the lowest value used for statistical reasoning. *
   3. compare every combinational slope between lines <-- neccessary and will show the true closeness of two lines
