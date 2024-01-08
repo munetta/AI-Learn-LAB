@@ -10,7 +10,8 @@
 
     new incoming target (line) comes in and comparing against other stored lines starts...
 
-    techniques 
+    techniques for determining difference between two pictures (lines) 
+
   1. line matching. (exact matching) <-- unnneccessary but nice
      -compare how many points in a row match up between lines. 
      -counts and seperated inter-lines taken into consideration for statistical reasoning. *
@@ -24,8 +25,9 @@
      -algorithm run on the outline of grayish to black pixels (color variant).
      -on search, must select closest array line lengths which are already stored for comparing the incoming target line. (added difference between arrays <-- min selected <-- already noted right above)
      -comparison of incoming target min against stored mins used for statistical reasoning * (after algorithm)
-  4. increasing and decreasing lines along the y axis, to compare to other lines
+  4. increasing and decreasing lines along the y or x axis, to compare to other lines
      -3 negates this
+     - if shifting lines along the x axis, matching up the beginning point
   5. rotating starting pixel to run comparison algorithm
      -3 negates this (maybe)
      -compare running algorithm starting on the outside edge of every pixel 
@@ -34,13 +36,14 @@
     -nice but can not tell the difference between all things as easily, which is what I am doing with a unique line instead!
   7. only go with the difference between black pixels and skip the unique line for this specific problem (dont take white pixels into consideration at all)
      -more direct
+  8. storing slope arrays per pixel
+     -storing an array of slopes per pixel (comparing closest pixels) --> taking the difference between each pixels sloped array
 
+    techniques for outlining
 
-    
-    updated data structure (NO WHITE PIXELS TAKEN INTO CONSIDERATION)
-    -object 
-    -key: pixel location where grayish black x-y
-    -value: array (all slopes from pixels location to other pixels location)
-    -compare per pixel (same or closest) target vs stored (f the lines for now but still makes sense for most other things)
+    1. drawing squares and finding the change
+    -per pixel, run a square algorithm (go in square)
+    -note the first change as an outlining pixel
+    -store the x-y in an object, in case running into again
    
       
