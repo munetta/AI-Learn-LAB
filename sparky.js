@@ -16,7 +16,7 @@
 
   question: would it be worth it to denote each pixel uniquely. 
   answer: no 
-  why: the difference between each pixel should hold the same horizontally vs it being at an upwad curve. both definitions are unique, so both ways should work
+  why: the difference between each pixel should hold the same horizontally vs it being at an upwad curve. both definitions are unique, so both formats should work for the same algorithm. i think
   
 */
 
@@ -101,18 +101,12 @@ function image_intake(file_name)  {
 }
 
 /*
-   run a box change algorithm over every pixel (x and y start from the top left)
-   box keeps getting bigger until a color change
-   extend all by.. 
-   1.adding an additional two indexes on the end of every array
-   2.adding two same size arrays on the top and bottom
+   box change algorithm - wwhen change on the outside, store, move next
+   just run a straight line in each direction from top right and bottom left -- increment, do the same
 */
 
-let my_box = [
-  [0,0,0], 
-  [0,0,0], 
-  [0,0,0]
-];
+let my_diagonol_point = 1;
+let xy = {}
 
 function convert_to_black_and_white(image, x, y) {
         
