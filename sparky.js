@@ -1,52 +1,17 @@
 
 /*
-
-  technique 1. create a unique line of grayish to black pixels (skip white pixels) --- must create black pixels 
-  run n^2 algorithm
-  store slopes
-  compare to other arrays (you can do this wholistically or compare via each pixel in pixel slope object)
-  not done
-*/
-
-let stored_unique_lines = fetch_array_of_stored_line_arrays();
-
-let slope_arrays = convert_stored_line_arrays_to_slope_combinations(stored_lines); 
-
-let pixel_slope_object = {};
-
-let graph = [];
-
-const image_length = 500;
-
-for(let i = 0; i < image_length; i++) {
-    graph[i] = []; 
-    for(let j = 0; j < image_length; j++) {
-        graph[i].push(0); 
-    }
-} 
-
-let standard_y = Math.min(graph.length / 2); 
-
-/*
     drawing on the outside of blocked color changes
-    pushing this as the line
 */
 
-let edges = {};
-
+let edges = [];
 let diagonolPointDistance = 1;
-
 let amountAround = 2;
-
 let baseBlockColor = [];
-
 let basePixelX; 
-
 let basePixelY;
-
 let image = null;
-
 let foundUnknownColor = false;
+let newBeginning;
 
 function pushColor(color, key, x, y) { 
     baseBlockColor.push({
@@ -65,11 +30,27 @@ function resetParameters() {
 }
 
 function checkUnknown() { 
+    for(let i = 1; i < baseBlockColor.length - 1; i++) {
+        if(baseBlockColor[i].color !== baseBlockColor[0].color) { //just do a key change thing to prevent bottom loop starting so early
+            let pickUpKey = baseBlockColor[i].key;
+            for(let j = 0; j < baseBlockColor.length - 1; j++) { //j=the first key of pickUpKey in baseBlock color: change to j = 'x'     find x
+                if(baseBlockColor[j].key === pickUpKey && baseBlockColor[j].color !== baseBlockColor[0].color) { 
+                    edges.push({ 
+                        x: baseBlockColor[j].x, 
+                        y: baseBlockColor[j].y 
+                    })
+                }
+            }
+            break;
+        }
+
+    }
 
 }
 
-function fetchPixelColor() { 
-    
+function fetchPixelColor(x, y) { 
+    let img = image;
+    //fetch x,y's color
 }
 
 function outline() {
@@ -84,7 +65,7 @@ function outline() {
         let keyAround = 1; 
 
         pushColor(
-            fetchPixelColor(image, basePixelX, basePixelY), 
+            fetchPixelColor(basePixelX, basePixelY), 
             keyAround, 
             basePixelX, 
             basePixelY
@@ -135,8 +116,10 @@ function moveAroundPixelandDetectFirstChange() {
         push();
     }
 
-    amountAround += 1; 
+    amountAround += 1;
+
     diagonolPointDistance += 1;
+
     keyAround += 1;
 
     checkUnknown();
@@ -144,3 +127,36 @@ function moveAroundPixelandDetectFirstChange() {
     return moveAroundPixelandDetectFirstChange();
 
 }
+
+
+
+
+
+/*
+  technique 1. create a unique line of grayish to black pixels (skip white pixels) --- must create black pixels 
+  run n^2 algorithm
+  store slopes
+  compare to other arrays (you can do this wholistically or compare via each pixel in pixel slope object)
+*/
+
+let stored_unique_lines = fetch_array_of_stored_line_arrays(); //these would be the edges
+
+let slope_arrays = convert_stored_line_arrays_to_slope_combinations(stored_lines); 
+
+let graph = [];
+
+const image_length = 500;
+
+for(let i = 0; i < image_length; i++) {
+    graph[i] = []; 
+    for(let j = 0; j < image_length; j++) {
+        graph[i].push(0); 
+    }
+} 
+
+let standard_y = Math.min(graph.length / 2); 
+
+
+
+
+
