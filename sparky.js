@@ -17,13 +17,22 @@
   question: would it be worth it to denote each pixel uniquely. 
   answer: no 
   why: the difference between each pixel should hold the same horizontally vs it being at an upwad curve. both definitions are unique, so both formats should work for the same algorithm. i think
+
+  current means changing in recursivre process 
+  base means the same in the recursive process
+
+  do it in steps... define what you are doing and be discreet
   
 */
 
-let stored_unique_lines = fetch_array_of_stored_line_arrays(); 
-let slope_arrays = convert_stored_line_arrays_to_slope_combinations(stored_lines)
+let stored_unique_lines = fetch_array_of_stored_line_arrays();
+
+let slope_arrays = convert_stored_line_arrays_to_slope_combinations(stored_lines); 
+
 let pixel_slope_object = {};
+
 let graph = [];
+
 const image_length = 500;
 
 for(let i = 0; i < image_length; i++) {
@@ -34,8 +43,133 @@ for(let i = 0; i < image_length; i++) {
 } 
 
 let standard_y = Math.min(graph.length / 2); 
-const my_outlining_color = 'black';
-let my_outlined_pixels = {};
+
+/*
+    drawing on the outside of blocked color changes
+*/
+
+let edges = {};
+
+let diagonolPointDistance = 1;
+
+let amountAround = 2;
+
+let baseBlockColor = [];
+
+let basePixelX; 
+
+let basePixelY;
+
+let image = null;
+
+let foundUnknownColor = false;
+
+function pushColor(color, key, x, y) { 
+    baseBlockColor.push({
+        color: color,                                              
+        key: key, 
+        x: x, 
+        y: y
+    });
+}
+
+function resetParameters() { 
+    baseBlockColor = [];
+    diagonolPointDistance = 1; 
+    amountAround = 2; 
+    keyAround = 1;
+}
+
+function checkUnknown() { 
+
+}
+
+function fetchPixelColor() { 
+    
+}
+
+function outline() {
+
+    image = fetch_image('file');
+
+    for(let i = 0; i < image.length; i++) { 
+
+        basePixelX = image[i].x; 
+        basePixelY = image[i].y;
+
+        let keyAround = 1; 
+
+        pushColor(
+            fetchPixelColor(image, basePixelX, basePixelY), 
+            keyAround, 
+            basePixelX, 
+            basePixelY
+        )
+
+        keyAround += 1; 
+
+        moveAroundPixelandDetectFirstChange();
+        resetParameters();
+
+    }
+
+}
+
+function moveAroundPixelandDetectFirstChange() {
+
+    let iteritiveX = basePixelX - diagonolPointDistance; 
+    let iteritiveY = basePixelY - diagonolPointDistance;
+
+    push = () => { 
+        pushColor(
+            fetchPixelColor(image, iteritiveX, iteritiveY), 
+            keyAround, 
+            iteritiveX, 
+            iteritiveY
+        );
+    }
+
+    push();
+
+    for(let i = 0; i < amountAround; i++) { 
+        iteritiveX += 1;
+        push();
+    }
+
+    for(let i = 0; i < amountAround; i++) { 
+        iteritiveY -= 1;
+        push();
+    }
+
+    for(let i = 0; i < amountAround; i++) { 
+        iteritiveX -= 1;
+        push();
+    }
+
+    for(let i = 0; i < amountAround - 1; i++) {
+        iteritiveY += 1;
+        push();
+    }
+
+    amountAround += 1; 
+    diagonolPointDistance += 1;
+    keyAround += 1;
+
+    checkUnknown();
+
+    return moveAroundPixelandDetectFirstChange();
+
+}
+
+
+
+
+
+
+
+
+
+
 
 /* 
    client sending image to server 
@@ -47,8 +181,8 @@ function image_intake(file_name)  {
         fetch image, run outline algorithm, re-plot
     */
     
-    let image = fetch_image('file')
-    image = convert_to_black_and_white(image)
+    image = fetch_image('file')
+    store_outlining_pixels = outline(image);
 
     /*
         picture converted to a unique line on the graph
@@ -99,16 +233,3 @@ function image_intake(file_name)  {
     }
 
 }
-
-/*
-   box change algorithm - wwhen change on the outside, store, move next
-   just run a straight line in each direction from top right and bottom left -- increment, do the same
-*/
-
-let my_diagonol_point = 1;
-let xy = {}
-
-function convert_to_black_and_white(image, x, y) {
-        
-}
-            
