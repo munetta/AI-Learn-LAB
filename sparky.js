@@ -5,15 +5,17 @@ let centerPixel;
 let diagonolPointDistance = 1;
 let amountAround = 2;
 let baseBlockColor = [];
-let basePixelX; //could rid this and use center pixel
-let basePixelY;
+let basePixelI; 
+let basePixelJ;
 let image = null;
 
-function pushColor(color, x, y) { 
+function turnImageIntoMultidimensionalArray() { }
+
+function pushColor(color, down, over) { 
     baseBlockColor.push({
         color: color,                                              
-        x: x, 
-        y: y
+        i: down, 
+        j: over
     });
 }
 
@@ -28,9 +30,9 @@ function checkUnknown() {
         if(baseBlockColor[i].color !== centerPixel.color) {
             for(let j = i; j < baseBlockColor.length; j++) {
                 if(baseBlockColor[j].color !== centerPixel.color) { 
-                    if(typeof(avoidEdges[`${baseBlockColor[j].x}-${baseBlockColor[j].y}`]) === 'undefined') {
-                        edges.push({ x: baseBlockColor[j].x, y: baseBlockColor[j].y })
-                        avoidEdges[`${baseBlockColor[j].x}-${baseBlockColor[j].y}`] = true;
+                    if(typeof(avoidEdges[`${baseBlockColor[j].i}-${baseBlockColor[j].j}`]) === 'undefined') {
+                        edges.push({ i: baseBlockColor[j].i, j: baseBlockColor[j].j })
+                        avoidEdges[`${baseBlockColor[j].i}-${baseBlockColor[j].j}`] = true;
                     }
                 }
             }
@@ -39,43 +41,44 @@ function checkUnknown() {
     }
 }
 
-function fetchPixelColor(x, y) { 
+function fetchPixelColor(i, j) {
     try {
         let img = image;
-        //fetch images x,y color
     } catch(err) { 
-        return 'out of bounds';
+        console.log('out of bounds');
     }
 }
 
 function paintEdges() { 
-    for(let i = 0; i < edges.length; i++) { 
-        //paint edges
-    }
+    for(let i = 0; i < edges.length; i++) {}
 } 
 
-//this graphs the edges over a unique line that is compared to other unique lines
-function graphEdges() { 
-
+function graphEdges() {
+    for(let i = 0; i < edges.length; i++) {}
 }
 
 function outline() {
 
     image = fetch_image('file');
+    turnImageIntoMultidimensionalArray();
 
-    for(let i = 0; i < image.length; i++) { 
+    for(let i = 0; i < image.length; i++) {
 
-        basePixelX = image[i].x; 
-        basePixelY = image[i].y;
+        for(let j = i; j < image[i].length; j++) { 
 
-        centerPixel = {
-            color: fetchPixelColor(basePixelX, basePixelY), 
-            x: basePixelX, 
-            y: basePixelY
+            basePixelI = i;
+            basePixelJ = j;
+
+            centerPixel = {
+                color: fetchPixelColor(basePixelI, basePixelJ), 
+                i: basePixelI, 
+                j: basePixelJ
+            }
+
+            moveAroundPixelandDetectFirstChange();
+            resetParameters();
+
         }
-
-        moveAroundPixelandDetectFirstChange();
-        resetParameters();
 
     }
 
@@ -86,36 +89,36 @@ function outline() {
 
 function moveAroundPixelandDetectFirstChange() {
 
-    let iteritiveX = basePixelX - diagonolPointDistance; 
-    let iteritiveY = basePixelY - diagonolPointDistance;
+    let iteritiveI = basePixelI - diagonolPointDistance; 
+    let iteritiveJ = basePixelJ - diagonolPointDistance;
 
     push = () => { 
         pushColor(
-            fetchPixelColor(iteritiveX, iteritiveY), 
-            iteritiveX, 
-            iteritiveY
+            fetchPixelColor(iteritiveI, iteritiveJ), 
+            iteritiveI, 
+            iteritiveJ
         );
     }
 
     push();
 
     for(let i = 0; i < amountAround; i++) { 
-        iteritiveX += 1;
+        iteritiveJ += 1;
         push();
     }
 
     for(let i = 0; i < amountAround; i++) { 
-        iteritiveY -= 1;
+        iteritiveI -= 1;
         push();
     }
 
     for(let i = 0; i < amountAround; i++) { 
-        iteritiveX -= 1;
+        iteritiveJ -= 1;
         push();
     }
 
     for(let i = 0; i < amountAround - 1; i++) {
-        iteritiveY += 1;
+        iteritiveI += 1;
         push();
     }
 
