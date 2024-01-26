@@ -13,7 +13,7 @@ let foundUnknownColor = false;
 function turnImageIntoMultidimensionalArray() { } // ?
 
 /*
-    pushing the perimeter colors around the 
+    pushing the perimeter colors around the  center pixel
 */
 
 function pushColor(color, i, j) { 
