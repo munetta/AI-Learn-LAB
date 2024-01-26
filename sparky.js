@@ -4,14 +4,13 @@
 */
 
 let edges = [];
+let centerPixel;
 let diagonolPointDistance = 1;
 let amountAround = 2;
 let baseBlockColor = [];
 let basePixelX; 
 let basePixelY;
 let image = null;
-let foundUnknownColor = false;
-let newBeginning;
 
 function pushColor(color, key, x, y) { 
     baseBlockColor.push({
@@ -23,18 +22,17 @@ function pushColor(color, key, x, y) {
 }
 
 function resetParameters() { 
-    baseBlockColor = [];
+    baseBlockColor = []; //this is resetting every time around
     diagonolPointDistance = 1; 
     amountAround = 2; 
     keyAround = 1;
 }
 
 function checkUnknown() { 
-    for(let i = 1; i < baseBlockColor.length - 1; i++) {
-        if(baseBlockColor[i].color !== baseBlockColor[0].color) { //just do a key change thing to prevent bottom loop starting so early
-            let pickUpKey = baseBlockColor[i].key;
-            for(let j = 0; j < baseBlockColor.length - 1; j++) { //j=the first key of pickUpKey in baseBlock color: change to j = 'x'     find x
-                if(baseBlockColor[j].key === pickUpKey && baseBlockColor[j].color !== baseBlockColor[0].color) { 
+    for(let i = 0; i < baseBlockColor.length; i++) {
+        if(baseBlockColor[i].color !== centerPixel.color) {
+            for(let j = i; j < baseBlockColor.length; j++) {
+                if(baseBlockColor[j].color !== centerPixel.color) { 
                     edges.push({ 
                         x: baseBlockColor[j].x, 
                         y: baseBlockColor[j].y 
@@ -43,15 +41,19 @@ function checkUnknown() {
             }
             break;
         }
-
     }
-
 }
 
 function fetchPixelColor(x, y) { 
     let img = image;
     //fetch x,y's color
 }
+
+function paintEdges() { 
+    for(let i = 0; i < edges.length; i++) { 
+        //paint edges
+    }
+} 
 
 function outline() {
 
@@ -62,21 +64,18 @@ function outline() {
         basePixelX = image[i].x; 
         basePixelY = image[i].y;
 
-        let keyAround = 1; 
-
-        pushColor(
-            fetchPixelColor(basePixelX, basePixelY), 
-            keyAround, 
-            basePixelX, 
-            basePixelY
-        )
-
-        keyAround += 1; 
+        centerPixel = {
+            color: fetchPixelColor(basePixelX, basePixelY), 
+            x: basePixelX, 
+            y: basePixelY
+        }
 
         moveAroundPixelandDetectFirstChange();
         resetParameters();
 
     }
+
+    paintEdges();
 
 }
 
@@ -87,8 +86,7 @@ function moveAroundPixelandDetectFirstChange() {
 
     push = () => { 
         pushColor(
-            fetchPixelColor(image, iteritiveX, iteritiveY), 
-            keyAround, 
+            fetchPixelColor(iteritiveX, iteritiveY), 
             iteritiveX, 
             iteritiveY
         );
@@ -120,43 +118,10 @@ function moveAroundPixelandDetectFirstChange() {
 
     diagonolPointDistance += 1;
 
-    keyAround += 1;
-
     checkUnknown();
+
+    baseBlockColor = [];
 
     return moveAroundPixelandDetectFirstChange();
 
 }
-
-
-
-
-
-/*
-  technique 1. create a unique line of grayish to black pixels (skip white pixels) --- must create black pixels 
-  run n^2 algorithm
-  store slopes
-  compare to other arrays (you can do this wholistically or compare via each pixel in pixel slope object)
-*/
-
-let stored_unique_lines = fetch_array_of_stored_line_arrays(); //these would be the edges
-
-let slope_arrays = convert_stored_line_arrays_to_slope_combinations(stored_lines); 
-
-let graph = [];
-
-const image_length = 500;
-
-for(let i = 0; i < image_length; i++) {
-    graph[i] = []; 
-    for(let j = 0; j < image_length; j++) {
-        graph[i].push(0); 
-    }
-} 
-
-let standard_y = Math.min(graph.length / 2); 
-
-
-
-
-
