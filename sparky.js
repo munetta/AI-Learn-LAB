@@ -24,7 +24,7 @@ function pushColor(color, i, j) {
         j: j
     });
 
-    if(perimeterColors[perimeterColors.length - 1] !== centerPixel.color) { 
+    if((perimeterColors[perimeterColors.length - 1] !== centerPixel.color) && perimeterColors[perimeterColors.length - 1] !== null) { 
         foundUnknownColor = true;
     }
 
@@ -115,8 +115,6 @@ function outline() {
 
     paintEdges();
     graphEdges();
-
-    matchAlgorithm();
     distanceAlgorithm();
 
 }
