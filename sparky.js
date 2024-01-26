@@ -1,14 +1,11 @@
 
-/*
-    drawing on the outside of blocked color changes
-*/
-
+let avoidEdges = {};
 let edges = [];
 let centerPixel;
 let diagonolPointDistance = 1;
 let amountAround = 2;
 let baseBlockColor = [];
-let basePixelX; 
+let basePixelX; //could rid this and use center pixel
 let basePixelY;
 let image = null;
 
@@ -31,10 +28,10 @@ function checkUnknown() {
         if(baseBlockColor[i].color !== centerPixel.color) {
             for(let j = i; j < baseBlockColor.length; j++) {
                 if(baseBlockColor[j].color !== centerPixel.color) { 
-                    edges.push({ 
-                        x: baseBlockColor[j].x, 
-                        y: baseBlockColor[j].y 
-                    })
+                    if(typeof(avoidEdges[`${baseBlockColor[j].x}-${baseBlockColor[j].y}`]) === 'undefined') {
+                        edges.push({ x: baseBlockColor[j].x, y: baseBlockColor[j].y })
+                        avoidEdges[`${baseBlockColor[j].x}-${baseBlockColor[j].y}`] = true;
+                    }
                 }
             }
             break;
@@ -45,7 +42,7 @@ function checkUnknown() {
 function fetchPixelColor(x, y) { 
     try {
         let img = image;
-        //fetch x,y's color
+        //fetch images x,y color
     } catch(err) { 
         return 'out of bounds';
     }
@@ -57,7 +54,11 @@ function paintEdges() {
     }
 } 
 
-//start
+//this graphs the edges over a unique line that is compared to other unique lines
+function graphEdges() { 
+
+}
+
 function outline() {
 
     image = fetch_image('file');
@@ -79,6 +80,7 @@ function outline() {
     }
 
     paintEdges();
+    graphEdges();
 
 }
 
