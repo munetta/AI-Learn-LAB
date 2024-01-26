@@ -1,38 +1,58 @@
 
 let avoidEdges = {};
 let edges = [];
-let centerPixel;
+let centerPixel = {};
 let diagonolPointDistance = 1;
 let amountAround = 2;
-let baseBlockColor = [];
-let basePixelI; 
-let basePixelJ;
+let perimeterColors = [];
+let basePixelI = 0; 
+let basePixelJ = 0;
 let image = null;
+let foundUnknownColor = false;
 
-function turnImageIntoMultidimensionalArray() { }
+function turnImageIntoMultidimensionalArray() { } // ?
 
-function pushColor(color, down, over) { 
-    baseBlockColor.push({
+/*
+    pushing the perimeter colors around the 
+*/
+
+function pushColor(color, i, j) { 
+
+    perimeterColors.push({
         color: color,                                              
-        i: down, 
-        j: over
+        i: i, 
+        j: j
     });
+
+    if(perimeterColors[perimeterColors.length - 1] !== centerPixel.color) { 
+        foundUnknownColor = true;
+    }
+
 }
+
+/*
+    moving to the next pixel, resetting
+*/
 
 function resetParameters() { 
-    baseBlockColor = [];
+    perimeterColors = [];
     diagonolPointDistance = 1; 
     amountAround = 2; 
+    foundUnknownColor = false;
 }
 
-function checkUnknown() { 
-    for(let i = 0; i < baseBlockColor.length; i++) {
-        if(baseBlockColor[i].color !== centerPixel.color) {
-            for(let j = i; j < baseBlockColor.length; j++) {
-                if(baseBlockColor[j].color !== centerPixel.color) { 
-                    if(typeof(avoidEdges[`${baseBlockColor[j].i}-${baseBlockColor[j].j}`]) === 'undefined') {
-                        edges.push({ i: baseBlockColor[j].i, j: baseBlockColor[j].j })
-                        avoidEdges[`${baseBlockColor[j].i}-${baseBlockColor[j].j}`] = true;
+/*
+    labels all edges of center pixel which are different
+*/
+
+function labelEdges() { 
+    for(let i = 0; i < perimeterColors.length; i++) {
+        if(perimeterColors[i].color !== centerPixel.color) {
+            for(let j = i; j < perimeterColors.length; j++) {
+                if(perimeterColors[j].color !== centerPixel.color) { 
+                    if(typeof(avoidEdges[`${perimeterColors[j].i}-${perimeterColors[j].j}`]) === 'undefined') {
+                        edges.push({ i: perimeterColors[j].i, j: perimeterColors[j].j })
+                        avoidEdges[`${perimeterColors[j].i}-${perimeterColors[j].j}`] = true;
                     }
                 }
             }
@@ -41,25 +61,41 @@ function checkUnknown() {
     }
 }
 
+/*
+    fetches a perimeter color
+*/
+
 function fetchPixelColor(i, j) {
     try {
-        let img = image;
+        return image[i][j].color;
     } catch(err) { 
-        console.log('out of bounds');
+        return null;
     }
 }
+
+/*
+    paints the outline of all shapes
+*/
 
 function paintEdges() { 
     for(let i = 0; i < edges.length; i++) {}
 } 
 
-function graphEdges() {
-    for(let i = 0; i < edges.length; i++) {}
+/*
+    graphs the image over a unique line. algorithms are run over unique lines for closest comparisons. (closest line chosen)
+*/
+
+function graph() { 
+    for(let i = 0; i < image.length; i++) {}
 }
+
+/*
+    iterating over image. identifying center pixel.
+*/
 
 function outline() {
 
-    image = fetch_image('file');
+    image = fetchImage('file');
     turnImageIntoMultidimensionalArray();
 
     for(let i = 0; i < image.length; i++) {
@@ -85,7 +121,14 @@ function outline() {
     paintEdges();
     graphEdges();
 
+    matchAlgorithm(); 
+    distanceAlgorithm();
+
 }
+
+/*
+    iterating around the center pixel
+*/
 
 function moveAroundPixelandDetectFirstChange() {
 
@@ -126,9 +169,12 @@ function moveAroundPixelandDetectFirstChange() {
 
     diagonolPointDistance += 1;
 
-    checkUnknown();
+    if(foundUnknownColor) {
+        labelEdges();
+        return;
+    }
 
-    baseBlockColor = [];
+    perimeterColors = [];
 
     return moveAroundPixelandDetectFirstChange();
 
