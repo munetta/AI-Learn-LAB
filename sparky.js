@@ -13,7 +13,7 @@ let foundUnknownColor = false;
 function turnImageIntoMultidimensionalArray() { } // ?
 
 /*
-    pushing the perimeter colors around the  center pixel
+    pushing the perimeter colors around the center pixel
 */
 
 function pushColor(color, i, j) { 
@@ -42,27 +42,22 @@ function resetParameters() {
 }
 
 /*
-    labels all edges of center pixel which are different
+    labels all edges based on center pixel which are different
 */
 
 function labelEdges() { 
     for(let i = 0; i < perimeterColors.length; i++) {
-        if(perimeterColors[i].color !== centerPixel.color) {
-            for(let j = i; j < perimeterColors.length; j++) {
-                if(perimeterColors[j].color !== centerPixel.color) { 
-                    if(typeof(avoidEdges[`${perimeterColors[j].i}-${perimeterColors[j].j}`]) === 'undefined') {
-                        edges.push({ i: perimeterColors[j].i, j: perimeterColors[j].j })
-                        avoidEdges[`${perimeterColors[j].i}-${perimeterColors[j].j}`] = true;
-                    }
-                }
+        if(perimeterColors[i].color !== centerPixel.color) { 
+            if(typeof(avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`]) === 'undefined') {
+                edges.push({ i: perimeterColors[i].i, j: perimeterColors[i].j })
+                avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
             }
-            break;
         }
     }
 }
 
 /*
-    fetches a perimeter color
+    fetches a color
 */
 
 function fetchPixelColor(i, j) {
@@ -121,7 +116,7 @@ function outline() {
     paintEdges();
     graphEdges();
 
-    matchAlgorithm(); 
+    matchAlgorithm();
     distanceAlgorithm();
 
 }
@@ -166,7 +161,7 @@ function moveAroundPixelandDetectFirstChange() {
     }
 
     amountAround += 1;
-
+    
     diagonolPointDistance += 1;
 
     if(foundUnknownColor) {
