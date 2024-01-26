@@ -12,20 +12,18 @@ let basePixelX;
 let basePixelY;
 let image = null;
 
-function pushColor(color, key, x, y) { 
+function pushColor(color, x, y) { 
     baseBlockColor.push({
         color: color,                                              
-        key: key, 
         x: x, 
         y: y
     });
 }
 
 function resetParameters() { 
-    baseBlockColor = []; //this is resetting every time around
+    baseBlockColor = [];
     diagonolPointDistance = 1; 
     amountAround = 2; 
-    keyAround = 1;
 }
 
 function checkUnknown() { 
@@ -45,8 +43,12 @@ function checkUnknown() {
 }
 
 function fetchPixelColor(x, y) { 
-    let img = image;
-    //fetch x,y's color
+    try {
+        let img = image;
+        //fetch x,y's color
+    } catch(err) { 
+        return 'out of bounds';
+    }
 }
 
 function paintEdges() { 
@@ -55,6 +57,7 @@ function paintEdges() {
     }
 } 
 
+//start
 function outline() {
 
     image = fetch_image('file');
