@@ -99,7 +99,7 @@ function seperateArrays() {
 }
 
 /*
-    runs the algorithm of the current frame into new frames 
+    runs the algorithm on the current frame against new frames
 */
 
 function distanceAlgorithm() {
