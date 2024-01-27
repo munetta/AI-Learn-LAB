@@ -9,9 +9,18 @@ let basePixelI = 0;
 let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
+let picturesUniqueLine = []; //single array of outlines
 
-function turnImageIntoMultidimensionalArray() {} //?
+/*
+  creates a multi-dimensional array of the image
+   
+  { color: color edge: false }
+*/
 
+function turnImageIntoMultidimensionalArray() {
+
+}
+ 
 /*
     pushing the perimeter colors around the center pixel
 */
@@ -42,7 +51,7 @@ function resetParameters() {
 }
 
 /*
-    labels all edges based on center pixel which are different
+    labels all edges around center pixel
 */
 
 function labelEdges() { 
@@ -69,17 +78,20 @@ function fetchPixelColor(i, j) {
 }
 
 /*
-    paints the outline
+    paints the outline 
+    could do this in labelEdges
 */
 
 function paintEdges() { 
     for(let i = 0; i < edges.length; i++) {
         image[edges[i].i][edges[i].j].color = 'black';
+        image[edges[i].i][edges[i].j].edge = true;
     }
 } 
 
 /*
-    graphs the image over a unique line. algorithms are run over unique lines for closest comparisons. (closest line chosen)
+    graphs the image over a unique line. 
+    algorithms are run against unique lines for closest comparisons. (closest line chosen when target comes in)
 */
 
 function graph() { 
@@ -89,9 +101,8 @@ function graph() {
 }
 
 /*
-    takes the edges which are all connected, and stores them in a multidimensional array
-    each array can be seen as a unique picture within a larger picture
-    avoids drawing the box over and over
+    Takes the edges which are all connected, and stores them in a multidimensional array E
+    Each array can be seen as a unique picture within a larger picture
 */
 
 function seperateArrays() { 
@@ -99,7 +110,7 @@ function seperateArrays() {
 }
 
 /*
-    runs the algorithm on the current frame against new frames
+    runs the algorithm of the current frame into new frames 
 */
 
 function distanceAlgorithm() {
