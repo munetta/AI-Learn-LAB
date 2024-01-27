@@ -184,7 +184,7 @@ function moveAroundPixelandDetectFirstChange() {
         push();
     }
 
-    amountAround *= 2;
+    amountAround += 2;
     
     diagonolPointDistance += 1;
 
