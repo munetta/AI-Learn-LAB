@@ -13,7 +13,6 @@ let picturesUniqueLine = []; //single array of outlines
 
 /*
   creates a multi-dimensional array of the image
-   
   { color: color edge: false }
 */
 
