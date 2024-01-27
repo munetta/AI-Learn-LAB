@@ -9,7 +9,7 @@ let basePixelI = 0;
 let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
-let picturesUniqueLine = []; //single array of outlines
+let picturesUniqueLine = []; //single array defining picture. [0, 1, 0, 0, 0, 0, 1]
 
 /*
   creates a multi-dimensional array of the image
@@ -58,6 +58,7 @@ function labelEdges() {
         if(perimeterColors[i].color !== centerPixel.color) { 
             if(typeof(avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`]) === 'undefined') {
                 edges.push({ i: perimeterColors[i].i, j: perimeterColors[i].j })
+                //can do some labeling over the image here. done in paintEdges
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
             }
         }
@@ -79,12 +80,13 @@ function fetchPixelColor(i, j) {
 /*
     paints the outline 
     could do this in labelEdges
+    --just make this an extension of label edges to avoid iterating again. 
 */
 
 function paintEdges() { 
     for(let i = 0; i < edges.length; i++) {
-        image[edges[i].i][edges[i].j].color = 'black';
-        image[edges[i].i][edges[i].j].edge = true;
+        image[edges[i].i][edges[i].j].color = 'black'; //can put this in label edges
+        image[edges[i].i][edges[i].j].edge = true; //can put this in label edges 
     }
 } 
 
