@@ -10,7 +10,7 @@ let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
 
-function turnImageIntoMultidimensionalArray() { } // ?
+function turnImageIntoMultidimensionalArray() {} //?
 
 /*
     pushing the perimeter colors around the center pixel
@@ -57,7 +57,7 @@ function labelEdges() {
 }
 
 /*
-    fetches a color
+    gets the color of the pixel
 */
 
 function fetchPixelColor(i, j) {
@@ -69,11 +69,13 @@ function fetchPixelColor(i, j) {
 }
 
 /*
-    paints the outline of all shapes
+    paints the outline
 */
 
 function paintEdges() { 
-    for(let i = 0; i < edges.length; i++) {}
+    for(let i = 0; i < edges.length; i++) {
+        image[edges[i].i][edges[i].j].color = 'black';
+    }
 } 
 
 /*
@@ -81,7 +83,27 @@ function paintEdges() {
 */
 
 function graph() { 
-    for(let i = 0; i < image.length; i++) {}
+    for(let i = 0; i < image.length; i++) {
+
+    }
+}
+
+/*
+    takes the edges which are all connected, and stores them in a multidimensional array
+    each array can be seen as a unique picture within a larger picture
+    avoids drawing the box over and over
+*/
+
+function seperateArrays() { 
+
+}
+
+/*
+    runs the algorithm of the current frame into new frames 
+*/
+
+function distanceAlgorithm() {
+
 }
 
 /*
@@ -114,8 +136,12 @@ function outline() {
     }
 
     paintEdges();
-    graphEdges();
-    distanceAlgorithm();
+
+    graph();
+
+    seperateArrays(); 
+
+    distanceAlgorithm(); 
 
 }
 
@@ -158,7 +184,7 @@ function moveAroundPixelandDetectFirstChange() {
         push();
     }
 
-    amountAround += 1;
+    amountAround *= 2;
     
     diagonolPointDistance += 1;
 
@@ -172,3 +198,4 @@ function moveAroundPixelandDetectFirstChange() {
     return moveAroundPixelandDetectFirstChange();
 
 }
+
