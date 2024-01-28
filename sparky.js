@@ -106,7 +106,7 @@ function seperateArrays() {}
 /*
     runs the algorithm over all edges
     this only uses the edges of the image
-    center point uses to get slopes between all edges. slopes then compared with each other. <-- this needs a center point formula
+    center point used to get slopes between all edges. slopes then compared with each other. <-- this needs a center point formula to all edges. (above function)
 */
 
 function distanceAlgorithm() {}
