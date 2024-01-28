@@ -1,6 +1,5 @@
 
 let avoidEdges = {};
-let edges = [];
 let centerPixel = {};
 let diagonolPointDistance = 1;
 let amountAround = 2;
@@ -9,19 +8,17 @@ let basePixelI = 0;
 let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
-let picturesUniqueLine = []; //over the image. black pixels 
+let picturesUniqueLine = []; 
 
 /*
   creates a multi-dimensional array of the image
   { 
     color: color 
     edge: false
- }
+  }
 */
 
-function turnImageIntoMultidimensionalArray() {
-
-}
+function turnImageIntoMultidimensionalArray() {}
  
 /*
     pushing the perimeter colors around the center pixel
@@ -54,16 +51,16 @@ function resetParameters() {
 
 /*
     labels all edges around center pixel
+    paints 
 */
 
 function labelEdges() { 
     for(let i = 0; i < perimeterColors.length; i++) {
         if(perimeterColors[i].color !== centerPixel.color) { 
             if(typeof(avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`]) === 'undefined') {
-                edges.push({ i: perimeterColors[i].i, j: perimeterColors[i].j }) 
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
-                image[edges[edges.length - 1].i][edges[edges.length - 1].j].color = 'black';
-                image[edges[edges.length - 1].i][edges[edges.length - 1].j].edge = true;
+                image[perimeterColors[i].i][perimeterColors[i].j].color = 'black';
+                image[perimeterColors[i].i][perimeterColors[i].j].edge = true;
             }
         }
     }
@@ -80,18 +77,6 @@ function fetchPixelColor(i, j) {
         return null;
     }
 }
-
-/*
-    paints the outline 
-    could do this in labelEdges
-*/
-
-function paintEdges() { 
-    for(let i = 0; i < edges.length; i++) {
-        image[edges[i].i][edges[i].j].color = 'black';
-        image[edges[i].i][edges[i].j].edge = true;
-    }
-} 
 
 /*
     graphs the image over a unique line. 
@@ -150,7 +135,7 @@ function outline() {
 
     }
 
-    //can delete this
+    //can delete this 
     paintEdges();
 
     graph();
