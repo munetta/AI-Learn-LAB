@@ -50,8 +50,7 @@ function resetParameters() {
 }
 
 /*
-    labels all edges around center pixel
-    paints 
+    iterates the outside perimeter where there was a change, and paints the changes over the image
 */
 
 function labelEdges() { 
@@ -79,32 +78,28 @@ function fetchPixelColor(i, j) {
 }
 
 /*
-    graphs the image over a unique line. 
-    algorithms are run against unique lines for closest comparisons. (closest line chosen when target comes in)
+    graphs the image over a unique line. This is the basis of the unique line
 */
 
 function graph() { 
     for(let i = 0; i < image.length; i++) {
-
+        
     }
 }
 
 /*
-    Takes the edges which are all connected, and stores them in a multidimensional array E
+    Takes the edges which are all connected, and stores them in a multidimensional array
     Each array can be seen as a unique picture within a larger picture
+    avoids drawing many boxes
 */
 
-function seperateArrays() { 
-
-}
+function seperateArrays() {}
 
 /*
     runs the algorithm of the current frame into new frames 
 */
 
-function distanceAlgorithm() {
-
-}
+function distanceAlgorithm() {}
 
 /*
     iterating over image. identifying center pixel.
@@ -135,13 +130,8 @@ function outline() {
 
     }
 
-    //can delete this 
-    paintEdges();
-
     graph();
-
     seperateArrays(); 
-
     distanceAlgorithm(); 
 
 }
