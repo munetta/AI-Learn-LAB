@@ -95,6 +95,7 @@ function graph() {
     Takes the edges which are all connected, and stores them in a multidimensional array
     Each array can be seen as a unique picture within a larger picture
     avoids drawing many boxes
+    this is recursive... per pixel
 */
 
 function seperateArrays() {}
