@@ -1,4 +1,5 @@
 
+let edges = [];
 let avoidEdges = {};
 let centerPixel = {};
 let diagonolPointDistance = 1;
@@ -9,7 +10,8 @@ let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
 let picturesUniqueLine = []; //overall
-let seperateArraysUniqueLines = []; //picture split up
+let seperateRecursiveEnclosed = []; //picture split up by 
+let seperateBoxes = [];
 
 /*
   creates a multi-dimensional array of the image
@@ -56,8 +58,9 @@ function labelEdges() {
     for(let i = 0; i < perimeterColors.length; i++) {
         if(perimeterColors[i].color !== centerPixel.color) { 
             if(typeof(avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`]) === 'undefined') {
+                edges.push({i: perimeterColors[i].i, j: perimeterColors[i].j}); //this is going to be used for the distance algorithm
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
-                image[perimeterColors[i].i][perimeterColors[i].j].color = 'black'; //find a unique color here. use object
+                image[perimeterColors[i].i][perimeterColors[i].j].color = 'black';
                 image[perimeterColors[i].i][perimeterColors[i].j].edge = true;
             }
         }
@@ -101,10 +104,21 @@ function graph() {
 function seperateArrays() {}
 
 /*
-    runs the algorithm over the current frame, and compares to other frames
+    runs the algorithm over all edges
+    this only uses the edges of the image
+    center point uses to get slopes between all edges. slopes then compared with each other. <-- this needs a center point formula
 */
 
 function distanceAlgorithm() {}
+
+/*
+    runs the algorithm over the current frame, and compares to other frames
+    uses the entire image
+    just the closest match
+    rotates image and checks every rotation
+*/
+
+function matchAlgorithm() {}
 
 /*
     iterating over image. identifying center pixel.
@@ -135,9 +149,11 @@ function outline() {
 
     }
 
-    seperateArrays(); 
+    seperateRecursive(); 
+    seperateBoxes();
     graph();
     distanceAlgorithm(); 
+    matchAlgorithm();
 
 }
 
