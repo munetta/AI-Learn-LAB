@@ -8,14 +8,13 @@ let basePixelI = 0;
 let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
-let picturesUniqueLine = []; 
+let picturesUniqueLine = []; //overall
+let seperateArraysUniqueLines = []; //picture split up
 
 /*
   creates a multi-dimensional array of the image
-  { 
-    color: color 
-    edge: false
-  }
+  color: color 
+  edge: false
 */
 
 function turnImageIntoMultidimensionalArray() {}
@@ -58,7 +57,7 @@ function labelEdges() {
         if(perimeterColors[i].color !== centerPixel.color) { 
             if(typeof(avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`]) === 'undefined') {
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
-                image[perimeterColors[i].i][perimeterColors[i].j].color = 'black';
+                image[perimeterColors[i].i][perimeterColors[i].j].color = 'black'; //find a unique color here. use object
                 image[perimeterColors[i].i][perimeterColors[i].j].edge = true;
             }
         }
@@ -78,12 +77,17 @@ function fetchPixelColor(i, j) {
 }
 
 /*
-    graphs the image over a unique line. This is the basis of the unique line
+    graphs the image over a unique line. This is just a visual. 
+    (can graph each seperate array)
 */
 
 function graph() { 
     for(let i = 0; i < image.length; i++) {
-        
+       if(image[i].edge) { 
+            picturesUniqueLine.push(1);
+       } else { 
+            picturesUniqueLine.push(0);
+       }
     }
 }
 
@@ -96,7 +100,7 @@ function graph() {
 function seperateArrays() {}
 
 /*
-    runs the algorithm of the current frame into new frames 
+    runs the algorithm over the current frame, and compares to other frames
 */
 
 function distanceAlgorithm() {}
@@ -130,8 +134,8 @@ function outline() {
 
     }
 
-    graph();
     seperateArrays(); 
+    graph();
     distanceAlgorithm(); 
 
 }
