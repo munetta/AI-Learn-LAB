@@ -9,11 +9,14 @@ let basePixelI = 0;
 let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
-let picturesUniqueLine = []; //single array defining picture. [0, 1, 0, 0, 0, 0, 1]
+let picturesUniqueLine = []; //over the image. black pixels 
 
 /*
   creates a multi-dimensional array of the image
-  { color: color edge: false }
+  { 
+    color: color 
+    edge: false
+ }
 */
 
 function turnImageIntoMultidimensionalArray() {
@@ -32,7 +35,7 @@ function pushColor(color, i, j) {
         j: j
     });
 
-    if((perimeterColors[perimeterColors.length - 1] !== centerPixel.color) && perimeterColors[perimeterColors.length - 1] !== null) { 
+    if((perimeterColors[perimeterColors.length - 1].color !== centerPixel.color) && perimeterColors[perimeterColors.length - 1].color !== null) { 
         foundUnknownColor = true;
     }
 
@@ -57,9 +60,10 @@ function labelEdges() {
     for(let i = 0; i < perimeterColors.length; i++) {
         if(perimeterColors[i].color !== centerPixel.color) { 
             if(typeof(avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`]) === 'undefined') {
-                edges.push({ i: perimeterColors[i].i, j: perimeterColors[i].j })
-                //can do some labeling over the image here. done in paintEdges
+                edges.push({ i: perimeterColors[i].i, j: perimeterColors[i].j }) 
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
+                image[edges[edges.length - 1].i][edges[edges.length - 1].j].color = 'black';
+                image[edges[edges.length - 1].i][edges[edges.length - 1].j].edge = true;
             }
         }
     }
@@ -80,13 +84,12 @@ function fetchPixelColor(i, j) {
 /*
     paints the outline 
     could do this in labelEdges
-    --just make this an extension of label edges to avoid iterating again. 
 */
 
 function paintEdges() { 
     for(let i = 0; i < edges.length; i++) {
-        image[edges[i].i][edges[i].j].color = 'black'; //can put this in label edges
-        image[edges[i].i][edges[i].j].edge = true; //can put this in label edges 
+        image[edges[i].i][edges[i].j].color = 'black';
+        image[edges[i].i][edges[i].j].edge = true;
     }
 } 
 
@@ -147,6 +150,7 @@ function outline() {
 
     }
 
+    //can delete this
     paintEdges();
 
     graph();
