@@ -108,7 +108,7 @@ function graph() {
     avoids drawing many boxes
     this is recursive... per pixel
     algorithm: takes all connected points in a graph and stores in an array. 
-    this is very fucking hard Mr Altman. just a heads up. muahahahaha muahahahahahaaa
+    this is very fucking hard Mr Altman.
 */
 
 let seperateRecursiveEnclosed = [];
