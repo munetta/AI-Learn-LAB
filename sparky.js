@@ -1,10 +1,3 @@
-//paints edges. 
-
-//connectes all edges which are attached into an array (many arrays) seperateRecursive closed
-
-//determines a center point in the middle of the line. 
-
-//slope set from center is used to compare to others
 
 let edges = [];
 let avoidEdges = {};
@@ -17,7 +10,7 @@ let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
 let picturesUniqueLine = []; 
-let seperateRecursiveEnclosed = []; // (below)
+// let seperateRecursiveEnclosed = [];
 let seperateBoxes = [];
 
 /*
@@ -104,11 +97,7 @@ function graph() {
 
 /*
     Takes the edges which are all connected, and stores them in a multidimensional array
-    Each array can be seen as a unique picture within a larger picture
-    avoids drawing many boxes
-    this is recursive... per pixel
-    algorithm: takes all connected points in a graph and stores in an array. 
-    this is very fucking hard Mr Altman.
+    Each array can be seen as a unique picture within a larger picture [[x,y, x,y], [x,y]]
 */
 
 let seperateRecursiveEnclosed = [];
@@ -126,7 +115,7 @@ function seperateConnectedLines() {
     for(let i = 0; i < popIt.length; i++) { 
 
         if(popIt[i].j === currentJ + 1 && popIt[i].i === currentI) {
-            popIt.splice(i, 1); 
+            popIt.splice(i, 1);
             currentJ += 1; 
             pushPoint();
             currentJ -= 1;
@@ -146,11 +135,48 @@ function seperateConnectedLines() {
             currentI -= 1;
         }
 
-        if(popIt[i].j === currentI - 1 && popIt[i].j === currentJ) {
+        if(popIt[i].i === currentI - 1 && popIt[i].j === currentJ) {
             popIt.splice(i, 1); 
             currentI -= 1; 
             pushPoint();
             currentI += 1;
+            //might have to push back the point spliced above here --- create a stack of them, and remove them at the end of the loop... not sure... 
+        }
+
+        if(popIt[i].i === currentI - 1 && popIt[i].j === currentJ - 1) { 
+            popIt.splice(i, 1); 
+            currentI -= 1; 
+            currentJ -= 1;
+            pushPoint();
+            currentI += 1;
+            currentJ += 1;
+        }
+
+        if(popIt[i].i === currentI + 1 && popIt[i].j === currentJ + 1) { 
+            popIt.splice(i, 1); 
+            currentI += 1; 
+            currentJ += 1;
+            pushPoint();
+            currentI -= 1;
+            currentJ -= 1;
+        }
+
+        if(popIt[i].i === currentI + 1 && popIt[i].j === currentJ - 1) { 
+            popIt.splice(i, 1); 
+            currentI -= 1; 
+            currentJ -= 1;
+            pushPoint();
+            currentI += 1;
+            currentJ += 1;
+        }
+
+        if(popIt[i].i === currentI - 1 && popIt[i].j === currentJ + 1) { 
+            popIt.splice(i, 1); 
+            currentI -= 1; 
+            currentJ += 1;
+            pushPoint();
+            currentI += 1;
+            currentJ -= 1;
         }
         
     }
@@ -159,7 +185,7 @@ function seperateConnectedLines() {
         return;
     } 
 
-    seperateRecursiveEnclosed.push([{ i: popIt[0].i, j: popIt[0].j }]); //new line
+    seperateRecursiveEnclosed.push([{ i: popIt[0].i, j: popIt[0].j }]);
 
     popIt.splice(0, 1); 
 
