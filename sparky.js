@@ -9,8 +9,8 @@ let basePixelI = 0;
 let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
-let picturesUniqueLine = []; //overall
-let seperateRecursiveEnclosed = []; //picture split up by 
+let picturesUniqueLine = []; 
+// let seperateRecursiveEnclosed = [];
 let seperateBoxes = [];
 
 /*
@@ -51,14 +51,14 @@ function resetParameters() {
 }
 
 /*
-    iterates the outside perimeter where there was a change, and paints the changes over the image
+    colors the edges
 */
 
 function labelEdges() { 
     for(let i = 0; i < perimeterColors.length; i++) {
         if(perimeterColors[i].color !== centerPixel.color) { 
             if(typeof(avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`]) === 'undefined') {
-                edges.push({i: perimeterColors[i].i, j: perimeterColors[i].j}); //this is going to be used for the distance algorithm
+                edges.push({i: perimeterColors[i].i, j: perimeterColors[i].j});
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
                 image[perimeterColors[i].i][perimeterColors[i].j].color = 'black';
                 image[perimeterColors[i].i][perimeterColors[i].j].edge = true;
@@ -82,6 +82,7 @@ function fetchPixelColor(i, j) {
 /*
     graphs the image over a unique line. This is just a visual. 
     (can graph each seperate array)
+    probably not going to be used.
 */
 
 function graph() { 
@@ -101,12 +102,49 @@ function graph() {
     this is recursive... per pixel
 */
 
-function seperateArrays() {}
+let seperateRecursiveEnclosed = [];
+let popIt = [];
+let i = 0;
+let currentI; 
+let currentJ;
+
+function seperateConnectedLines() {
+
+    for(let i = 0; i < popIt.length; i++) { 
+
+        /*  
+            next to the pixel. push this pixel to the connected line, set it as the current
+        */
+
+        if(popIt[i].j === currentJ + 1 && popIt[i].i === currentI) { //loudaaa
+            popIt.splice(i, 1); 
+            currentJ += 1;
+            seperateRecursiveEnclosed[seperateRecursiveEnclosed.length - 1].push({ i: currentI, j: currentJ});
+            seperateConnectedLines();
+        }
+
+        if(popIt[i].j === currentJ - 1) {
+
+        }
+
+        if(popIt[i].i === currentI + 1) {
+
+        }
+
+        if(popIt[i].j === currentI - 1) {
+
+        }
+        
+    }
+
+    seperateRecursiveEnclosed.push([]);
+
+}
 
 /*
     runs the algorithm over all edges
     this only uses the edges of the image
-    center point used to get slopes between all edges. slopes then compared with each other. <-- this needs a center point formula to all edges. (above function)
+    center point uses to get slopes between all edges. slopes then compared with each other. <-- this needs a center point formula
 */
 
 function distanceAlgorithm() {}
@@ -115,7 +153,7 @@ function distanceAlgorithm() {}
     runs the algorithm over the current frame, and compares to other frames
     uses the entire image
     just the closest match
-    rotates image and checks every rotation
+    rotates image and checks every rotation -- not sure if woth if with edges
 */
 
 function matchAlgorithm() {}
@@ -149,7 +187,24 @@ function outline() {
 
     }
 
-    seperateRecursive(); 
+    /*
+        pushing the first pixel beginning the first connected line 
+    */
+
+    popIt = [...edges];
+    currentI = popIt[i].i; 
+    currentJ = popIt[i].j;
+    popIt.splice(i, 1);
+
+    seperateRecursiveEnclosed.push([{ 
+        i: currentI, 
+        j: currentJ
+    }]);
+
+    seperateConnectedLines(); 
+
+
+
     seperateBoxes();
     graph();
     distanceAlgorithm(); 
