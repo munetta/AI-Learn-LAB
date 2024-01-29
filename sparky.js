@@ -104,7 +104,6 @@ function graph() {
 
 let seperateRecursiveEnclosed = [];
 let popIt = [];
-let i = 0;
 let currentI; 
 let currentJ;
 
@@ -115,12 +114,14 @@ function seperateConnectedLines() {
         /*  
             next to the pixel. push this pixel to the connected line, set it as the current
         */
-
-        if(popIt[i].j === currentJ + 1 && popIt[i].i === currentI) { //loudaaa
+      
+        //right pixel found, move right
+        if(popIt[i].j === currentJ + 1 && popIt[i].i === currentI) {
             popIt.splice(i, 1); 
-            currentJ += 1;
-            seperateRecursiveEnclosed[seperateRecursiveEnclosed.length - 1].push({ i: currentI, j: currentJ});
+            currentJ += 1; //move right
+            seperateRecursiveEnclosed[seperateRecursiveEnclosed.length - 1].push({ i: currentI, j: currentJ }); //push the moved right
             seperateConnectedLines();
+            currentJ -= 1; //move back left, to process other pixelss around (below) 
         }
 
         if(popIt[i].j === currentJ - 1) {
@@ -138,6 +139,7 @@ function seperateConnectedLines() {
     }
 
     seperateRecursiveEnclosed.push([]);
+    return seperateConnectedLines();
 
 }
 
@@ -192,9 +194,9 @@ function outline() {
     */
 
     popIt = [...edges];
-    currentI = popIt[i].i; 
-    currentJ = popIt[i].j;
-    popIt.splice(i, 1);
+    currentI = popIt[0].i; 
+    currentJ = popIt[0].j;
+    popIt.splice(0, 1);
 
     seperateRecursiveEnclosed.push([{ 
         i: currentI, 
