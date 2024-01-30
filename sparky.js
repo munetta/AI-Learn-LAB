@@ -82,7 +82,7 @@ function fetchPixelColor(i, j) {
 /*
     graphs the image over a unique line. This is just a visual. 
     (can graph each seperate array)
-    probably not going to be used.
+    probably not going to be used. but it can be. this would be a simple matching algorithm.
 */
 
 function graph() { 
@@ -97,7 +97,8 @@ function graph() {
 
 /*
     Takes the edges which are all connected, and stores them in a multidimensional array
-    Each array can be seen as a unique picture within a larger picture [[x,y, x,y], [x,y]]
+    Each array can be seen as a unique picture within a larger picture
+    -not all the way right i think
 */
 
 let seperateRecursiveEnclosed = [];
@@ -114,36 +115,40 @@ function seperateConnectedLines() {
 
     for(let i = 0; i < popIt.length; i++) { 
 
-        if(popIt[i].j === currentJ + 1 && popIt[i].i === currentI) {
-            popIt.splice(i, 1);
-            currentJ += 1; 
-            pushPoint();
-            currentJ -= 1;
+        //the point saved to avoid the splicing error
+        let tempI = popIt[i].i; 
+        let tempJ = popIt[i].j;
+
+        if(tempJ === currentJ + 1 && tempI === currentI) { //right point found in the popIt array
+            popIt.splice(i, 1); //deleting the right point, and setting it as the current
+            currentJ += 1; //moving to the right point to process its surroundings (except for the one deleted)
+            pushPoint(); //pushing the right point
+            currentJ -= 1; //moving back left point to process other surrounding points
+            //the left point is removed at this point.. and the right direction was already taken... tempI, and tempJ is the placeholder to be able to process every condition
         }
 
-        if(popIt[i].j === currentJ - 1 && popIt[i].i === currentI) {
+        if(tempJ === currentJ - 1 && tempI === currentI) { //note: if i splice, i will have to save the last point in a temp variable
             popIt.splice(i, 1); 
             currentJ -= 1; 
             pushPoint();
             currentJ += 1;
         }
 
-        if(popIt[i].i === currentI + 1 && popIt[i].j === currentJ) {
+        if(tempI === currentI + 1 && tempJ === currentJ) {
             popIt.splice(i, 1); 
             currentI += 1; 
             pushPoint();
             currentI -= 1;
         }
 
-        if(popIt[i].i === currentI - 1 && popIt[i].j === currentJ) {
+        if(tempI === currentI - 1 && tempJ === currentJ) {
             popIt.splice(i, 1); 
             currentI -= 1; 
             pushPoint();
             currentI += 1;
-            //might have to push back the point spliced above here --- create a stack of them, and remove them at the end of the loop... not sure... 
         }
 
-        if(popIt[i].i === currentI - 1 && popIt[i].j === currentJ - 1) { 
+        if(tempI === currentI - 1 && tempJ === currentJ - 1) { 
             popIt.splice(i, 1); 
             currentI -= 1; 
             currentJ -= 1;
@@ -152,7 +157,7 @@ function seperateConnectedLines() {
             currentJ += 1;
         }
 
-        if(popIt[i].i === currentI + 1 && popIt[i].j === currentJ + 1) { 
+        if(tempI === currentI + 1 && tempJ === currentJ + 1) { 
             popIt.splice(i, 1); 
             currentI += 1; 
             currentJ += 1;
@@ -161,7 +166,7 @@ function seperateConnectedLines() {
             currentJ -= 1;
         }
 
-        if(popIt[i].i === currentI + 1 && popIt[i].j === currentJ - 1) { 
+        if(tempI === currentI + 1 && tempJ === currentJ - 1) { 
             popIt.splice(i, 1); 
             currentI -= 1; 
             currentJ -= 1;
@@ -170,7 +175,7 @@ function seperateConnectedLines() {
             currentJ += 1;
         }
 
-        if(popIt[i].i === currentI - 1 && popIt[i].j === currentJ + 1) { 
+        if(tempI === currentI - 1 && tempJ === currentJ + 1) { 
             popIt.splice(i, 1); 
             currentI -= 1; 
             currentJ += 1;
@@ -215,7 +220,7 @@ function distanceAlgorithm() {}
 function matchAlgorithm() {}
 
 /*
-    iterating over image. identifying center pixel.
+    iterating over image. identifying center pixel. 
 */
 
 function outline() {
@@ -247,23 +252,22 @@ function outline() {
         pushing the first pixel beginning the first connected line 
     */
 
-    popIt = [...edges];
+    popIt = [...edges]; //put all the edges in here
     currentI = popIt[0].i; 
     currentJ = popIt[0].j;
-    popIt.splice(0, 1);
+    popIt.splice(0, 1); //when pushing a point, 
 
-    seperateRecursiveEnclosed.push([{ 
+    seperateRecursiveEnclosed.push([{ //push the first point of the first line. this is the beginning of the shape.  the point is removed once its pushed
         i: currentI, 
         j: currentJ
     }]);
 
     seperateConnectedLines(); 
-
-
+    distanceAlgorithm();
 
     seperateBoxes();
+
     graph();
-    distanceAlgorithm(); 
     matchAlgorithm();
 
 }
