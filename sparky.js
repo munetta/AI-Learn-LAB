@@ -12,6 +12,7 @@ let foundUnknownColor = false;
 let picturesUniqueLine = []; 
 let seperateRecursiveEnclosed = [];
 let popIt = [];
+let levelsDeep = [];
 let currentI; 
 let currentJ;
 let seperateBoxes = [];
@@ -122,32 +123,40 @@ function seperateConnectedLines() {
             splicedI ? popIt.splice(i, 1) : '' //unneccessary
             splicedI = true;
             currentJ += 1;
+            levelsDeep += 1;
             pushPoint(); 
             currentJ -= 1; 
+            levelsDeep -= 1;
         }
 
         if(tempJ === currentJ - 1 && tempI === currentI) {
             splicedI ? popIt.splice(i, 1) : ''
             splicedI = true;
             currentJ -= 1; 
+            levelsDeep += 1;
             pushPoint();
             currentJ += 1;
+            levelsDeep -= 1;
         }
 
         if(tempI === currentI + 1 && tempJ === currentJ) {
             splicedI ? popIt.splice(i, 1) : '' 
             splicedI = true;
             currentI += 1; 
+            levelsDeep += 1;
             pushPoint();
             currentI -= 1;
+            levelsDeep -= 1;
         }
 
         if(tempI === currentI - 1 && tempJ === currentJ) {
             splicedI ? popIt.splice(i, 1) : '' 
             splicedI = true;
             currentI -= 1; 
+            levelsDeep += 1;
             pushPoint();
             currentI += 1;
+            levelsDeep -= 1;
         }
 
         if(tempI === currentI - 1 && tempJ === currentJ - 1) { 
@@ -155,9 +164,11 @@ function seperateConnectedLines() {
             splicedI = true;
             currentI -= 1; 
             currentJ -= 1;
+            levelsDeep += 1;
             pushPoint();
             currentI += 1;
             currentJ += 1;
+            levelsDeep -= 1;
         }
 
         if(tempI === currentI + 1 && tempJ === currentJ + 1) { 
@@ -165,9 +176,11 @@ function seperateConnectedLines() {
             splicedI = true;
             currentI += 1; 
             currentJ += 1;
+            levelsDeep += 1;
             pushPoint();
             currentI -= 1;
             currentJ -= 1;
+            levelsDeep -= 1;
         }
 
         if(tempI === currentI + 1 && tempJ === currentJ - 1) { 
@@ -175,9 +188,11 @@ function seperateConnectedLines() {
             splicedI = true;
             currentI += 1; 
             currentJ -= 1;
+            levelsDeep += 1;
             pushPoint();
             currentI -= 1;
             currentJ += 1;
+            levelsDeep -= 1;
         }
 
         if(tempI === currentI - 1 && tempJ === currentJ + 1) { 
@@ -185,26 +200,32 @@ function seperateConnectedLines() {
             splicedI = true;
             currentI -= 1; 
             currentJ += 1;
+            levelsDeep += 1;
             pushPoint();
             currentI += 1;
             currentJ -= 1;
+            levelsDeep -= 1;
         }
         
     }
 
-    if(popIt.length === 0) { 
-        return;
-    } 
+    if(levelsDeep === 0) {
 
-    seperateRecursiveEnclosed.push([{ i: popIt[0].i, j: popIt[0].j }]);
+        if(popIt.length === 0) { 
+            return;
+        } 
 
-    popIt.splice(0, 1); 
+        seperateRecursiveEnclosed.push([{ i: popIt[0].i, j: popIt[0].j }]);
 
-    if(popIt.length === 0) { 
-        return;
+        popIt.splice(0, 1); 
+
+        if(popIt.length === 0) { 
+            return;
+        }
+
+        return seperateConnectedLines();
+
     }
-
-    return seperateConnectedLines();
 
 }
 
@@ -222,7 +243,7 @@ function distanceAlgorithm() {
     runs the algorithm over the current frame, and compares to other frames
     uses the entire image
     just the closest match
-    rotates image and checks every rotation -- not sure if woth if with edges
+    rotates image and checks every rotation
 */
 
 function matchAlgorithm() {}
@@ -268,7 +289,7 @@ function outline() {
 
     seperateConnectedLines(); 
 
-    distanceAlgorithm(); //many ways to do this. 
+    distanceAlgorithm(); //take one point and do all points
 
 
 
