@@ -98,7 +98,7 @@ function graph() {
 /*
     Takes the edges which are all connected, and stores them in a multidimensional array
     Each array can be seen as a unique picture within a larger picture
-    -not all the way right i think
+    -not all the way right i think. run it after.
 */
 
 let seperateRecursiveEnclosed = [];
@@ -115,41 +115,45 @@ function seperateConnectedLines() {
 
     for(let i = 0; i < popIt.length; i++) { 
 
-        //the point saved to avoid the splicing error
         let tempI = popIt[i].i; 
         let tempJ = popIt[i].j;
+        let splicedI = false;
 
-        if(tempJ === currentJ + 1 && tempI === currentI) { //right point found in the popIt array
-            popIt.splice(i, 1); //deleting the right point, and setting it as the current
-            currentJ += 1; //moving to the right point to process its surroundings (except for the one deleted)
-            pushPoint(); //pushing the right point
-            currentJ -= 1; //moving back left point to process other surrounding points
-            //the left point is removed at this point.. and the right direction was already taken... tempI, and tempJ is the placeholder to be able to process every condition
+        if(tempJ === currentJ + 1 && tempI === currentI) {
+            splicedI ? popIt.splice(i, 1) : '' //unneccessary
+            splicedI = true;
+            currentJ += 1;
+            pushPoint(); 
+            currentJ -= 1; 
         }
 
-        if(tempJ === currentJ - 1 && tempI === currentI) { //note: if i splice, i will have to save the last point in a temp variable
-            popIt.splice(i, 1); 
+        if(tempJ === currentJ - 1 && tempI === currentI) {
+            splicedI ? popIt.splice(i, 1) : ''
+            splicedI = true;
             currentJ -= 1; 
             pushPoint();
             currentJ += 1;
         }
 
         if(tempI === currentI + 1 && tempJ === currentJ) {
-            popIt.splice(i, 1); 
+            splicedI ? popIt.splice(i, 1) : '' 
+            splicedI = true;
             currentI += 1; 
             pushPoint();
             currentI -= 1;
         }
 
         if(tempI === currentI - 1 && tempJ === currentJ) {
-            popIt.splice(i, 1); 
+            splicedI ? popIt.splice(i, 1) : '' 
+            splicedI = true;
             currentI -= 1; 
             pushPoint();
             currentI += 1;
         }
 
         if(tempI === currentI - 1 && tempJ === currentJ - 1) { 
-            popIt.splice(i, 1); 
+            splicedI ? popIt.splice(i, 1) : ''
+            splicedI = true;
             currentI -= 1; 
             currentJ -= 1;
             pushPoint();
@@ -158,7 +162,8 @@ function seperateConnectedLines() {
         }
 
         if(tempI === currentI + 1 && tempJ === currentJ + 1) { 
-            popIt.splice(i, 1); 
+            splicedI ? popIt.splice(i, 1) : ''
+            splicedI = true;
             currentI += 1; 
             currentJ += 1;
             pushPoint();
@@ -167,7 +172,8 @@ function seperateConnectedLines() {
         }
 
         if(tempI === currentI + 1 && tempJ === currentJ - 1) { 
-            popIt.splice(i, 1); 
+            splicedI ? popIt.splice(i, 1) : ''
+            splicedI = true;
             currentI -= 1; 
             currentJ -= 1;
             pushPoint();
@@ -176,7 +182,8 @@ function seperateConnectedLines() {
         }
 
         if(tempI === currentI - 1 && tempJ === currentJ + 1) { 
-            popIt.splice(i, 1); 
+            splicedI ? popIt.splice(i, 1) : ''
+            splicedI = true;
             currentI -= 1; 
             currentJ += 1;
             pushPoint();
@@ -264,6 +271,10 @@ function outline() {
 
     seperateConnectedLines(); 
     distanceAlgorithm();
+
+
+
+
 
     seperateBoxes();
 
