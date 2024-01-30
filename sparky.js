@@ -10,7 +10,10 @@ let basePixelJ = 0;
 let image = null;
 let foundUnknownColor = false;
 let picturesUniqueLine = []; 
-// let seperateRecursiveEnclosed = [];
+let seperateRecursiveEnclosed = [];
+let popIt = [];
+let currentI; 
+let currentJ;
 let seperateBoxes = [];
 
 /*
@@ -98,13 +101,9 @@ function graph() {
 /*
     Takes the edges which are all connected, and stores them in a multidimensional array
     Each array can be seen as a unique picture within a larger picture
-    -not all the way right i think. run it after.
+    not all the way right i think. will run it after. 
+    this is the recursive way 
 */
-
-let seperateRecursiveEnclosed = [];
-let popIt = [];
-let currentI; 
-let currentJ;
 
 function seperateConnectedLines() {
 
@@ -174,10 +173,10 @@ function seperateConnectedLines() {
         if(tempI === currentI + 1 && tempJ === currentJ - 1) { 
             splicedI ? popIt.splice(i, 1) : ''
             splicedI = true;
-            currentI -= 1; 
+            currentI += 1; 
             currentJ -= 1;
             pushPoint();
-            currentI += 1;
+            currentI -= 1;
             currentJ += 1;
         }
 
@@ -215,7 +214,9 @@ function seperateConnectedLines() {
     center point uses to get slopes between all edges. slopes then compared with each other. <-- this needs a center point formula
 */
 
-function distanceAlgorithm() {}
+function distanceAlgorithm() {
+
+}
 
 /*
     runs the algorithm over the current frame, and compares to other frames
@@ -255,28 +256,24 @@ function outline() {
 
     }
 
-    /*
-        pushing the first pixel beginning the first connected line 
-    */
+    popIt = [...edges]; 
 
-    popIt = [...edges]; //put all the edges in here
     currentI = popIt[0].i; 
-    currentJ = popIt[0].j;
-    popIt.splice(0, 1); //when pushing a point, 
 
-    seperateRecursiveEnclosed.push([{ //push the first point of the first line. this is the beginning of the shape.  the point is removed once its pushed
-        i: currentI, 
-        j: currentJ
-    }]);
+    currentJ = popIt[0].j;
+
+    popIt.splice(0, 1); 
+
+    seperateRecursiveEnclosed.push([{ i: currentI, j: currentJ }]);
 
     seperateConnectedLines(); 
-    distanceAlgorithm();
+
+    distanceAlgorithm(); //many ways to do this. 
 
 
 
 
-
-    seperateBoxes();
+    seperateBoxes(); //this would work for things which arent overlapping. but the other thing is nice too. ---unique line over the box would work nicely i think here.... 
 
     graph();
     matchAlgorithm();
