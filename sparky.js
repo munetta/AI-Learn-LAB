@@ -100,7 +100,7 @@ function graph() {
 }
 
 /*
-    Takes the edges which are all connected, and stores them in a multidimensional array
+    Takes the edges which are all connected, and stores each connected set in a multidimensional array
     Each array can be seen as a unique picture within a larger picture
     not all the way right i think. will run it after. 
     this is the recursive way 
@@ -120,7 +120,7 @@ function seperateConnectedLines() {
         let splicedI = false;
 
         if(tempJ === currentJ + 1 && tempI === currentI) {
-            splicedI ? popIt.splice(i, 1) : '' //unneccessary
+            splicedI ? popIt.splice(i, 1) : ''
             splicedI = true;
             currentJ += 1;
             levelsDeep += 1;
