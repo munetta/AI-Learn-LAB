@@ -249,7 +249,7 @@ function distanceAlgorithm() {
 function matchAlgorithm() {}
 
 /*
-    iterating over image. identifying center pixel. 
+    iterating over image. identifying center pixel. start function
 */
 
 function outline() {
