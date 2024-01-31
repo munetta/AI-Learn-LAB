@@ -209,7 +209,7 @@ function seperateConnectedLines() {
         
     }
 
-    if(levelsDeep === 0) {
+    if(levelsDeep === 0 || popIt.length === 0) {
 
         if(popIt.length === 0) { 
             return;
