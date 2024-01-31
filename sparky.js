@@ -16,6 +16,7 @@ let levelsDeep = [];
 let currentI; 
 let currentJ;
 let seperateBoxes = [];
+let loadedPictureLines = fetchLines(); //this would be the simplest way with matching
 
 /*
   creates a multi-dimensional array of the image
@@ -23,7 +24,16 @@ let seperateBoxes = [];
   edge: false
 */
 
-function turnImageIntoMultidimensionalArray() {}
+function turnImageIntoMultidimensionalArray() {
+    for(let i = 0; i < image.length; i++) { 
+        for(let j = i; j < image[i].length; j++) { 
+            image[i][j] = { 
+                color: image[i][j].color, 
+                edge: false
+            }
+        }
+    }
+}
  
 /*
     pushing the perimeter colors around the center pixel
@@ -86,7 +96,7 @@ function fetchPixelColor(i, j) {
 /*
     graphs the image over a unique line. This is just a visual. 
     (can graph each seperate array)
-    probably not going to be used. but it can be. this would be a simple matching algorithm.
+    probably not going to be used. but it can be. this would be a simple matching algorithm without the rotation. ()
 */
 
 function graph() { 
@@ -235,9 +245,7 @@ function seperateConnectedLines() {
     center point uses to get slopes between all edges. slopes then compared with each other. <-- this needs a center point formula
 */
 
-function distanceAlgorithm() {
-
-}
+function distanceAlgorithm() {}
 
 /*
     runs the algorithm over the current frame, and compares to other frames
@@ -246,10 +254,17 @@ function distanceAlgorithm() {
     rotates image and checks every rotation
 */
 
-function matchAlgorithm() {}
+function matchAlgorithm() {
+    let matches = 0;
+    for(let i = 0; i < loadedPictureLines.length; i++) {
+        for(let j = 0; j < loadedPictureLines[i].length; j++) { 
+
+        }
+    }
+}
 
 /*
-    iterating over image. identifying center pixel. start function
+    iterating over image. identifying center pixel. INDEX
 */
 
 function outline() {
@@ -287,9 +302,9 @@ function outline() {
 
     seperateRecursiveEnclosed.push([{ i: currentI, j: currentJ }]);
 
-    seperateConnectedLines(); 
+    seperateConnectedLines();
 
-    distanceAlgorithm(); //take one point and do all points
+    distanceAlgorithm(); //pixels relative amount/distance algorithm... fucing hard
 
 
 
@@ -297,6 +312,7 @@ function outline() {
     seperateBoxes(); //this would work for things which arent overlapping. but the other thing is nice too. ---unique line over the box would work nicely i think here.... 
 
     graph();
+
     matchAlgorithm();
 
 }
