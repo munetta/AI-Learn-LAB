@@ -11,7 +11,7 @@ let image = null;
 let foundUnknownColor = false;
 let picturesUniqueLine = []; 
 let seperateRecursiveEnclosed = [];
-let popIt = [];
+let popIt = [];                                                                                                                                                                                                                       //loudaa
 let levelsDeep = [];
 let currentI; 
 let currentJ;
