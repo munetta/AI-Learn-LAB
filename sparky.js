@@ -16,12 +16,10 @@ let levelsDeep = [];
 let currentI; 
 let currentJ;
 let seperateBoxes = [];
-let loadedPictureLines = fetchLines(); //this would be the simplest way with matching
+let loadedPictureLines = fetchLines();
 
 /*
-  creates a multi-dimensional array of the image
-  color: color 
-  edge: false
+  creates a multi-dimensional array of the image -- obv wrong
 */
 
 function turnImageIntoMultidimensionalArray() {
@@ -37,6 +35,7 @@ function turnImageIntoMultidimensionalArray() {
  
 /*
     pushing the perimeter colors around the center pixel
+    if an unknown color is found, noted as the last outside perimeter per the center pixel
 */
 
 function pushColor(color, i, j) { 
@@ -65,7 +64,7 @@ function resetParameters() {
 }
 
 /*
-    colors the edges
+    labels all the edges and colors them over the image
 */
 
 function labelEdges() { 
@@ -94,9 +93,9 @@ function fetchPixelColor(i, j) {
 }
 
 /*
-    graphs the image over a unique line. This is just a visual. 
-    (can graph each seperate array)
-    probably not going to be used. but it can be. this would be a simple matching algorithm without the rotation. ()
+    graphs the image over a unique line
+    unique lines are compared to distinguish images 
+    this is the first way (non slope way). This could actually work every time with more data
 */
 
 function graph() { 
