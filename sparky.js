@@ -19,10 +19,11 @@ let seperateBoxes = [];
 let deviation = 100;  
 let edgeColor = 'black';
 let knownColors = {};
-let loadedPictureLines = fetchLines(); // { array-length: [[line]. [line]]}
+let loadedPictureLines = fetchLines();
 
 /*
   creates a multi-dimensional array of the image to label edges ---> must set the image to an array beforehand
+  THIS CAN INCOROPORTATE AN ALL BOXES PROCESS RIGHT HERE
 */
 
 function turnImageIntoMultidimensionalArray() {
@@ -108,16 +109,19 @@ function fetchPixelColor(i, j) {
 }
 
 /*
-    graphs the image over a unique line
+    graphs the image over a unique line --- this is how the images are stored in the database
+    THIS IS MORE OF A CONVERSION FOR COMPARING
 */
 
 function graph() { 
     for(let i = 0; i < image.length; i++) {
-       if(image[i].edge) { 
-            picturesUniqueLine.push(1);
-       } else { 
-            picturesUniqueLine.push(0);
-       }
+        for(let j = i; j < image[i].length; j++) { 
+            if(image[i][j].edge) { 
+                picturesUniqueLine.push(1);
+           } else { 
+                picturesUniqueLine.push(0);
+           }
+        }
     }
 }
 
@@ -255,7 +259,7 @@ function seperateConnectedLines() {
 function distanceAlgorithm() {}
 
 /*
-    runs the match algorithm over the current frame and saved frames <--- object storage multi dimensional array of images... per this image length. saved at this image length...
+    runs the match algorithm over the current frame and saved frames <--- object storage on image length nice here
 */
 
 function matchAlgorithm() {
@@ -263,7 +267,7 @@ function matchAlgorithm() {
         ...loadedPictureLines[picturesUniqueLine.length - 1]
     ];
 
-    let medianKeyUpwardSearch = picturesUniqueLine.length - 1 + 1; //with boxes pictures unique line changes
+    let medianKeyUpwardSearch = picturesUniqueLine.length - 1 + 1;
     let medianKeyDownwardSearch = picturesUniqueLine.length - 1 - 1;
     let untilDeviationMet = 0;
 
@@ -284,10 +288,12 @@ function matchAlgorithm() {
 
     outwardSearchFromMedianKey();
 
+    let matches = 0
+
     for(let i = 0; i < comparableArrays.length; i++) {
 
-    }
-    
+    }   
+
 }
 
 /*
