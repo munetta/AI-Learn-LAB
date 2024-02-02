@@ -16,19 +16,16 @@ let levelsDeep = [];
 let currentI; 
 let currentJ;
 let seperateBoxes = [];
-let deviation = 100; 
-let allNull = false; //move next in detect function -- set in push color. read in detect.
-let edgeColor = 'black'; //sets the edge color -- 
-let knownColors = {}; //sets edgeColor to custom color... UI set to default 
+let deviation = 100;  
+let edgeColor = 'black';
+let knownColors = {};
 let loadedPictureLines = fetchLines();
 
 /*
-  creates a multi-dimensional array of the image to label edges --- 
+  creates a multi-dimensional array of the image to label edges ---> must set the image to an array beforehand
 */
 
 function turnImageIntoMultidimensionalArray() {
-    //label
-    //after labeled. just set some values to use for ease of use
     for(let i = 0; i < image.length; i++) { 
         for(let j = i; j < image[i].length; j++) { 
             knownColors[image[i][j].color] = image[i][j].color;
@@ -41,8 +38,8 @@ function turnImageIntoMultidimensionalArray() {
 }
  
 /*
-    pushing the perimeter colors around the center pixel
-    if an unknown color is found, noted as the last outside perimeter per the center pixel
+    pushing the perimeter colors around the center pixel <--- if an unknown color is found, noted as the last outside perimeter (center pixel moves)
+
 */
 
 function pushColor(color, i, j) { 
@@ -50,7 +47,7 @@ function pushColor(color, i, j) {
     perimeterColors.push({
         color: color,                                              
         i: i, 
-        j: j
+        j: j, 
     });
 
     if((perimeterColors[perimeterColors.length - 1].color !== centerPixel.color) && perimeterColors[perimeterColors.length - 1].color !== null) { 
@@ -68,7 +65,7 @@ function resetParameters() {
     diagonolPointDistance = 1; 
     amountAround = 2; 
     foundUnknownColor = false;
-    allNull = false;
+    outOfBounds = false;
 }
 
 /*
@@ -81,28 +78,20 @@ function labelEdges() {
             if(typeof(avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`]) === 'undefined') {
                 edges.push({i: perimeterColors[i].i, j: perimeterColors[i].j});
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
-                image[perimeterColors[i].i][perimeterColors[i].j].edge = true; //important for the matching algorithm
+                image[perimeterColors[i].i][perimeterColors[i].j].edge = true;
             }
         }
     }
 }
 
+/*
+    colors the edges a standard color. @param knownColors can be used for a rainbow function (not gay adam but i do support happiness)
+*/
+
 function colorEdges() { 
-
-    let alternateColors = ['black', 'red', 'green', 'gray', 'yellow'];
-
-    for(let i = 0; i < alternateColors.length; i++) { 
-        if(typeof knownColors[alternateColors[i]] === 'undefined') { 
-            edgeColor = alternateColors[i];
-            break;
-        }
-    }
-
-    //foolow me to the rainbow function.
     for(let i = 0; i < edges.length; i++) { 
         image[edges[i].i][edges[i].j].color = edgeColor;
     }
-
 }
 
 /*
@@ -115,12 +104,11 @@ function fetchPixelColor(i, j) {
     } catch(err) { 
         return null;
     }
+
 }
 
 /*
     graphs the image over a unique line
-    unique lines are compared to distinguish images 
-    this is the first way (non slope way). This could actually work every time with more data
 */
 
 function graph() { 
@@ -134,10 +122,7 @@ function graph() {
 }
 
 /*
-    Takes the edges which are all connected, and stores each connected set in a multidimensional array
-    Each array can be seen as a unique picture within a larger picture
-    not all the way right i think. will run it after. 
-    this is the recursive way 
+    Takes the edges which are all connected, and stores each connected set in a multidimensional array (incorrect)
 */
 
 function seperateConnectedLines() {
@@ -311,13 +296,20 @@ function outline() {
 
     }
 
+    /*
+        standard match algorithm over a unique line <-- match algorithm
+    */
+
     colorEdges();
+
+    seperateBoxes();
 
     graph();
 
+    matchAlgorithm();
 
     /*
-        preparing to divide the image into many uniiqe lines (where to go from here)
+        preparing to divide the image into many uniiqe lines (where to go from here) <-- distance algorithm
     */
 
     popIt = [...edges]; 
@@ -334,19 +326,10 @@ function outline() {
 
     distanceAlgorithm();
 
-
-
-
-    seperateBoxes();
-
-    graph();
-
-    matchAlgorithm();
-
 }
 
 /*
-    iterating around the center pixel
+    iterating around the center pixel <-- change allNull process at bottom somewhere above
 */
 
 function moveAroundPixelandDetectFirstChange() {
@@ -393,14 +376,25 @@ function moveAroundPixelandDetectFirstChange() {
         return;
     }
 
+    let allNull = true;
+
+    for(let i = 0; i < perimeterColors.length; i++) { 
+        if(perimeterColors.color !== null) {
+            allNull = false;
+            break;
+        } 
+    }
+
     if(allNull) {
         return;
-    } 
+    }
 
     perimeterColors = [];
 
     return moveAroundPixelandDetectFirstChange();
 
 }
+
+
 
 
