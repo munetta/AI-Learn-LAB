@@ -4,7 +4,7 @@
     University: WPI
     Department: Artificial Intelligence
     Title: Image wrap and matching algorithm (ARTIFICIAL INTELLIGENCE ALGORITHM)
-    Student Body: Black American Scientists
+    Student Body: Latino Black American Scientists
     Inspiration: Sam Altman
 */
 
