@@ -19,7 +19,7 @@ let seperateBoxes = [];
 let deviation = 100;  
 let edgeColor = 'black';
 let knownColors = {};
-let loadedPictureLines = fetchLines();
+let loadedPictureLines = fetchLines(); // { array-length: [[line]. [line]]}
 
 /*
   creates a multi-dimensional array of the image to label edges ---> must set the image to an array beforehand
@@ -85,7 +85,7 @@ function labelEdges() {
 }
 
 /*
-    colors the edges a standard color. @param knownColors can be used for a rainbow function (not gay adam but i do support happiness)
+    colors the edges a standard color. @param knownColors can be used for a rainbow function
 */
 
 function colorEdges() { 
@@ -255,16 +255,39 @@ function seperateConnectedLines() {
 function distanceAlgorithm() {}
 
 /*
-    runs the match algorithm over the current frame and saved frames
+    runs the match algorithm over the current frame and saved frames <--- object storage multi dimensional array of images... per this image length. saved at this image length...
 */
 
 function matchAlgorithm() {
-    let matches = 0;
-    for(let i = 0; i < loadedPictureLines.length; i++) {
-        for(let j = 0; j < loadedPictureLines[i].length; j++) { 
+    let comparableArrays = [
+        ...loadedPictureLines[picturesUniqueLine.length - 1]
+    ];
 
+    let medianKeyUpwardSearch = picturesUniqueLine.length - 1 + 1; //with boxes pictures unique line changes
+    let medianKeyDownwardSearch = picturesUniqueLine.length - 1 - 1;
+    let untilDeviationMet = 0;
+
+    function outwardSearchFromMedianKey() { 
+        comparableArrays.push(...loadedPictureLines[medianKeyUpwardSearch]);
+        comparableArrays.push(...loadedPictureLines[medianKeyDownwardSearch]);
+        medianKeyUpwardSearch += 1; 
+        medianKeyDownwardSearch -= 1;
+        untilDeviationMet += 1;
+
+        if(untilDeviationMet === deviation) { 
+            return; 
+        } else { 
+            return outwardSearchFromMedianKey();
         }
+
     }
+
+    outwardSearchFromMedianKey();
+
+    for(let i = 0; i < comparableArrays.length; i++) {
+
+    }
+    
 }
 
 /*
@@ -329,7 +352,7 @@ function outline() {
 }
 
 /*
-    iterating around the center pixel <-- change allNull process at bottom somewhere above
+    iterating around the center pixel <-- change allNull process location at bottom somewhere above
 */
 
 function moveAroundPixelandDetectFirstChange() {
