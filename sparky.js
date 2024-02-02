@@ -1,4 +1,11 @@
 
+/*
+    Author: Alexander Eatman 
+    Artificial Intelligence
+    Name: Image wrap and matching algorithm (ARTIFICIAL INTELLIGENCE ALGORITHM)
+    Inspiration: Sam Altman
+*/
+
 let edges = [];
 let avoidEdges = {};
 let centerPixel = {};
@@ -22,13 +29,13 @@ let knownColors = {};
 let loadedPictureLines = fetchLines();
 
 /*
-  creates a multi-dimensional array of the image to label edges ---> must set the image to an array beforehand
+    creates a multi-dimensional array of the image to label edges ---> must set the image to an array beforehand
 */
 
 function turnImageIntoMultidimensionalArray() {
     for(let i = 0; i < image.length; i++) { 
         for(let j = 0; j < image[i].length; j++) { 
-            knownColors[image[i][j].color] = image[i][j].color;
+            knownColors[image[i][j].color] = image[i][j].color; 
             image[i][j] = { 
                 color: image[i][j].color, 
                 edge: false
@@ -39,7 +46,6 @@ function turnImageIntoMultidimensionalArray() {
  
 /*
     pushing the perimeter colors around the center pixel <--- if an unknown color is found, noted as the last outside perimeter (center pixel moves)
-
 */
 
 function pushColor(color, i, j) { 
@@ -251,13 +257,13 @@ function seperateConnectedLines() {
 }
 
 /*
-    runs the slope algorithm over all edges
+    runs the slope algorithm over all edges (this is going to be weird. I have to figure this out <--- going to be a pixel slope match algorithm per an object stored identifiable pixel) -
 */
 
 function distanceAlgorithm() {}
 
 /*
-    runs the match algorithm over the current frame and saved frames <--- object storage on image length nice here [[], []] <--- last index of the most matched array will always be the picture name
+    runs the match algorithm over the current frame and saved frames <--- object storage on image length nice here [[], []] <--- last index of the most matched array will always be the picture name -- END 
 */
 
 function matchAlgorithm() {
@@ -308,7 +314,12 @@ function matchAlgorithm() {
 
         }
 
-    }   
+    }
+    
+    return { 
+        pictureName: pictureName, 
+        matches: matches
+    }
 
 }
 
