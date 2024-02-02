@@ -1,8 +1,9 @@
 
 /*
     Author: Alexander Eatman 
-    Artificial Intelligence
-    Name: Image wrap and matching algorithm (ARTIFICIAL INTELLIGENCE ALGORITHM)
+    University: WPI
+    Department: Artificial Intelligence
+    Title: Image wrap and matching algorithm (ARTIFICIAL INTELLIGENCE ALGORITHM)
     Inspiration: Sam Altman
 */
 
