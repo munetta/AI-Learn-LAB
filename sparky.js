@@ -16,14 +16,13 @@ let levelsDeep = [];
 let currentI; 
 let currentJ;
 let seperateBoxes = [];
-let deviation = 100;  
+let deviation = 5;  
 let edgeColor = 'black';
 let knownColors = {};
 let loadedPictureLines = fetchLines();
 
 /*
-  creates a multi-dimensional array of the image to label edges ---> must set the image to an array beforehand
-  THIS CAN INCOROPORTATE AN ALL BOXES PROCESS RIGHT HERE
+  creates a multi-dimensional array of the image to label edges ---> (must do)
 */
 
 function turnImageIntoMultidimensionalArray() {
@@ -66,7 +65,6 @@ function resetParameters() {
     diagonolPointDistance = 1; 
     amountAround = 2; 
     foundUnknownColor = false;
-    outOfBounds = false;
 }
 
 /*
@@ -113,7 +111,7 @@ function fetchPixelColor(i, j) {
     THIS IS MORE OF A CONVERSION FOR COMPARING
 */
 
-function graph() { 
+function graphConversion() { 
     for(let i = 0; i < image.length; i++) {
         for(let j = i; j < image[i].length; j++) { 
             if(image[i][j].edge) { 
@@ -259,12 +257,12 @@ function seperateConnectedLines() {
 function distanceAlgorithm() {}
 
 /*
-    runs the match algorithm over the current frame and saved frames <--- object storage on image length nice here
+    runs the match algorithm over the current frame and saved frames <--- object storage on image length nice here [[], []] <--- last index of the most matched array will always be the picture name
 */
 
 function matchAlgorithm() {
     let comparableArrays = [
-        ...loadedPictureLines[picturesUniqueLine.length - 1]
+        [...loadedPictureLines[picturesUniqueLine.length - 1]]
     ];
 
     let medianKeyUpwardSearch = picturesUniqueLine.length - 1 + 1;
@@ -272,8 +270,8 @@ function matchAlgorithm() {
     let untilDeviationMet = 0;
 
     function outwardSearchFromMedianKey() { 
-        comparableArrays.push(...loadedPictureLines[medianKeyUpwardSearch]);
-        comparableArrays.push(...loadedPictureLines[medianKeyDownwardSearch]);
+        comparableArrays.push([...loadedPictureLines[medianKeyUpwardSearch]]);
+        comparableArrays.push([...loadedPictureLines[medianKeyDownwardSearch]]);
         medianKeyUpwardSearch += 1; 
         medianKeyDownwardSearch -= 1;
         untilDeviationMet += 1;
@@ -288,9 +286,27 @@ function matchAlgorithm() {
 
     outwardSearchFromMedianKey();
 
-    let matches = 0
+    let updateMostMatches = 0; 
+    let pictureName;
 
     for(let i = 0; i < comparableArrays.length; i++) {
+
+        for(let j = i; j < comparableArrays[i].length; j++) { 
+
+            let matches = 0;
+
+            for(let k = 0; k < comparableArrays[i][j].length; k++) { 
+                if((comparableArrays[i][j][k] === 1 && picturesUniqueLine[k] === 1) || (comparableArrays[i][j][k] === 0 && picturesUniqueLine[k] === 0)) { 
+                    matches += 1;
+                }
+            }
+
+            if(matches > updateMostMatches) { 
+                updateMostMatches = matches;
+                pictureName = comparableArrays[i][j][comparableArrays[i][j].length - 1];
+            }
+
+        }
 
     }   
 
@@ -331,9 +347,7 @@ function outline() {
 
     colorEdges();
 
-    seperateBoxes();
-
-    graph();
+    graphConversion();
 
     matchAlgorithm();
 
