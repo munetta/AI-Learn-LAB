@@ -22,7 +22,7 @@ let knownColors = {};
 let loadedPictureLines = fetchLines();
 
 /*
-  creates a multi-dimensional array of the image to label edges ---> (must do)
+  creates a multi-dimensional array of the image to label edges ---> must set the image to an array beforehand
 */
 
 function turnImageIntoMultidimensionalArray() {
@@ -113,7 +113,7 @@ function fetchPixelColor(i, j) {
 
 function graphConversion() { 
     for(let i = 0; i < image.length; i++) {
-        for(let j = i; j < image[i].length; j++) { 
+        for(let j = 0; j < image[i].length; j++) { 
             if(image[i][j].edge) { 
                 picturesUniqueLine.push(1);
            } else { 
@@ -291,7 +291,7 @@ function matchAlgorithm() {
 
     for(let i = 0; i < comparableArrays.length; i++) {
 
-        for(let j = i; j < comparableArrays[i].length; j++) { 
+        for(let j = 0; j < comparableArrays[i].length; j++) { 
 
             let matches = 0;
 
@@ -323,7 +323,7 @@ function outline() {
 
     for(let i = 0; i < image.length; i++) {
 
-        for(let j = i; j < image[i].length; j++) { 
+        for(let j = 0; j < image[i].length; j++) { 
 
             basePixelI = i;
             basePixelJ = j;
