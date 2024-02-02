@@ -27,7 +27,7 @@ let loadedPictureLines = fetchLines();
 
 function turnImageIntoMultidimensionalArray() {
     for(let i = 0; i < image.length; i++) { 
-        for(let j = i; j < image[i].length; j++) { 
+        for(let j = 0; j < image[i].length; j++) { 
             knownColors[image[i][j].color] = image[i][j].color;
             image[i][j] = { 
                 color: image[i][j].color, 
@@ -287,7 +287,7 @@ function matchAlgorithm() {
     outwardSearchFromMedianKey();
 
     let updateMostMatches = 0; 
-    let pictureName;
+    let pictureName = 'undefined';
 
     for(let i = 0; i < comparableArrays.length; i++) {
 
