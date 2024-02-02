@@ -16,15 +16,22 @@ let levelsDeep = [];
 let currentI; 
 let currentJ;
 let seperateBoxes = [];
+let deviation = 100; 
+let allNull = false; //move next in detect function -- set in push color. read in detect.
+let edgeColor = 'black'; //sets the edge color -- 
+let knownColors = {}; //sets edgeColor to custom color... UI set to default 
 let loadedPictureLines = fetchLines();
 
 /*
-  creates a multi-dimensional array of the image -- obv wrong
+  creates a multi-dimensional array of the image to label edges --- 
 */
 
 function turnImageIntoMultidimensionalArray() {
+    //label
+    //after labeled. just set some values to use for ease of use
     for(let i = 0; i < image.length; i++) { 
         for(let j = i; j < image[i].length; j++) { 
+            knownColors[image[i][j].color] = image[i][j].color;
             image[i][j] = { 
                 color: image[i][j].color, 
                 edge: false
@@ -61,6 +68,7 @@ function resetParameters() {
     diagonolPointDistance = 1; 
     amountAround = 2; 
     foundUnknownColor = false;
+    allNull = false;
 }
 
 /*
@@ -73,11 +81,28 @@ function labelEdges() {
             if(typeof(avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`]) === 'undefined') {
                 edges.push({i: perimeterColors[i].i, j: perimeterColors[i].j});
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
-                image[perimeterColors[i].i][perimeterColors[i].j].color = 'black';
-                image[perimeterColors[i].i][perimeterColors[i].j].edge = true;
+                image[perimeterColors[i].i][perimeterColors[i].j].edge = true; //important for the matching algorithm
             }
         }
     }
+}
+
+function colorEdges() { 
+
+    let alternateColors = ['black', 'red', 'green', 'gray', 'yellow'];
+
+    for(let i = 0; i < alternateColors.length; i++) { 
+        if(typeof knownColors[alternateColors[i]] === 'undefined') { 
+            edgeColor = alternateColors[i];
+            break;
+        }
+    }
+
+    //foolow me to the rainbow function.
+    for(let i = 0; i < edges.length; i++) { 
+        image[edges[i].i][edges[i].j].color = edgeColor;
+    }
+
 }
 
 /*
@@ -218,7 +243,7 @@ function seperateConnectedLines() {
         
     }
 
-    if(levelsDeep === 0 || popIt.length === 0) {
+    if(levelsDeep === 0 || popIt.length === 0) { 
 
         if(popIt.length === 0) { 
             return;
@@ -239,18 +264,13 @@ function seperateConnectedLines() {
 }
 
 /*
-    runs the algorithm over all edges
-    this only uses the edges of the image
-    center point uses to get slopes between all edges. slopes then compared with each other. <-- this needs a center point formula
+    runs the slope algorithm over all edges
 */
 
 function distanceAlgorithm() {}
 
 /*
-    runs the algorithm over the current frame, and compares to other frames
-    uses the entire image
-    just the closest match
-    rotates image and checks every rotation
+    runs the match algorithm over the current frame and saved frames
 */
 
 function matchAlgorithm() {
@@ -291,6 +311,15 @@ function outline() {
 
     }
 
+    colorEdges();
+
+    graph();
+
+
+    /*
+        preparing to divide the image into many uniiqe lines (where to go from here)
+    */
+
     popIt = [...edges]; 
 
     currentI = popIt[0].i; 
@@ -303,12 +332,12 @@ function outline() {
 
     seperateConnectedLines();
 
-    distanceAlgorithm(); //pixels relative amount/distance algorithm... fucing hard
+    distanceAlgorithm();
 
 
 
 
-    seperateBoxes(); //this would work for things which arent overlapping. but the other thing is nice too. ---unique line over the box would work nicely i think here.... 
+    seperateBoxes();
 
     graph();
 
@@ -364,9 +393,14 @@ function moveAroundPixelandDetectFirstChange() {
         return;
     }
 
+    if(allNull) {
+        return;
+    } 
+
     perimeterColors = [];
 
     return moveAroundPixelandDetectFirstChange();
 
 }
+
 
