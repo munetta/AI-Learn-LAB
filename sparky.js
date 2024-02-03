@@ -28,7 +28,7 @@ let knownColors = {};
 let loadedPictureLines = fetchLines();
 
 /*
-    creates a multi-dimensional array of the image to label edges ---> must set the image to an array beforehand
+    creates a multi-dimensional array of the image to label edges
 */
 
 function turnImageIntoMultidimensionalArray() {
@@ -44,7 +44,8 @@ function turnImageIntoMultidimensionalArray() {
 }
  
 /*
-    pushing the perimeter colors around the center pixel <--- if an unknown color is found, noted as the last outside perimeter (center pixel moves)
+    pushing the perimeter colors around the center pixel 
+    if an unknown color is found, noted as the last outside perimeter (center pixel moves)
 */
 
 function pushColor(color, i, j) { 
@@ -112,10 +113,8 @@ function fetchPixelColor(i, j) {
 }
 
 /*
-    -graphs the image over a unique line
-    -unique line used to compare against others
-    note: the distance algorithm does not use a unique line --- it uses pixel slopes between other pixels
-    note: this is for the match algorithm
+    graphs the image over a unique line
+    unique line used to compare against others
 */
 
 function graphConversion() { 
@@ -131,7 +130,7 @@ function graphConversion() {
 }
 
 /*
-    Takes the edges which are all connected, and stores each connected set in a multidimensional array
+    divides the image into a set of connected edges
 */
 
 function seperateConnectedLines() {
@@ -257,9 +256,17 @@ function seperateConnectedLines() {
 
 }
 
+/*
+    stores a slope set per pixel that is compared with other pixels
+*/
+
 function distanceAlgorithm() {
 
 }
+
+/*
+    compares the unique line @picturesUniqueLine to other lines stored of the same or similar length
+*/
 
 function matchAlgorithm() {
     let comparableArrays = [
@@ -312,7 +319,8 @@ function matchAlgorithm() {
     }
 
     /*
-        found the image most closely related, possibly save it if enough data is present to trust saving --- if not labeling stage
+        found the image most closely related 
+        save it if enough data is present to trust saving --- if not... labeling stage
     */
 
     function savePicture() {
@@ -390,7 +398,9 @@ export function outline() {
 
     distanceAlgorithm();
 
-    //pixel key = i-j-amount-of-atachments ---> array of all the slopes to the other pixels ---> compare all slopes ---> get minimum ---> whichever lines offers the lowest minimum should already have a set array associated with them  [apple, orange, banana, house] -- statistically figure out the most counted word across all sets to wholeistically define the image
+    /*
+        pixel key = i-j-amount-of-atachments ---> array of all the slopes to the other pixels ---> compare all slopes ---> get minimum ---> whichever lines offers the lowest minimum should already have a set array associated with them  [apple, orange, banana, house] -- statistically figure out the most counted word across all sets to wholeistically define the image --- just say over/over for the slopes -- avoids reversing
+    */
 
 }
 
