@@ -3,7 +3,6 @@
     Title: Image wrap and pixel matching script
     Description: defines all edges of an image
     Author: Alexander Eatman 
-    Student Body: Latin Black American Scientists
 */
 
 let edges = [];
