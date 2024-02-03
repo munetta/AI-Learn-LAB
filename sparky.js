@@ -257,12 +257,10 @@ function seperateConnectedLines() {
 }
 
 /*
-    stores a slope set per pixel that is compared with other pixels
+    stores a slope set per pixel that is compared with other pixels --- compare all total distances per pixel... no slope used. this will help interpret all directions as one direction
 */
 
-function distanceAlgorithm() {
-
-}
+function distanceAlgorithm() {}
 
 /*
     compares the unique line @picturesUniqueLine to other lines stored of the same or similar length
@@ -277,7 +275,7 @@ function matchAlgorithm() {
     let medianKeyDownwardSearch = picturesUniqueLine.length - 1 - 1;
     let untilDeviationMet = 0;
 
-    function outwardSearchFromMedianKey() { 
+    function outwardSearchFromMiddleKey() { 
         comparableArrays.push([...loadedPictureLines[medianKeyUpwardSearch]]);
         comparableArrays.push([...loadedPictureLines[medianKeyDownwardSearch]]);
         medianKeyUpwardSearch += 1; 
@@ -287,12 +285,12 @@ function matchAlgorithm() {
         if(untilDeviationMet === deviation) { 
             return; 
         } else { 
-            return outwardSearchFromMedianKey();
+            return outwardSearchFromMiddleKey();
         }
 
     }
 
-    outwardSearchFromMedianKey();
+    outwardSearchFromMiddleKey();
 
     let updateMostMatches = 0; 
     let pictureName = 'undefined';
@@ -370,11 +368,11 @@ export function outline() {
 
     }
 
+    colorEdges();
+
     /*
         match algorithm
     */
-
-    colorEdges();
 
     graphConversion();
 
@@ -470,6 +468,5 @@ function moveAroundPixelandDetectFirstChange() {
     return moveAroundPixelandDetectFirstChange();
 
 }
-
 
 
