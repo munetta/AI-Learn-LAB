@@ -1,7 +1,7 @@
 
 /*
-    Title: Image wrap and pixel matching script
-    Description: defines all edges of an image
+    Title: Pixel image wrapping script
+    Description: labels all edges of an image and uses the unique set of edges to label a picture
     Author: Alexander Eatman 
 */
 
