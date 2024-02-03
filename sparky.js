@@ -1,11 +1,10 @@
 
 /*
-    Author: Alexander Eatman 
     University: WPI
     Department: Artificial Intelligence
     Title: Image wrap and matching algorithm (ARTIFICIAL INTELLIGENCE ALGORITHM)
+    Author: Alexander Eatman 
     Student Body: Latin Black American Scientists
-    Inspiration: Sam Altman
 */
 
 let edges = [];
