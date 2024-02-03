@@ -112,7 +112,10 @@ function fetchPixelColor(i, j) {
 }
 
 /*
-    graphs the image over a unique line --- this is how the images are stored in the database
+    -graphs the image over a unique line
+    -unique line used to compare against others
+    note: the distance algorithm does not use a unique line --- it uses pixel slopes between other pixels
+    note: this is for the match algorithm
 */
 
 function graphConversion() { 
@@ -128,7 +131,7 @@ function graphConversion() {
 }
 
 /*
-    Takes the edges which are all connected, and stores each connected set in a multidimensional array (incorrect)
+    Takes the edges which are all connected, and stores each connected set in a multidimensional array
 */
 
 function seperateConnectedLines() {
@@ -254,15 +257,9 @@ function seperateConnectedLines() {
 
 }
 
-/*
-    runs the slope algorithm over all edges (this is going to be weird. I have to figure this out <--- going to be a pixel slope match algorithm per an object stored identifiable pixel) -
-*/
+function distanceAlgorithm() {
 
-function distanceAlgorithm() {}
-
-/*
-    runs the match algorithm over the current frame and saved frames <--- object storage on image length nice here [[], []] <--- last index of the most matched array will always be the picture name -- END 
-*/
+}
 
 function matchAlgorithm() {
     let comparableArrays = [
@@ -313,6 +310,20 @@ function matchAlgorithm() {
         }
 
     }
+
+    /*
+        found the image most closely related, possibly save it if enough data is present to trust saving --- if not labeling stage
+    */
+
+    function savePicture() {
+        axios.post({
+            picture: pictureName, 
+            picturesUniqueLine: [...picturesUniqueLine, pictureName],
+            key: picturesUniqueLine.length - 1
+        })
+    }
+
+    savePicture();
     
     return { 
         pictureName: pictureName, 
@@ -322,10 +333,11 @@ function matchAlgorithm() {
 }
 
 /*
-    iterating over image. identifying center pixel. INDEX.JS - START FUNCTION
+    START FUNCTION
+    outlining image
 */
 
-function outline() {
+export function outline() {
 
     image = fetchImage('file');
     turnImageIntoMultidimensionalArray();
@@ -351,7 +363,7 @@ function outline() {
     }
 
     /*
-        standard match algorithm over a unique line <-- match algorithm
+        match algorithm
     */
 
     colorEdges();
@@ -361,7 +373,7 @@ function outline() {
     matchAlgorithm();
 
     /*
-        preparing to divide the image into many uniiqe lines (where to go from here) <-- distance algorithm
+        distance algorithm
     */
 
     popIt = [...edges]; 
@@ -378,12 +390,12 @@ function outline() {
 
     distanceAlgorithm();
 
-    //pixel key = i-j-amount-of-atachments ---> array of all the slopes to the other pixels ---> compare all slopes ---> get minimum ---> whichever lines offers the lowest minimum should already have a set array associated with them  [apple, orange, banana, house] -- you statistically figure out the most counted word across all sets to wholeistically define the image 
+    //pixel key = i-j-amount-of-atachments ---> array of all the slopes to the other pixels ---> compare all slopes ---> get minimum ---> whichever lines offers the lowest minimum should already have a set array associated with them  [apple, orange, banana, house] -- statistically figure out the most counted word across all sets to wholeistically define the image
 
 }
 
 /*
-    iterating around the center pixel <-- change allNull process location at bottom somewhere above
+    iterating around the center pixel
 */
 
 function moveAroundPixelandDetectFirstChange() {
@@ -448,7 +460,6 @@ function moveAroundPixelandDetectFirstChange() {
     return moveAroundPixelandDetectFirstChange();
 
 }
-
 
 
 
