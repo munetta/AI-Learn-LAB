@@ -2,7 +2,7 @@
 /*
     University: WPI
     Department: Artificial Intelligence
-    Title: Image wrap and matching algorithm (ARTIFICIAL INTELLIGENCE ALGORITHM)
+    Title: Image wrap and pixel matching script
     Description: defines all edges of an image
     Author: Alexander Eatman 
     Student Body: Latin Black American Scientists
