@@ -378,6 +378,8 @@ function outline() {
 
     distanceAlgorithm();
 
+    //pixel key = i-j-amount-of-atachments ---> array of all the slopes to the other pixels ---> compare all slopes ---> get minimum ---> whichever lines offers the lowest minimum should already have a set array associated with them  [apple, orange, banana, house] -- you statistically figure out the most counted word across all sets to wholeistically define the image 
+
 }
 
 /*
