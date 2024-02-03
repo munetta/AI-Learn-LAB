@@ -1,7 +1,5 @@
 
 /*
-    University: WPI
-    Department: Artificial Intelligence
     Title: Image wrap and pixel matching script
     Description: defines all edges of an image
     Author: Alexander Eatman 
@@ -116,7 +114,6 @@ function fetchPixelColor(i, j) {
 
 /*
     graphs the image over a unique line --- this is how the images are stored in the database
-    THIS IS MORE OF A CONVERSION FOR COMPARING
 */
 
 function graphConversion() { 
@@ -326,7 +323,7 @@ function matchAlgorithm() {
 }
 
 /*
-    iterating over image. identifying center pixel. INDEX
+    iterating over image. identifying center pixel. INDEX.JS - START FUNCTION
 */
 
 function outline() {
