@@ -140,7 +140,7 @@ function graphConversion() {
 }
 
 /*
-    divides the image into a set of connected edges
+    divides the image into a set of connected edges (will use later)
 */
 
 function seperateConnectedLines() {
@@ -272,7 +272,7 @@ function seperateConnectedLines() {
     ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...]
 */
 
-function distanceAlgorithm() {} //count 
+function distanceAlgorithm() {}
 
 /*
     compares the unique line @picturesUniqueLine to other lines stored of the same or similar length
@@ -390,7 +390,7 @@ export function outline() {
     matchAlgorithm();
 
     /*
-        distance algorithm
+        function to seperate lines (will use later)
     */
 
     popIt = [...edges]; 
@@ -403,13 +403,13 @@ export function outline() {
 
     seperateRecursiveEnclosed.push([{ i: currentI, j: currentJ }]);
 
-    seperateConnectedLines();
-
-    distanceAlgorithm();
+    seperateConnectedLines(); 
 
     /*
-        pixel key = i-j-amount-of-atachments ---> array of all the slopes to the other pixels ---> compare all slopes ---> get minimum ---> whichever lines offers the lowest minimum should already have a set array associated with them  [apple, orange, banana, house] -- statistically figure out the most counted word across all sets to wholeistically define the image --- just say over/over for the slopes -- avoids reversing
+      runs a distance algorithm across all edges to other edges... 
     */
+
+    distanceAlgorithm();
 
 }
 
@@ -479,5 +479,4 @@ function moveAroundPixelandDetectFirstChange() {
     return moveAroundPixelandDetectFirstChange();
 
 }
-
 
