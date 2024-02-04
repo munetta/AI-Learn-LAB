@@ -1,6 +1,5 @@
 
 /*
-    Title: Pixel image wrapping script
     Description: labels all edges of an image and uses the unique set of edges to label a picture
     Author: Alexander Eatman 
 */
@@ -26,6 +25,15 @@ let deviation = 5;
 let edgeColor = 'black';
 let knownColors = {};
 let loadedPictureLines = fetchLines();
+let labelName = 'Alex';
+
+/*
+    setting a label name in case not saving, saved picture
+*/
+
+function updateLabelName(name) { 
+    labelName = name;
+}
 
 /*
     creates a multi-dimensional array of the image to label edges
@@ -257,10 +265,11 @@ function seperateConnectedLines() {
 }
 
 /*
-    stores a slope set per pixel that is compared with other pixels --- compare all total distances per pixel... no slope used. this will help interpret all directions as one direction
+    pixel key = i-j-amount-of-atachments ---> array of all the distaces to the other pixels (89 89 89 21 33 32) ---> compare all distances... get lowest... return an array [apple, banana] per pixel that can be used together
+
 */
 
-function distanceAlgorithm() {}
+function distanceAlgorithm() {} //count 
 
 /*
     compares the unique line @picturesUniqueLine to other lines stored of the same or similar length
@@ -293,7 +302,7 @@ function matchAlgorithm() {
     outwardSearchFromMiddleKey();
 
     let updateMostMatches = 0; 
-    let pictureName = 'undefined';
+    let databasePictureName = 'undefined';
 
     for(let i = 0; i < comparableArrays.length; i++) {
 
@@ -309,7 +318,7 @@ function matchAlgorithm() {
 
             if(matches > updateMostMatches) { 
                 updateMostMatches = matches;
-                pictureName = comparableArrays[i][j][comparableArrays[i][j].length - 1];
+                databasePictureName = comparableArrays[i][j][comparableArrays[i][j].length - 1];
             }
 
         }
@@ -322,9 +331,8 @@ function matchAlgorithm() {
     */
 
     function savePicture() {
-        axios.post({
-            picture: pictureName, 
-            picturesUniqueLine: [...picturesUniqueLine, pictureName],
+        axios.post({ 
+            picturesUniqueLine: [...picturesUniqueLine, labelName ? labelName : databasePictureName],
             key: picturesUniqueLine.length - 1
         })
     }
