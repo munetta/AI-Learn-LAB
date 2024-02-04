@@ -265,8 +265,9 @@ function seperateConnectedLines() {
 }
 
 /*
-    pixel key = i-j-amount-of-atachments ---> array of all the distaces to the other pixels (89 89 89 21 33 32) ---> compare all distances... get lowest... return an array [apple, banana] per pixel that can be used together
-
+    pixel key = i-j-amount-of-atachments ---> array of all the distaces to the other pixels (89 89 89 21 33 32) or ([-3, 5], [6,8])
+    ex 1 all directions: i-j-122: [[12,33,23], ...]
+    ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...]
 */
 
 function distanceAlgorithm() {} //count 
