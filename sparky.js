@@ -3,7 +3,7 @@
     Title: Picture algorithm
     Description: labels all edges of an image and uses the unique set of edges to label a picture
     Author: Alexander Eatman 
-    Student Body: Latin Black American Scientists Community
+    Student Body: Latin Black American Scientists
 */
 
 let edges = [];
