@@ -1,8 +1,7 @@
 
 /*
-    Title: Picture labeler
-    Description: labels all edges of an image and uses the unique set of edges to label a picture
-    Author: Alexander Eatman 
+    labels all edges of an image and uses the unique set of edges to label a picture
+    Alexander Eatman 
 */
 
 let edges = [];
@@ -27,9 +26,10 @@ let edgeColor = 'black';
 let knownColors = {};
 let loadedPictureLines = fetchLines();
 let labelName = 'Alex';
+let savePicture = false;
 
 /*
-    setting a label name in case not saving, saved picture
+    setting a label name
 */
 
 function updateLabelName(name) { 
@@ -268,7 +268,7 @@ function seperateConnectedLines() {
 /*
     pixel key = i-j-amount-of-atachments ---> array of all the distaces to the other pixels (89 89 89 21 33 32) or ([-3, 5], [6,8])
     ex 1 all directions: i-j-122: [[12,33,23], ...]
-    ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...]
+    ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...] ... count most matches within the array... subtract same values...
 */
 
 function distanceAlgorithm() {}
@@ -332,19 +332,14 @@ function matchAlgorithm() {
         save it if enough data is present to trust saving --- if not... labeling stage
     */
 
-    function savePicture() {
+    if(savePicture) {
         axios.post({ 
             picturesUniqueLine: [...picturesUniqueLine, labelName ? labelName : databasePictureName],
             key: picturesUniqueLine.length - 1
-        })
+        });
     }
 
-    savePicture();
-    
-    return { 
-        pictureName: labelName ? labelName : databasePictureName, 
-        matches: matches
-    }
+    return labelName ? labelName : databasePictureName;
 
 }
 
@@ -353,7 +348,7 @@ function matchAlgorithm() {
     outlining image
 */
 
-export function outline() {
+function outline() {
 
     image = fetchImage('file');
     turnImageIntoMultidimensionalArray();
