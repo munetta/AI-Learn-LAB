@@ -1,6 +1,6 @@
 
 /*
-    Title: Picture algorithm
+    Title: Picture labeler
     Description: labels all edges of an image and uses the unique set of edges to label a picture
     Author: Alexander Eatman 
 */
@@ -342,7 +342,7 @@ function matchAlgorithm() {
     savePicture();
     
     return { 
-        pictureName: pictureName, 
+        pictureName: labelName ? labelName : databasePictureName, 
         matches: matches
     }
 
