@@ -1,7 +1,7 @@
 
 /*
     labels all edges of an image and uses the unique set of edges to label a picture
-    Alexander Eatman 
+    Alexander Eatman (Eat-min)
 */
 
 let edges = [];
@@ -379,7 +379,7 @@ function outline() {
 
     colorEdges();
 
-    //split up the image into boxes here. and run a loop over each box, store all objects somewhere
+    //split up the image into boxes here and run a loop over each box. store all objects somewhere --- boxes will have a minimum pixel size --- iterate around from each center... create a multidimensional array of all box sizes... go over each box... count items ...
 
     /*
         match algorithm
