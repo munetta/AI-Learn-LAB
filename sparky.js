@@ -23,8 +23,7 @@ let currentJ;
 let seperateBoxes = [];
 let deviation = 5;  
 let edgeColor = 'black';
-let knownColors = {};
-let acceptedColors = [];
+let acceptedColors = new Set(['blue', 'red']);
 let loadedPictureLines = fetchLines();
 let labelName = 'Alex';
 let savePicture = false;
@@ -42,10 +41,9 @@ document.querySelector('#updateLabelNameButton').onclick = function() {
 */
 
 function turnImageIntoMultidimensionalArray() {
-    
     for(let i = 0; i < image.length; i++) { 
         for(let j = 0; j < image[i].length; j++) { 
-            knownColors[image[i][j].color] = image[i][j].color; 
+            acceptedColors.delete(image[i][j].color);
             image[i][j] = { 
                 color: image[i][j].color, 
                 edge: false
@@ -53,13 +51,7 @@ function turnImageIntoMultidimensionalArray() {
         }
     }
 
-    //just do this above and delete the accepted colors as you go 
-    for(let i = 0; i < acceptedColors.length; i++) { 
-        if(typeof(knownColors[acceptedColors[i]]) === 'undefined') { 
-            edgeColor = acceptedColors[i]; 
-            break;
-        }
-    } 
+    edgeColor = [...acceptedColors][0];
 
 }
  
@@ -69,7 +61,6 @@ function turnImageIntoMultidimensionalArray() {
 */
 
 function pushColor(color, i, j) { 
-
     perimeterColors.push({
         color: color,                                              
         i: i, 
@@ -110,7 +101,7 @@ function labelEdges() {
 }
 
 /*
-    colors the edges a standard color. @param knownColors can be used for a rainbow function
+    colors the edges a standard color
 */
 
 function colorEdges() { 
@@ -129,7 +120,6 @@ function fetchPixelColor(i, j) {
     } catch(err) { 
         return null;
     }
-
 }
 
 /*
@@ -388,6 +378,8 @@ function outline() {
     }
 
     colorEdges();
+
+    //split up the image into boxes here. and run a loop over each box, store all objects somewhere
 
     /*
         match algorithm
