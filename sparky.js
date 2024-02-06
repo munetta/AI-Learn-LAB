@@ -17,13 +17,14 @@ let foundUnknownColor = false;
 let picturesUniqueLine = []; 
 let seperateRecursiveEnclosed = [];
 let popIt = [];                                                                                                                                                                                                                       //loudaa
-let levelsDeep = [];
+let levelsDeep = 0;
 let currentI; 
 let currentJ;
 let seperateBoxes = [];
 let deviation = 5;  
 let edgeColor = 'black';
 let knownColors = {};
+let acceptedColors = [];
 let loadedPictureLines = fetchLines();
 let labelName = 'Alex';
 let savePicture = false;
@@ -41,6 +42,7 @@ document.querySelector('#updateLabelNameButton').onclick = function() {
 */
 
 function turnImageIntoMultidimensionalArray() {
+    
     for(let i = 0; i < image.length; i++) { 
         for(let j = 0; j < image[i].length; j++) { 
             knownColors[image[i][j].color] = image[i][j].color; 
@@ -50,6 +52,14 @@ function turnImageIntoMultidimensionalArray() {
             }
         }
     }
+
+    for(let i = 0; i < acceptedColors.length; i++) { 
+        if(typeof(knownColors[acceptedColors[i]]) === 'undefined') { 
+            edgeColor = acceptedColors[i]; 
+            break;
+        }
+    } 
+
 }
  
 /*
@@ -83,7 +93,7 @@ function resetParameters() {
 }
 
 /*
-    labels all the edges and colors them over the image
+    labels all the edges and colors them over the image (center pixel can be compounded <--- must ignore lighting)
 */
 
 function labelEdges() { 
@@ -272,7 +282,7 @@ function seperateConnectedLines() {
 */
 
 function distanceAlgorithm() {
-    let uniqueImageCount = {}; //apple, banana, etc... when done this will be a multi dimensional array
+    let uniqueImageCount = {};
 
 }
 
