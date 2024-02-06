@@ -53,6 +53,7 @@ function turnImageIntoMultidimensionalArray() {
         }
     }
 
+    //just do this above and delete the accepted colors as you go 
     for(let i = 0; i < acceptedColors.length; i++) { 
         if(typeof(knownColors[acceptedColors[i]]) === 'undefined') { 
             edgeColor = acceptedColors[i]; 
