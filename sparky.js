@@ -156,7 +156,7 @@ function seperateConnectedLines() {
         let splicedI = false;
 
         if(tempJ === currentJ + 1 && tempI === currentI) {
-            splicedI ? popIt.splice(i, 1) : ''
+            splicedI === false ? popIt.splice(i, 1) : ''
             splicedI = true;
             currentJ += 1;
             levelsDeep += 1;
@@ -166,7 +166,7 @@ function seperateConnectedLines() {
         }
 
         if(tempJ === currentJ - 1 && tempI === currentI) {
-            splicedI ? popIt.splice(i, 1) : ''
+            splicedI === false ? popIt.splice(i, 1) : ''
             splicedI = true;
             currentJ -= 1; 
             levelsDeep += 1;
@@ -176,7 +176,7 @@ function seperateConnectedLines() {
         }
 
         if(tempI === currentI + 1 && tempJ === currentJ) {
-            splicedI ? popIt.splice(i, 1) : '' 
+            splicedI === false ? popIt.splice(i, 1) : '' 
             splicedI = true;
             currentI += 1; 
             levelsDeep += 1;
@@ -186,7 +186,7 @@ function seperateConnectedLines() {
         }
 
         if(tempI === currentI - 1 && tempJ === currentJ) {
-            splicedI ? popIt.splice(i, 1) : '' 
+            splicedI === false ? popIt.splice(i, 1) : '' 
             splicedI = true;
             currentI -= 1; 
             levelsDeep += 1;
@@ -196,7 +196,7 @@ function seperateConnectedLines() {
         }
 
         if(tempI === currentI - 1 && tempJ === currentJ - 1) { 
-            splicedI ? popIt.splice(i, 1) : ''
+            splicedI === false ? popIt.splice(i, 1) : ''
             splicedI = true;
             currentI -= 1; 
             currentJ -= 1;
@@ -208,7 +208,7 @@ function seperateConnectedLines() {
         }
 
         if(tempI === currentI + 1 && tempJ === currentJ + 1) { 
-            splicedI ? popIt.splice(i, 1) : ''
+            splicedI === false ? popIt.splice(i, 1) : ''
             splicedI = true;
             currentI += 1; 
             currentJ += 1;
@@ -220,7 +220,7 @@ function seperateConnectedLines() {
         }
 
         if(tempI === currentI + 1 && tempJ === currentJ - 1) { 
-            splicedI ? popIt.splice(i, 1) : ''
+            splicedI === false ? popIt.splice(i, 1) : ''
             splicedI = true;
             currentI += 1; 
             currentJ -= 1;
@@ -232,7 +232,7 @@ function seperateConnectedLines() {
         }
 
         if(tempI === currentI - 1 && tempJ === currentJ + 1) { 
-            splicedI ? popIt.splice(i, 1) : ''
+            splicedI === false ? popIt.splice(i, 1) : ''
             splicedI = true;
             currentI -= 1; 
             currentJ += 1;
