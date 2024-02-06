@@ -32,12 +32,12 @@ let savePicture = false;
     setting a label name
 */
 
-function updateLabelName(name) { 
-    labelName = name;
+document.querySelector('#updateLabelNameButton').onclick = function() { 
+    labelName = document.querySelector('#labelName').value;
 }
 
 /*
-    creates a multi-dimensional array of the image to label edges
+    creates a multi-dimensional array of the image to label edges --- will do after
 */
 
 function turnImageIntoMultidimensionalArray() {
@@ -268,10 +268,13 @@ function seperateConnectedLines() {
 /*
     pixel key = i-j-amount-of-atachments ---> array of all the distaces to the other pixels (89 89 89 21 33 32) or ([-3, 5], [6,8])
     ex 1 all directions: i-j-122: [[12,33,23], ...]
-    ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...] ... count most matches within the array... subtract same values...
+    ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...] ... count most matches within the array... subtract omst similar values... each pixel line should have an array of images attached. count most frequent. return.
 */
 
-function distanceAlgorithm() {}
+function distanceAlgorithm() {
+    let uniqueImageCount = {}; //apple, banana, etc... when done this will be a multi dimensional array
+
+}
 
 /*
     compares the unique line @picturesUniqueLine to other lines stored of the same or similar length
@@ -384,7 +387,7 @@ function outline() {
     matchAlgorithm();
 
     /*
-        function to seperate lines (will use later)
+        function to seperate lines (will use later <-- numbers and letters)
     */
 
     popIt = [...edges]; 
