@@ -95,18 +95,9 @@ function labelEdges() {
                 edges.push({i: perimeterColors[i].i, j: perimeterColors[i].j});
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
                 image[perimeterColors[i].i][perimeterColors[i].j].edge = true;
+                document.querySelector(`${perimeterColors[i].i}-${perimeterColors[i].j}`).backgroundColor = edgeColor;
             }
         }
-    }
-}
-
-/*
-    colors the edges a standard color
-*/
-
-function colorEdges() { 
-    for(let i = 0; i < edges.length; i++) { 
-        image[edges[i].i][edges[i].j].color = edgeColor;
     }
 }
 
@@ -376,8 +367,6 @@ function outline() {
         }
 
     }
-
-    colorEdges();
 
     //split up the image into boxes here and run a loop over each box. store all objects somewhere --- boxes will have a minimum pixel size --- iterate around from each center... create a multidimensional array of all box sizes... go over each box... count items ...
 
