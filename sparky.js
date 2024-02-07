@@ -1,40 +1,82 @@
 
 /*
-    labels all edges of an image and uses the unique set of edges to label a picture
-    Alexander Eatman (Eat-min)
+    The image to work on and other stored images to compare to
+    boxes is all combinations of single image
 */
 
+let image = null;
+let picturesUniqueLine = []; 
+let loadedPictureLines = fetchLines();
+let boxes = [];
 let edges = [];
 let avoidEdges = {};
+
+/*
+    @function moveAroundPixelandDetectFirstChange
+*/
+
 let centerPixel = {};
 let diagonolPointDistance = 1;
 let amountAround = 2;
 let perimeterColors = [];
 let basePixelI = 0; 
 let basePixelJ = 0;
-let image = null;
 let foundUnknownColor = false;
-let picturesUniqueLine = []; 
+
+/*
+    @function seperateConnectedLines
+*/
+
 let seperateRecursiveEnclosed = [];
 let popIt = [];                                                                                                                                                                                                                       //loudaa
 let levelsDeep = 0;
 let currentI; 
 let currentJ;
-let seperateBoxes = [];
+
+/*
+    users input
+*/
+
 let deviation = 5;  
 let edgeColor = 'black';
 let acceptedColors = new Set(['blue', 'red']);
-let loadedPictureLines = fetchLines();
 let labelName = 'Alex';
 let savePicture = false;
 
 /*
-    setting a label name
+    users input
+    change save picture
 */
 
 document.querySelector('#updateLabelNameButton').onclick = function() { 
     labelName = document.querySelector('#labelName').value;
 }
+
+document.querySelector('#updateDefaultEdgeColorButton').onclick = function() { 
+    edgeColor = document.querySelector('#edgeColor').value;
+}
+
+document.querySelector('#addAnAcceptedEdgeColorButton').onclick = function() { 
+    try {
+        acceptedColors = new Set ([...document.querySelector('#edgeColors').value.trim().split(',')]);
+    } catch(err) { 
+        console.log('make sure colors are calma seperated')
+    }
+}
+
+document.querySelector('#updateDeviationButton').onclick = function() { 
+    deviation = document.querySelector('#deviation').value;
+}
+
+document.querySelector('#savePictureButton').onclick = function() { 
+    savePicture = document.querySelector('#savePicture').value;
+}
+
+/*
+    creates a multi-dimensional array of all the boxes
+*/
+
+function drawBoxes() {}
 
 /*
     creates a multi-dimensional array of the image to label edges --- will do after
@@ -51,7 +93,7 @@ function turnImageIntoMultidimensionalArray() {
         }
     }
 
-    edgeColor = [...acceptedColors][0];
+    edgeColor = [...acceptedColors][0] || edgeColor;
 
 }
  
@@ -85,7 +127,7 @@ function resetParameters() {
 }
 
 /*
-    labels all the edges and colors them over the image (center pixel can be compounded <--- must ignore lighting)
+    labels all the edges and colors them over the image (center pixel can be compounded <--- must ignore lighting <--- set a range)
 */
 
 function labelEdges() { 
@@ -116,6 +158,7 @@ function fetchPixelColor(i, j) {
 /*
     graphs the image over a unique line
     unique line used to compare against others
+    will call this functin from drawBoxes
 */
 
 function graphConversion() { 
@@ -260,7 +303,7 @@ function seperateConnectedLines() {
 /*
     pixel key = i-j-amount-of-atachments ---> array of all the distaces to the other pixels (89 89 89 21 33 32) or ([-3, 5], [6,8])
     ex 1 all directions: i-j-122: [[12,33,23], ...]
-    ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...] ... count most matches within the array... subtract omst similar values... each pixel line should have an array of images attached. count most frequent. return.
+    ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...] ... count most matches within the array... subtract similar values... each pixel line should have an array of images attached. count most frequent
 */
 
 function distanceAlgorithm() {
@@ -269,7 +312,7 @@ function distanceAlgorithm() {
 }
 
 /*
-    compares the unique line @picturesUniqueLine to other lines stored of the same or similar length
+    compares the unique line @picturesUniqueLine to other lines stored of the same or similar length <--- pass in the box parameter here... in loop... just to store all the images
 */
 
 function matchAlgorithm() {
@@ -368,18 +411,26 @@ function outline() {
 
     }
 
-    //split up the image into boxes here and run a loop over each box. store all objects somewhere --- boxes will have a minimum pixel size --- iterate around from each center... create a multidimensional array of all box sizes... go over each box... count items ...
+    /*
+        split up the image into boxes here and run a loop over each box
+    */
+
+    drawBoxes();
 
     /*
         match algorithm
     */
 
-    graphConversion();
-
     matchAlgorithm();
 
     /*
-        function to seperate lines (will use later <-- numbers and letters)
+      runs a distance algorithm across all edges to other edges... 
+    */
+
+    distanceAlgorithm();
+
+    /*
+        function to seperate lines (will use later <-- numbers and letters maybe)
     */
 
     popIt = [...edges]; 
@@ -393,12 +444,6 @@ function outline() {
     seperateRecursiveEnclosed.push([{ i: currentI, j: currentJ }]);
 
     seperateConnectedLines(); 
-
-    /*
-      runs a distance algorithm across all edges to other edges... 
-    */
-
-    distanceAlgorithm();
 
 }
 
