@@ -44,35 +44,6 @@ let labelName = 'Alex';
 let savePicture = false;
 
 /*
-    users input
-    change save picture
-*/
-
-document.querySelector('#updateLabelNameButton').onclick = function() { 
-    labelName = document.querySelector('#labelName').value;
-}
-
-document.querySelector('#updateDefaultEdgeColorButton').onclick = function() { 
-    edgeColor = document.querySelector('#edgeColor').value;
-}
-
-document.querySelector('#addAnAcceptedEdgeColorButton').onclick = function() { 
-    try {
-        acceptedColors = new Set ([...document.querySelector('#edgeColors').value.trim().split(',')]);
-    } catch(err) { 
-        console.log('make sure colors are calma seperated')
-    }
-}
-
-document.querySelector('#updateDeviationButton').onclick = function() { 
-    deviation = document.querySelector('#deviation').value;
-}
-
-document.querySelector('#savePictureButton').onclick = function() { 
-    savePicture = document.querySelector('#savePicture').value;
-}
-
-/*
     creates a multi-dimensional array of all the boxes
 */
 
@@ -158,7 +129,7 @@ function fetchPixelColor(i, j) {
 /*
     graphs the image over a unique line
     unique line used to compare against others
-    will call this functin from drawBoxes
+    the first picture in drawBoxes is the entire picture...
 */
 
 function graphConversion() { 
@@ -171,6 +142,9 @@ function graphConversion() {
            }
         }
     }
+
+    boxes.push([...picturesUniqueLine])
+
 }
 
 /*
@@ -303,7 +277,7 @@ function seperateConnectedLines() {
 /*
     pixel key = i-j-amount-of-atachments ---> array of all the distaces to the other pixels (89 89 89 21 33 32) or ([-3, 5], [6,8])
     ex 1 all directions: i-j-122: [[12,33,23], ...]
-    ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...] ... count most matches within the array... subtract similar values... each pixel line should have an array of images attached. count most frequent
+    ex 2 each direction: i-j-221: [[[-5, 6], [2,3]], ...] ... count most matches within the array... subtract omst similar values... each pixel line should have an array of images attached. count most frequent. return.
 */
 
 function distanceAlgorithm() {
@@ -412,16 +386,24 @@ function outline() {
     }
 
     /*
-        split up the image into boxes here and run a loop over each box
+        push the original image to boxes
+    */
+
+    graphConversion();
+
+    /*
+        split up the image into boxes here and run a loop over each box --- will do later
     */
 
     drawBoxes();
 
     /*
-        match algorithm
+        match algorithm --- this is run in a loop... where the pictures unique line is to start
     */
 
-    matchAlgorithm();
+    for(let i = 0; i < boxes.length; i++)
+        matchAlgorithm([...boxes[i]]);
+    }
 
     /*
       runs a distance algorithm across all edges to other edges... 
@@ -512,5 +494,33 @@ function moveAroundPixelandDetectFirstChange() {
 
     return moveAroundPixelandDetectFirstChange();
 
+}
+
+/*
+    users input
+*/
+
+document.querySelector('#updateLabelNameButton').onclick = function() { 
+    labelName = document.querySelector('#labelName').value;
+}
+
+document.querySelector('#updateDefaultEdgeColorButton').onclick = function() { 
+    edgeColor = document.querySelector('#edgeColor').value;
+}
+
+document.querySelector('#addAnAcceptedEdgeColorButton').onclick = function() { 
+    try {
+        acceptedColors = new Set ([...document.querySelector('#edgeColors').value.trim().split(',')]);
+    } catch(err) { 
+        console.log('make sure colors are calma seperated')
+    }
+}
+
+document.querySelector('#updateDeviationButton').onclick = function() { 
+    deviation = document.querySelector('#deviation').value;
+}
+
+document.querySelector('#savePictureButton').onclick = function() { 
+    savePicture = document.querySelector('#savePicture').value;
 }
 
