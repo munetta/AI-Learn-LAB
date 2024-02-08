@@ -8,7 +8,7 @@ let image = null;
 let picturesUniqueLine = []; 
 let loadedPictureLines = fetchLines();
 let boxes = [];
-let iteritiveBoxAmountLength;
+let iteritiveBoxAmountLength; //this gets updated so different size boxes can be applied to the image... alternative is a splash method
 let iteritiveBoxAmountHeight;
 let edges = [];
 let avoidEdges = {};
@@ -42,10 +42,11 @@ let edgeColor = 'black';
 let acceptedColors = new Set(['blue', 'red']);
 let labelName = 'Alex';
 let savePicture = false;
-let standardBoxSize = 0.10;
+let standardBoxSizeHeight = [0.05, 0.10, 0.15, 0.20, 0.25, 0.50]; //these are all perfec boxes... will use other percents as i go
+let standardBoxSizeWidth = [0.05, 0.10, 0.15, 0.20, 0.25, 0.50];
 
 /*
-    creates a multi-dimensional array of all the boxes -- standard way (dividing) --- other way is kind of like a splash
+    creates a multi-dimensional array of all the boxes --- standard way (dividing) --- other way is kind of like a splash
 */
 
 function drawBoxes() {}
