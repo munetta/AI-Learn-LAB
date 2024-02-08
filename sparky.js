@@ -534,7 +534,3 @@ document.querySelector('#updateDeviationButton').onclick = function() {
 document.querySelector('#savePictureButton').onclick = function() { 
     savePicture = document.querySelector('#savePicture').value;
 }
-
-document.querySelector('#savePictureButton').onclick = function() { 
-    savePicture = document.querySelector('#savePicture').value;
-}
