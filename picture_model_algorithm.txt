@@ -1,6 +1,5 @@
 
     Model 1 - Alex Eatman
-    my perspective of a picture model algorithm
     _______   
    -name: pixel distance relativety algorithm
    -purpose: gets the most accurate label of a picture
