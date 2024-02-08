@@ -2,7 +2,6 @@
 /*
     The image to work on and other stored images to compare to
     boxes is all combinations of single image
-    iteritiveBoxAmount gets updated so different size boxes can be applied to the image... alternative is a splash method
 */
 
 let image = null;
@@ -36,7 +35,6 @@ let currentJ;
 
 /*
     users input
-    standardBoxSize are all perfect boxes... will use other percents as i go
 */
 
 let deviation = 5;  
@@ -49,23 +47,22 @@ let standardBoxSizeWidth = [0.05, 0.10, 0.15, 0.20, 0.25, 0.50];
 
 /*
    creates a multi-dimensional array of all the boxes 
-   standard way (dividing) 
-   other way is a splash method
+   standard way (dividing) --- other way is a iteritive diagonalPoint method
 */
 
 function drawBoxes() {
     for(let i= 0; i < standardBoxSizeHeight.length; i++) {
         iteritiveBoxAmountWidth = image[0].length * standardBoxSizeWidth[i];
         iteritiveBoxAmountHeight = image.length * standardBoxSizeHeight[i];
-        draw();
+        drawOverImage();
     }
 }
 
 /*
-   using @iteritiveBoxAmount to iterively draw boxes over the image.. pushed to boxes
+   using @iteritiveBoxAmount to iterively draw copy boxes
 */
 
-function draw() {}
+function drawOverImage() {}
 
 /*
     creates a multi-dimensional array of the image to label edges --- will do after
@@ -538,3 +535,6 @@ document.querySelector('#savePictureButton').onclick = function() {
     savePicture = document.querySelector('#savePicture').value;
 }
 
+document.querySelector('#savePictureButton').onclick = function() { 
+    savePicture = document.querySelector('#savePicture').value;
+}
