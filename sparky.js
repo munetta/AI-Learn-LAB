@@ -59,7 +59,7 @@ function drawBoxes() {
 }
 
 /*
-   using @iteritiveBoxAmount to iterively draw copy boxes
+   using @iteritiveBoxAmount to iterively draw boxes over the image
 */
 
 function drawOverImage() {}
