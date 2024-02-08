@@ -1,48 +1,16 @@
+Alex Eatman 
 
-    Model 1 - Alex Eatman
-    _______   
-   -name: pixel distance relativety algorithm
+Algorithm   1
+ _______   
+   -name: pixel (edge/whole) distance relativety algorithm
    -purpose: gets the most accurate label of a picture
-   -description: takes the slope between all points in a unique line representing a picture (keeping vs dropping white pixels), and stores its values in a single array. Array length, used on lookup, to run a min distance algorithm on 2 same size arrays. Minimum value used to get the closest label for the picture.
-   -complexity: n^2 on incoming target --- n on getting the total difference between both arrays (unique lines)
-   -CHANGE: by doing a pixel local algorithm (same to closest black pixel to all others), you can compare at each pixel.  
+   -description: takes the slope between all points in a unique line representing a picture
+   -complexity: n^2 on incoming target
 
-    new incoming target (line) comes in and comparing against other stored lines starts...
-
-    techniques for determining difference between two pictures (lines) 
-
-  1. line matching. (exact matching) <-- unnneccessary but nice
-     -compare how many points in a row match up between lines. 
-     -counts and seperated inter-lines taken into consideration for statistical reasoning. *
-     -the more points that match the better, the more smaller lines that match the better
-     -hint: seperate lines, use those lines as individual models
-  2. use the min regression distance formula between lines, per each individual feature <-- unnneccessary but nice (comparing each line side by side and subtracting by each feature pixel) (shifting on the x axis maybe useful)
-     -subtract feature points between lines, add and take the lowest value
-     -the lowest value used for statistical reasoning. *
-  3. compare every combinational slope between lines <-- neccessary and will show the true closeness of two lines
-     -taking all combinations of slopes within a unique line. comparing the returned array against other lines sloped arrays. getting difference per index slope, adding to a min, which is compared against other mins stored. <-- creating an array of slopes is in n^2. incoming target is the line
-     -algorithm run on the outline of grayish to black pixels (color variant).
-     -on search, must select closest array line lengths which are already stored for comparing the incoming target line. (added difference between arrays <-- min selected <-- already noted right above)
-     -comparison of incoming target min against stored mins used for statistical reasoning * (after algorithm)
-  4. increasing and decreasing lines along the y or x axis, to compare to other lines
-     -3 negates this
-     - if shifting lines along the x axis, matching up the beginning point
-  5. rotating starting pixel to run comparison algorithm
-     -3 negates this (maybe)
-     -compare running algorithm starting on the outside edge of every pixel 
-     -why: so that if a target comes in drawn at a different angle, the algorithm i run will fetch its closest most labled angle
-  6. shape overlapping 
-    -nice but can not tell the difference between all things as easily, which is what I am doing with a unique line instead!
-  7. only go with the difference between black pixels and skip the unique line for this specific problem (dont take white pixels into consideration at all)
-     -more direct
-  8. storing slope arrays per pixel
-     -storing an array of slopes per pixel (comparing closest pixels) --> taking the difference between each pixels sloped array
-
-    techniques for outlining
-
-    1. drawing squares and finding the change
-    -per pixel, run a square algorithm (go in square)
-    -note the first change as an outlining pixel
-    -store the x-y in an object, in case running into again
-   
+Algorithm 2
+ _______ 
+   -name: (edge/whole) matching algorithm
+   -purpose: gets the most accurate label of a picture
+   -description: takes the minimum distance between two same size arrays
+   -complexity: n
       
