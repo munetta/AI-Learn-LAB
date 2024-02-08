@@ -8,6 +8,8 @@ let image = null;
 let picturesUniqueLine = []; 
 let loadedPictureLines = fetchLines();
 let boxes = [];
+let iteritiveBoxAmountLength;
+let iteritiveBoxAmountHeight;
 let edges = [];
 let avoidEdges = {};
 
@@ -19,8 +21,6 @@ let centerPixel = {};
 let diagonolPointDistance = 1;
 let amountAround = 2;
 let perimeterColors = [];
-let basePixelI = 0; 
-let basePixelJ = 0;
 let foundUnknownColor = false;
 
 /*
@@ -42,9 +42,10 @@ let edgeColor = 'black';
 let acceptedColors = new Set(['blue', 'red']);
 let labelName = 'Alex';
 let savePicture = false;
+let standardBoxSize = 0.10;
 
 /*
-    creates a multi-dimensional array of all the boxes
+    creates a multi-dimensional array of all the boxes -- standard way (dividing) --- other way is kind of like a splash
 */
 
 function drawBoxes() {}
@@ -108,7 +109,7 @@ function labelEdges() {
                 edges.push({i: perimeterColors[i].i, j: perimeterColors[i].j});
                 avoidEdges[`${perimeterColors[i].i}-${perimeterColors[i].j}`] = true;
                 image[perimeterColors[i].i][perimeterColors[i].j].edge = true;
-                document.querySelector(`${perimeterColors[i].i}-${perimeterColors[i].j}`).backgroundColor = edgeColor;
+                document.querySelector(`#${perimeterColors[i].i}-${perimeterColors[i].j}`).backgroundColor = edgeColor;
             }
         }
     }
@@ -282,7 +283,6 @@ function seperateConnectedLines() {
 
 function distanceAlgorithm() {
     let uniqueImageCount = {};
-
 }
 
 /*
@@ -365,17 +365,17 @@ function outline() {
     image = fetchImage('file');
     turnImageIntoMultidimensionalArray();
 
+    iteritiveBoxAmountLength = image[0].length * standardBoxSize;
+    iteritiveBoxAmountHeight = image.length * standardBoxSize;
+
     for(let i = 0; i < image.length; i++) {
 
         for(let j = 0; j < image[i].length; j++) { 
 
-            basePixelI = i;
-            basePixelJ = j;
-
             centerPixel = {
-                color: fetchPixelColor(basePixelI, basePixelJ), 
-                i: basePixelI, 
-                j: basePixelJ
+                color: fetchPixelColor(i, j), 
+                i: i, 
+                j: j
             }
 
             moveAroundPixelandDetectFirstChange();
@@ -401,7 +401,7 @@ function outline() {
         match algorithm --- this is run in a loop... where the pictures unique line is to start
     */
 
-    for(let i = 0; i < boxes.length; i++)
+    for(let i = 0; i < boxes.length; i++) {
         matchAlgorithm([...boxes[i]]);
     }
 
@@ -435,8 +435,8 @@ function outline() {
 
 function moveAroundPixelandDetectFirstChange() {
 
-    let iteritiveI = basePixelI - diagonolPointDistance; 
-    let iteritiveJ = basePixelJ - diagonolPointDistance;
+    let iteritiveI = centerPixel.i - diagonolPointDistance; 
+    let iteritiveJ = centerPixel.j - diagonolPointDistance;
 
     push = () => { 
         pushColor(
