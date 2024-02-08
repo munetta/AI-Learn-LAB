@@ -2,6 +2,7 @@
 /*
     The image to work on and other stored images to compare to
     boxes is all combinations of single image
+    check the first 45 pixels... iterate i + 45 then count matching 
 */
 
 let image = null;
