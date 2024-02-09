@@ -50,7 +50,7 @@ let standardBoxSizeWidth = [0.05, 0.10, 0.15, 0.20, 0.25, 0.50];
 */
 
 function drawBoxes() {
-    for(let i= 0; i < standardBoxSizeHeight.length; i++) {
+    for(let i = 0; i < standardBoxSizeHeight.length; i++) {
         iteritiveBoxAmountWidth = Math.min(image[0].length * standardBoxSizeWidth[i]);
         iteritiveBoxAmountHeight = Math.min(image.length * standardBoxSizeHeight[i];)
         drawOverImage();
@@ -157,7 +157,7 @@ function graphConversion() {
         }
     }
 
-    boxes.push([...picturesUniqueLine])
+    boxes.push([...picturesUniqueLine]);
 
 }
 
