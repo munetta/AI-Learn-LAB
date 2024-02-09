@@ -143,7 +143,7 @@ function fetchPixelColor(i, j) {
 /*
     graphs the image over a unique line
     unique line used to compare against others
-    the first picture in drawBoxes is the entire picture...
+    the first picture in boxes is the entire picture...
 */
 
 function graphConversion() { 
