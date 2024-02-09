@@ -1,8 +1,6 @@
 
 /*
-    The image to work on and other stored images to compare to
-    boxes is all combinations of single image
-    check the first 45 pixels... iterate i + 45 then count matching 
+    image functions
 */
 
 let image = null;
@@ -40,7 +38,7 @@ let currentJ;
 
 let deviation = 5;  
 let edgeColor = 'black';
-let acceptedColors = new Set(['blue', 'red']);
+let acceptedColors = new Set(['blue', 'red']);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          //fun fact: leaving a smicolorn helps with many compiler functions, trust me, you definetely want to make sure a line has ended. --- aka not a binary search tree --- just a description for how to store then act on what you store
 let labelName = 'Alex';
 let savePicture = false;
 let standardBoxSizeHeight = [0.05, 0.10, 0.15, 0.20, 0.25, 0.50];
@@ -53,14 +51,14 @@ let standardBoxSizeWidth = [0.05, 0.10, 0.15, 0.20, 0.25, 0.50];
 
 function drawBoxes() {
     for(let i= 0; i < standardBoxSizeHeight.length; i++) {
-        iteritiveBoxAmountWidth = image[0].length * standardBoxSizeWidth[i];
-        iteritiveBoxAmountHeight = image.length * standardBoxSizeHeight[i];
+        iteritiveBoxAmountWidth = Math.min(image[0].length * standardBoxSizeWidth[i]);
+        iteritiveBoxAmountHeight = Math.min(image.length * standardBoxSizeHeight[i];)
         drawOverImage();
     }
 }
 
 /*
-   using @iteritiveBoxAmount to iterively draw boxes over the image
+   using @iteritiveBoxAmount to iterively draw boxes
 */
 
 function drawOverImage() {}
@@ -508,30 +506,3 @@ function moveAroundPixelandDetectFirstChange() {
 
 }
 
-/*
-    users input
-*/
-
-document.querySelector('#updateLabelNameButton').onclick = function() { 
-    labelName = document.querySelector('#labelName').value;
-}
-
-document.querySelector('#updateDefaultEdgeColorButton').onclick = function() { 
-    edgeColor = document.querySelector('#edgeColor').value;
-}
-
-document.querySelector('#addAnAcceptedEdgeColorButton').onclick = function() { 
-    try {
-        acceptedColors = new Set ([...document.querySelector('#edgeColors').value.trim().split(',')]);
-    } catch(err) { 
-        console.log('make sure colors are calma seperated')
-    }
-}
-
-document.querySelector('#updateDeviationButton').onclick = function() { 
-    deviation = document.querySelector('#deviation').value;
-}
-
-document.querySelector('#savePictureButton').onclick = function() { 
-    savePicture = document.querySelector('#savePicture').value;
-}
