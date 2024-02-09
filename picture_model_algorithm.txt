@@ -4,13 +4,13 @@ Algorithm   1
  _______   
    -name: pixel (edge/whole) distance relativety algorithm
    -purpose: gets the most accurate label of a picture
-   -description: takes the slope between all points in a unique line representing a picture
+   -description: takes the slope between all points in a unique grid square image representing a picture
    -complexity: n^2 on incoming target
 
 Algorithm 2
  _______ 
    -name: (edge/whole) matching algorithm
    -purpose: gets the most accurate label of a picture
-   -description: takes the minimum distance between two same size arrays
+   -description: takes the minimum distance between two same size arrays. Starts search at a certain matched amount
    -complexity: n
       
