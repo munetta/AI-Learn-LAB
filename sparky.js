@@ -422,7 +422,7 @@ function outline() {
     distanceAlgorithm();
 
     /*
-        function to seperate lines (will use later <-- numbers and letters maybe)
+        function to seperate lines (will use later <-- numbers and letters maybe --> grab some license plates /;)
     */
 
     popIt = [...edges]; 
