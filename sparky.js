@@ -47,12 +47,13 @@ let standardBoxSizeWidth = [0.05, 0.10, 0.15, 0.20, 0.25, 0.50];
 /*
    creates a multi-dimensional array of all the boxes 
    standard way (dividing) --- other way is a iteritive diagonalPoint method
+   starts from 0 to end... no overlapping
 */
 
 function drawBoxes() {
     for(let i = 0; i < standardBoxSizeHeight.length; i++) {
         iteritiveBoxAmountWidth = Math.min(image[0].length * standardBoxSizeWidth[i]);
-        iteritiveBoxAmountHeight = Math.min(image.length * standardBoxSizeHeight[i];)
+        iteritiveBoxAmountHeight = Math.min(image.length * standardBoxSizeHeight[i]);
         drawOverImage();
     }
 }
@@ -143,7 +144,7 @@ function fetchPixelColor(i, j) {
 /*
     graphs the image over a unique line
     unique line used to compare against others
-    the first picture in boxes is the entire picture...
+    the first picture in drawBoxes is the entire picture...
 */
 
 function graphConversion() { 
@@ -157,7 +158,7 @@ function graphConversion() {
         }
     }
 
-    boxes.push([...picturesUniqueLine]);
+    boxes.push([...picturesUniqueLine])
 
 }
 
@@ -171,6 +172,10 @@ function seperateConnectedLines() {
         seperateRecursiveEnclosed[seperateRecursiveEnclosed.length - 1].push({ i: currentI, j: currentJ });
         seperateConnectedLines();
     }
+
+    /*
+        once back into the original loop, 
+    */
 
     for(let i = 0; i < popIt.length; i++) { 
 
@@ -274,7 +279,11 @@ function seperateConnectedLines() {
             return;
         } 
 
-        seperateRecursiveEnclosed.push([{ i: popIt[0].i, j: popIt[0].j }]);
+        currentI = popIt[0].i; 
+
+        currentJ = popIt[0].j;
+
+        seperateRecursiveEnclosed.push([{ i: currentI, j: currentJ }]);
 
         popIt.splice(0, 1); 
 
@@ -422,7 +431,7 @@ function outline() {
     distanceAlgorithm();
 
     /*
-        function to seperate lines (will use later <-- numbers and letters maybe --> grab some license plates /;)
+        function to seperate lines (will use later <-- numbers and letters maybe)
     */
 
     popIt = [...edges]; 
@@ -505,4 +514,6 @@ function moveAroundPixelandDetectFirstChange() {
     return moveAroundPixelandDetectFirstChange();
 
 }
+
+
 
