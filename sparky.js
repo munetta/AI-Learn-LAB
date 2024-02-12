@@ -166,11 +166,11 @@ function graphConversion() {
     divides the image into a set of connected edges (will use later)
 */
 
-function seperateConnectedLines() {
+function findAllConnections() {
 
     function pushPoint() { 
         seperateRecursiveEnclosed[seperateRecursiveEnclosed.length - 1].push({ i: currentI, j: currentJ });
-        seperateConnectedLines();
+        findAllConnections();
     }
 
     /*
@@ -291,7 +291,7 @@ function seperateConnectedLines() {
             return;
         }
 
-        return seperateConnectedLines();
+        return findAllConnections();
 
     }
 
@@ -444,7 +444,7 @@ function outline() {
 
     seperateRecursiveEnclosed.push([{ i: currentI, j: currentJ }]);
 
-    seperateConnectedLines(); 
+    findAllConnections(); 
 
 }
 
